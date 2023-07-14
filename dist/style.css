@@ -1,0 +1,62 @@
+:root {
+    --light-yellow :#FFD88B;
+    --yellow :  #FFA900;
+}
+/*put a max width*/
+body {
+    padding: 20px;
+    margin: 0;
+    display: grid;
+    grid-template-rows: 13vh 53vh 33vh;
+}
+
+.city {
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+.city-choice {
+    font-size: 40px;
+    margin-right: 10px;
+}
+
+.info {
+    background-color: rgb(235, 102, 102);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+.info-container {
+    width: 50vw;
+    height: 30vh;
+    border-radius: 41px;
+    background: linear-gradient(133deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.10) 100%);
+    box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(19px);
+}
+
+.week {
+    background-color: blueviolet;
+    display: grid;
+    grid-template-rows: 6vh;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    justify-items: center;
+}
+.time-choice {
+    grid-row: 1;
+}
+.week section {
+    width: 20vw;
+    height: 20vh;
+    border-radius: 41px;
+    background: var(--light-yellow);
+    box-shadow: 0px 4px 4px 0px var(--yellow);
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
