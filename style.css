@@ -1,6 +1,7 @@
 :root {
     --light-yellow :#FFD88B;
     --yellow :  #FFA900;
+    font-family: 'Raleway', sans-serif;
 }
 /*put a max width*/
 body {
@@ -10,7 +11,7 @@ body {
     grid-template-rows: 13vh 53vh 33vh;
 }
 
-.city {
+.city-header {
     background-color: antiquewhite;
     display: flex;
     flex-direction: row;
@@ -22,41 +23,100 @@ body {
     margin-right: 10px;
 }
 
-.info {
+.today-section {
     background-color: rgb(235, 102, 102);
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
 }
 .info-container {
-    width: 50vw;
-    height: 30vh;
     border-radius: 41px;
     background: linear-gradient(133deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.10) 100%);
     box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.20);
     backdrop-filter: blur(19px);
 }
 
-.week {
+.week-section {
     background-color: blueviolet;
-    display: grid;
-    grid-template-rows: 6vh;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    justify-items: center;
 }
 .time-choice {
     grid-row: 1;
 }
-.week section {
-    width: 20vw;
-    height: 20vh;
+.container-display-el {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    justify-items: center;
+}
+.container-display-el section {
     border-radius: 41px;
     background: var(--light-yellow);
     box-shadow: 0px 4px 4px 0px var(--yellow);
-    grid-row: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+/* Mobile Styles */
+@media only screen and (max-width: 400px) {
+    body {
+        background-color: #F09A9D;
+        height: 105vh;
+    }
+    .today-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .info-container {
+        width: 70%;
+        height: 50%;
+    }
+    .week-section {
+        height: 38vh;
+    }
+    .container-display-el {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .container-display-el section {
+        width: 25vw;
+        height: 15vh;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+  }
+  
+  /* Tablet Styles */
+  @media only screen and (min-width: 401px) and (max-width: 960px) {
+    body {
+      background-color: #F5CF8E;
+    }
+    .info-container {
+        width: 90%;
+        height: 70%;
+    }
+    .container-display-el section {
+        width: 20vw;
+        height: 18vh;
+    }
+  }
+  
+  /* Desktop Styles */
+  @media only screen and (min-width: 961px) {
+    body {
+      background-color: #B2D6FF;
+    }
+    .info-container {
+        margin-right: 10px;
+        width: 728px;
+        height: 311px;
+    }
+    .container-display-el section {
+        width: 226px;
+        height: 183px;
+    }
+  }
