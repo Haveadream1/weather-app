@@ -4,27 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <title>Weather App</title>
 </head>
 <body>
-    <section class="city">
+    <header class="city-header">
         <p class="city-choice">Seoul</p>
         <img src="" alt="test">
-    </section>
-    <section class="info">
+    </header>
+    <section class="today-section">
         <img src="" alt="test">
         <section class="info-container"></section>
     </section>
-    <section class="week">
+    <section class="week-section">
         <p class="time-choice">Today</p>
-        <section class="section1">
-            <p class="time">10:30am</p>
-            
-            <p class="degrees">20*</p>
+
+        <section class="container-display-el">
+            <section class="child-section1">
+                <p class="time">10:30am</p>
+                <p class="degrees">20*</p>
+            </section>
+            <section class="child-section2"></section>
+            <section class="child-section3"></section>
+            <section class="child-section4"></section>
+            <!--Give maybe the same class -->
         </section>
-        <section class="section2"></section>
-        <section class="section3"></section>
-        <section class="section4"></section>
     </section>
     <script src="main.js" defer></script>
 </body>
