@@ -11,13 +11,26 @@
 </head>
 <body>
     <header class="city-header">
-        <p class="city-choice">Brazil</p>
+        <form id="form" action="post" novalidate>
+            <fieldset>
+                <input id="city-input" type="text" placeholder="Tokyo">
+                <small></small>
+                <!--Style it-->
+            </fieldset>
+            <button class="button-submit">Submit</button>
+            <!--Where to put button-->
+        </form>
+
+        <!--think about rm-->
+        <p class="city-text">Brazil</p>
         <img src="" alt="test">
         <p class="ref-api">Powered by <a href="https://www.weatherapi.com/" title="Weather API">WeatherAPI.com</a></p>
     </header>
     <section class="today-section">
         <img src="" alt="test">
-        <section class="info-container"></section>
+        <section class="info-container">
+            <p>test</p>
+        </section>
     </section>
     <section class="week-section">
         <p class="time-choice">Today</p>
@@ -31,7 +44,7 @@
             <section class="child-section2"></section>
             <section class="child-section3"></section>
             <section class="child-section4"></section>
-            <!--Give maybe the same class -->
+            <!--Give mb the same class -->
         </section>
     </section>
     <script src="main.js" defer></script>
