@@ -11,21 +11,25 @@
 </head>
 <body>
     <header class="city-header">
-        <form id="form" action="post" novalidate>
-            <fieldset>
-                <input id="city-input" type="text" placeholder="Tokyo">
-                <small></small>
-                <!--Style it-->
-            </fieldset>
-            <button class="button-submit">Submit</button>
-            <!--Where to put button-->
-        </form>
+        <section class="section-input">
+            <button class="button">
+                <img src="" alt="">
+            </button> 
+            <form id="form" action="post" novalidate>
+                <fieldset>
+                    <input id="city-input" type="text" placeholder="Tokyo">
+                    <small></small>
+                    <!--Style it-->
+                </fieldset>
+                <button class="button-submit">Submit</button>
+                <!--Where to put button-->
+            </form>
+        </section>
 
-        <img src="" alt="test">
         <p class="ref-api">Powered by <a href="https://www.weatherapi.com/" title="Weather API">WeatherAPI.com</a></p>
     </header>
     <section class="today-section">
-        <img class="main-img" src="" alt="test">
+        <img class="main-img" src="/dist/images/Drop.svg" alt="test">
         <section class="main-container">
             <p class="main-text">Seoul</p>
             <p class="main-date">10/10/10</p>
@@ -38,25 +42,24 @@
         <section class="container-display-el">
             <section class="child-section1">
                 <p class="time">10:30am</p>
-                <img src="" alt="test">
+                <img class="img" src="" alt="">
                 <p class="temp">20*</p>
             </section>
             <section class="child-section2">
                 <p class="time">10:30am</p>
-                <img src="" alt="test">
+                <img class="img" src="" alt="">
                 <p class="temp">20*</p>
             </section>
             <section class="child-section3">
                 <p class="time">10:30am</p>
-                <img src="" alt="test">
+                <img class="img" src="" alt="">
                 <p class="temp">20*</p>
             </section>
             <section class="child-section4">
                 <p class="time">10:30am</p>
-                <img src="" alt="test">
+                <img class="img" src="" alt="">
                 <p class="temp">20*</p>
             </section>
-            <!--Give mb the same class -->
         </section>
     </section>
     <script src="main.js" defer></script>
