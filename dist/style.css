@@ -19,12 +19,11 @@ body {
     justify-content: start;
     align-items: center;
 }
-fieldset {
-    border: none;
+.button {
+    width: 15px;
+    height: 35px;
 }
-#city-input {
-    font-family: 'Raleway', sans-serif;
-    font-size: 15px;
+.section-input {
     width: 180px;
     height: 40px;
     padding-left: 20px;
@@ -33,6 +32,17 @@ fieldset {
     background: linear-gradient(100deg, rgba(255, 255, 255, 0.40) -15.43%, rgba(255, 255, 255, 0.10) 122.5%);
     box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.06) inset;
     backdrop-filter: blur(19px);
+    display: flex;
+    align-items: center;
+}
+fieldset {
+    border: none;
+}
+#city-input {
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    width: 150px;
+    height: 25px;
 }
 #city-input:focus{
     outline: none;
@@ -66,8 +76,8 @@ fieldset {
     backdrop-filter: blur(19px);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 13vh 5vh;
-    align-items: end;
+    /*grid-template-rows: 13vh 5vh;*/
+    align-items: center;
     justify-items: center;
 }
 .main-text {
@@ -91,7 +101,7 @@ fieldset {
     grid-column: 2;
 }
 
-.week-section {
+.day-section {
     background-color: blueviolet;
 }
 .time-choice {
@@ -117,7 +127,7 @@ fieldset {
 @media only screen and (max-width: 400px) {
     body {
         background-color: #F09A9D;
-        height: 105vh;
+        height: 110vh;
     }
     .today-section {
         display: flex;
@@ -129,16 +139,18 @@ fieldset {
         width: 60%;
         height: 30%;
     }
-    .week-section {
-        height: 38vh;
+    .day-section {
+        height: 45vh;
     }
     .container-display-el {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
     }
     .container-display-el section {
-        width: 25vw;
-        height: 15vh;
+        width: 85px;
+        height: 150px;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;

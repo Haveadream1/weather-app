@@ -35,21 +35,25 @@ const home = () => {
     const childSection1Path = data.forecast.forecastday[0].hour[6];
     const childSection1Date = childSection1Path.time;
     childSection1.querySelector('.time').textContent = childSection1Date.slice(11, 16);
+    childSection1.querySelector('.img').src = childSection1Path.condition.icon;
     childSection1.querySelector('.temp').textContent = `${childSection1Path.temp_c}°c`;
 
     const childSection2Path = data.forecast.forecastday[0].hour[12];
     const childSection2Date = childSection2Path.time;
     childSection2.querySelector('.time').textContent = childSection2Date.slice(11, 16);
+    childSection2.querySelector('.img').src = childSection2Path.condition.icon;
     childSection2.querySelector('.temp').textContent = `${childSection2Path.temp_c}°c`;
 
     const childSection3Path = data.forecast.forecastday[0].hour[16];
     const childSection3Date = childSection3Path.time;
     childSection3.querySelector('.time').textContent = childSection3Date.slice(11, 16);
+    childSection3.querySelector('.img').src = childSection3Path.condition.icon;
     childSection3.querySelector('.temp').textContent = `${childSection3Path.temp_c}°c`;
 
     const childSection4Path = data.forecast.forecastday[0].hour[21];
     const childSection4Date = childSection4Path.time;
     childSection4.querySelector('.time').textContent = childSection4Date.slice(11, 16);
+    childSection4.querySelector('.img').src = childSection4Path.condition.icon;
     childSection4.querySelector('.temp').textContent = `${childSection4Path.temp_c}°c`;
   }
 
