@@ -4,7 +4,6 @@
     --grey: rgba(120, 120, 120, 0.92);
     font-family: 'Raleway', sans-serif;
 }
-/*put a max width*/
 body {
     padding: 20px;
     margin: 0;
@@ -64,9 +63,17 @@ fieldset {
 
 .today-section {
     background-color: rgb(235, 102, 102);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: center;
     align-items: center;
+}
+.main-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    position: relative;
+    bottom: 80px;
+    left: 85px;
 }
 .main-container {
     padding: 10px;
@@ -76,25 +83,25 @@ fieldset {
     backdrop-filter: blur(19px);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /*grid-template-rows: 13vh 5vh;*/
+    gap: 5px;
     align-items: center;
     justify-items: center;
 }
 .main-text {
-    font-size: 64px;
+    font-size: 4em;
     font-weight: 400;
     margin: 0;
 }
 .main-date {
     color: var(--grey);
-    font-size: 24px;
+    font-size: 1.5em;
     font-weight: 400;
     grid-column: 1;
     margin: 0 0 15px 0;
 }
 .main-temp {
     color: #000;
-    font-size: 75px;
+    font-size: 4em;
     font-weight: 300;
     margin: 0;
     grid-row: 1;
@@ -135,12 +142,19 @@ fieldset {
         justify-content: center;
         align-items: center;
     }
+    .main-img {
+        bottom: 0;
+        left: 0;
+    }
     .main-container {
         width: 60%;
         height: 30%;
     }
     .day-section {
         height: 45vh;
+    }
+    .main-text, .main-temp {
+        font-size: 2.5em;
     }
     .container-display-el {
         display: flex;
@@ -155,6 +169,10 @@ fieldset {
         flex-direction: column;
         flex-wrap: wrap;
     }
+    .img {
+        height: 48px;
+        width: 48px;
+    }
   }
   
   /* Tablet Styles */
@@ -162,9 +180,16 @@ fieldset {
     body {
       background-color: #F5CF8E;
     }
+    .main-img {
+        bottom: 100px;
+        left: 85px;
+    }
     .main-container {
-        width: 80%;
-        height: 40%;
+        width: 60%;
+        height: 30%;
+    }
+    .main-text, .main-temp {
+        font-size: 3.5em;
     }
     .container-display-el section {
         width: 20vw;
