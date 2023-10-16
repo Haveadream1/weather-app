@@ -12,39 +12,42 @@ body {
 }
 
 .city-header {
-    background-color: antiquewhite;
     display: flex;
     flex-direction: row;
     justify-content: start;
     align-items: center;
 }
-.button {
-    width: 15px;
-    height: 35px;
+#form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
-.section-input {
-    width: 180px;
-    height: 40px;
+fieldset {
+    border: none;
+    display: flex;
+    flex-direction: column;
+}
+#city-input {
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    width: 155px;
+    height: 28px;
     padding-left: 20px;
     border-radius: 41px;
     border: 1px solid #FFD88B;
     background: linear-gradient(100deg, rgba(255, 255, 255, 0.40) -15.43%, rgba(255, 255, 255, 0.10) 122.5%);
     box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.06) inset;
     backdrop-filter: blur(19px);
-    display: flex;
-    align-items: center;
-}
-fieldset {
-    border: none;
-}
-#city-input {
-    font-family: 'Raleway', sans-serif;
-    font-size: 15px;
-    width: 150px;
-    height: 25px;
 }
 #city-input:focus{
     outline: none;
+    background: none; /*remove the blue default bk*/
+}
+small {
+    position: absolute;
+    top: 45px;
+    margin-left: 10px;
 }
 .error {
     border: red 2px solid !important;
@@ -52,23 +55,24 @@ fieldset {
 .success {
     border: rgb(0, 209, 0) 2px solid !important;
 }
-
-.city-choice {
-    font-size: 40px;
-    margin-right: 10px;
-}
 .ref-api {
     margin-left:  auto;
 }
+.button-submit {
+    position: absolute;
+    right: 15px;
+    border: none;
+    background: none;
+    padding: 0 6px;
+}
 
 .today-section {
-    background-color: rgb(235, 102, 102);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .main-img {
-    width: 150px;
+    width: 150px;  /* bad quality img*/
     height: 150px;
     object-fit: cover;
     position: relative;
@@ -88,39 +92,42 @@ fieldset {
     justify-items: center;
 }
 .main-text {
-    font-size: 4em;
+    font-size: 50px;
     font-weight: 400;
     margin: 0;
 }
 .main-date {
     color: var(--grey);
-    font-size: 1.5em;
+    font-size: 20px;
     font-weight: 400;
     grid-column: 1;
     margin: 0 0 15px 0;
 }
 .main-temp {
     color: #000;
-    font-size: 4em;
+    font-size: 50px;
     font-weight: 300;
     margin: 0;
     grid-row: 1;
     grid-column: 2;
 }
 
-.day-section {
-    background-color: blueviolet;
-}
 .time-choice {
+    font-size: 19px;
     grid-row: 1;
+    grid-column: 1;
+    margin: 0;
 }
 .container-display-el {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 40px 1fr;
     gap: 15px;
     justify-items: center;
+    align-items: center;
 }
 .container-display-el section {
+    grid-row: 2;
     border-radius: 41px;
     background: var(--light-yellow);
     box-shadow: 0px 4px 4px 0px var(--yellow);
@@ -133,7 +140,6 @@ fieldset {
 /* Mobile Styles */
 @media only screen and (max-width: 400px) {
     body {
-        background-color: #F09A9D;
         height: 110vh;
     }
     .today-section {
@@ -153,8 +159,15 @@ fieldset {
     .day-section {
         height: 45vh;
     }
+    .time-choice{
+        flex: 0 0 100%; /*specify a nowrap*/
+        margin-left: 20px;
+    }
     .main-text, .main-temp {
-        font-size: 2.5em;
+        font-size: 35px;
+    }
+    .main-date {
+        font-size: 18px;
     }
     .container-display-el {
         display: flex;
@@ -177,19 +190,12 @@ fieldset {
   
   /* Tablet Styles */
   @media only screen and (min-width: 401px) and (max-width: 960px) {
-    body {
-      background-color: #F5CF8E;
-    }
-    .main-img {
-        bottom: 100px;
-        left: 85px;
-    }
     .main-container {
         width: 60%;
         height: 30%;
     }
     .main-text, .main-temp {
-        font-size: 3.5em;
+        font-size: 40px;
     }
     .container-display-el section {
         width: 20vw;
@@ -199,9 +205,6 @@ fieldset {
   
   /* Desktop Styles */
   @media only screen and (min-width: 961px) {
-    body {
-      background-color: #B2D6FF;
-    }
     .main-container {
         margin-right: 10px;
         width: 500px;

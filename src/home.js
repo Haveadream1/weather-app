@@ -15,18 +15,23 @@ const home = () => {
 
   const apiKey = 'bce6611d55994183931152601230107';
   const apiUrl = 'https://api.weatherapi.com/v1/forecast.json?';
-  // const KEY = 'https://api.weatherapi.com/v1/forecast.json?key=bce6611d55994183931152601230107&q=Seoul&days=1&aqi=no&alerts=no'
 
-  async function getWeather() {
-    const cityChoice = cityInputEl.value.trim();
+  async function getWeather(cityChoice) {
     const response = await fetch(`${apiUrl}key=${apiKey}&q=${cityChoice}&days=8&aqi=no&alerts=no`, { mode: 'cors' });
     const data = await response.json();
+
+    if (!response.ok) {
+      const message = `An error has occurred: ${response.status}`;
+      form.classList = 'invalid';
+      checkInput(); // check form validity if code error
+      throw new Error(message);
+    }
     console.log(data);
 
     mainText.textContent = data.location.name;
     const formatDate = data.current.last_updated;
     mainDate.textContent = formatDate.slice(0, 11); // format date
-    // call dateAPI
+
     mainTemp.textContent = `${data.current.temp_c}°c`;
 
     mainImg.src = data.current.condition.icon;
@@ -62,8 +67,19 @@ const home = () => {
     childSection4.querySelector('.temp').textContent = `${childSection4Path.temp_c}°c`;
   }
 
+  // initialization
+  getWeather('Seoul');
+
   const isRequired = (value) => {
     if (value === '') {
+      return false;
+    }
+    return true;
+  };
+
+  const cityMatch = () => {
+    const getError = document.querySelector('#form').className;
+    if (getError === 'invalid') {
       return false;
     }
     return true;
@@ -95,6 +111,8 @@ const home = () => {
 
     if (!isRequired(input)) {
       showError(cityInputEl, 'Choose a city');
+    } else if (!cityMatch()) {
+      showError(cityInputEl, 'Invalid city name');
     } else {
       showSuccess(cityInputEl);
       valid = true;
@@ -109,8 +127,10 @@ const home = () => {
     const isFormValid = isCityChoiceValid;
 
     if (isFormValid) {
-      // run func after valid form
-      getWeather();
+      const cityChoice = cityInputEl.value.trim();
+      getWeather(cityChoice);
+      const input = document.querySelector('#city-input');
+      input.classList.remove('success');
       console.log('Valid Form');
     } else {
       console.log('Error in the form');
@@ -136,6 +156,6 @@ export default home;
         Display the image that depend on the actual weather
 
     Purple section :
-        Display the weather for the week
-        Day + t*
+        Display the weather for the day
+        Hour + t*
 */
