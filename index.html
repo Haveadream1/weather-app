@@ -7,9 +7,56 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
-    <title>Weather App</title>
+    <title>Weather online</title>
 </head>
 <body>
+    <header> 
+        <form id="form" class="valid" action="post" novalidate> <!-- Why class valid ?-->
+            <fieldset>
+                <input id="city-input" type="text" placeholder="Choose a city">
+                <small></small>
+            </fieldset>
+            <button class="submit-button"><img src="/dist/images/Vector.svg" alt="submit"></button>
+        </form>
+
+        <p class="api-credit">Powered by <a href="https://www.weatherapi.com/" title="Weather API">WeatherAPI.com</a></p>
+    </header>
+
+    <section class="today-section">
+        <img class="main-img" src="" alt="">
+        <section class="main-container">
+            <p class="main-text"></p>
+            <p class="main-date"></p>
+            <p class="main-temp"></p>
+        </section>
+    </section>
+    <section class="day-section">
+        <section class="container-display-el">
+            <p class="time-choice">Today:</p>
+            <section class="child-section1">
+                <p class="time"></p>
+                <img class="img" src="" alt="">
+                <p class="temp"></p>
+            </section>
+            <section class="child-section2">
+                <p class="time"></p>
+                <img class="img" src="" alt="">
+                <p class="temp"></p>
+            </section>
+            <section class="child-section3">
+                <p class="time"></p>
+                <img class="img" src="" alt="">
+                <p class="temp"></p>
+            </section>
+            <section class="child-section4">
+                <p class="time"></p>
+                <img class="img" src="" alt="">
+                <p class="temp"></p>
+            </section>
+        </section>
+    </section>
+    <script src="main.js" defer></script>
+    <!--
     <header class="city-header"> 
         <form id="form" class="valid" action="post" novalidate>
             <fieldset>
@@ -55,5 +102,6 @@
         </section>
     </section>
     <script src="main.js" defer></script>
+    -->
 </body>
 </html>
