@@ -8,7 +8,7 @@
 
 body {
     display: grid;
-    grid-template-rows: 100px 1fr 300px;
+    grid-template-rows: 100px 440px 300px;
 }
 
 header {
@@ -53,6 +53,41 @@ small {
     margin-left: auto;
 }
 
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-section {
+    height: 130px;
+    width: 300px;
+    padding: 10px;
+    border-radius: 41px;
+    background: linear-gradient(133deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.10) 100%);
+    box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(19px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+}
+.main-img {
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    top: 220px;
+    left: 450px;
+    background-color: #FFA900;
+}
+.main-section > p {
+    margin: 0;
+}
+.main-city {
+    font-size: 40px;
+}
+.main-temp {
+    font-size: 20px;
+}
 
 .success {
     border: var(--green) 2px solid !important;
