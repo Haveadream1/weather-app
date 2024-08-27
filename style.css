@@ -85,8 +85,29 @@ main {
 .main-city {
     font-size: 40px;
 }
-.main-temp {
+.main-temp,
+.time-choice {
     font-size: 20px;
+}
+
+footer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 50px 250px;
+    align-items: center;
+    justify-items: center;
+}
+footer > section {
+    height: 200px;
+    width: 250px;
+    grid-row: 2;
+    border-radius: 40px;
+    background: var(--light-yellow);
+    box-shadow: 0px 4px 4px 0px var(--yellow);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .success {
