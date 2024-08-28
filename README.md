@@ -17,19 +17,12 @@ The purpose of this project is to practice the API call and fetch the data.
     * Refactor semantic
     * Give some air to the elements
 2. Css
-    * Refactor main grid
     * Review height of the window
-    * Review body padding
-    * Review margin body overwritte 8px
     * Review naming
-    * Review header credit margin
     * Check quality image, need vectors not png
-    * Review main container margin
-    * Review today section alignement
     * Add yellow shadow to today container
-    * Delete container display el, and use his parent for flex
-    * Review overflowing size of the day timeframe
-    * Review margin of the small day timeframe container
+    * Review resize container
+    * Add responsiveness
 3. Js
     * Review names
     * Review display format of the date
