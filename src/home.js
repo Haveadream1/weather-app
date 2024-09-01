@@ -13,6 +13,7 @@ const home = () => {
   const childSection3 = document.querySelector('.child-section3');
   const childSection4 = document.querySelector('.child-section4');
 
+  // CREATE A SMALL
   const apiKey = 'bce6611d55994183931152601230107';
   const apiUrl = 'https://api.weatherapi.com/v1/forecast.json?';
 
@@ -148,7 +149,7 @@ const home = () => {
 };
 export default home;
 
-/*  Beige section :
+/*  Header section :
         Next to Seoul put a button to change location
         Depend on the location value, take data and display it
 
