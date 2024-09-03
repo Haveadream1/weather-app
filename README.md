@@ -13,16 +13,14 @@ The purpose of this project is to practice the API call and fetch the data.
 [The Odin Project](https://www.theodinproject.com/)
 
 ## Todo
-1. Html
-    * Refactor semantic
-    * Give some air to the elements
 2. Css
     * Review height of the window
-    * Review naming
     * Check quality image, need vectors not png
     * Add yellow shadow to today container
+    * Review input outline
     * Review resize container
     * Add responsiveness
+    * Fix position of main image
 3. Js
     * Review names
     * Review display format of the date
