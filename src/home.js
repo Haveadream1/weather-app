@@ -1,17 +1,18 @@
 // eslint-disable prefer-destructuring
 const home = () => {
-  const cityInputEl = document.querySelector('#city-input');
   const form = document.querySelector('#form');
+  const cityInput = document.querySelector('#city-input');
 
-  const mainText = document.querySelector('.main-text');
-  const mainDate = document.querySelector('.main-date');
-  const mainTemp = document.querySelector('.main-temp');
   const mainImg = document.querySelector('.main-img');
+  const mainCity = document.querySelector('.main-city');
+  const mainTemp = document.querySelector('.main-temp');
 
-  const childSection1 = document.querySelector('.child-section1');
-  const childSection2 = document.querySelector('.child-section2');
-  const childSection3 = document.querySelector('.child-section3');
-  const childSection4 = document.querySelector('.child-section4');
+
+  // NEED TO FIND A BETTER WAY => getWeather
+  const childSection1 = document.querySelector('.time-section1');
+  const childSection2 = document.querySelector('.time-section2');
+  const childSection3 = document.querySelector('.time-section3');
+  const childSection4 = document.querySelector('.time-section4');
 
   // CREATE A SMALL
   const apiKey = 'bce6611d55994183931152601230107';
@@ -24,14 +25,17 @@ const home = () => {
     if (!response.ok) {
       const message = `An error has occurred: ${response.status}`;
       form.classList = 'invalid';
+
+      // ERROR
       checkInput(); // check form validity if code error
+
       throw new Error(message);
     }
     console.log(data);
 
-    mainText.textContent = data.location.name;
+    mainCity.textContent = data.location.name;
     const formatDate = data.current.last_updated;
-    mainDate.textContent = formatDate.slice(0, 11); // format date
+    // mainDate.textContent = formatDate.slice(0, 11); // format date
 
     mainTemp.textContent = `${data.current.temp_c}°c`;
 
@@ -78,7 +82,7 @@ const home = () => {
     return true;
   };
 
-  const cityMatch = () => {
+  const isCityValid = () => {
     const getError = document.querySelector('#form').className;
     if (getError === 'invalid') {
       return false;
@@ -98,9 +102,9 @@ const home = () => {
 
   const showSuccess = (input) => {
     const fieldSet = input.parentElement;
-    const hInput = fieldSet.querySelector('input');
-    hInput.classList.remove('error');
-    hInput.classList.add('success');
+    const inputForm = fieldSet.querySelector('input');
+    inputForm.classList.remove('error');
+    inputForm.classList.add('success');
 
     const error = fieldSet.querySelector('small');
     error.textContent = '';
@@ -108,14 +112,14 @@ const home = () => {
 
   const checkInput = () => {
     let valid = false;
-    const input = cityInputEl.value.trim();
+    const input = cityInput.value.trim();
 
     if (!isRequired(input)) {
-      showError(cityInputEl, 'Choose a city');
-    } else if (!cityMatch()) {
-      showError(cityInputEl, 'Invalid city name');
+      showError(cityInput, 'Choose a city');
+    } else if (!isCityValid()) {
+      showError(cityInput, 'Invalid city name');
     } else {
-      showSuccess(cityInputEl);
+      showSuccess(cityInput);
       valid = true;
     }
     return valid;
@@ -128,22 +132,24 @@ const home = () => {
     const isFormValid = isCityChoiceValid;
 
     if (isFormValid) {
-      const cityChoice = cityInputEl.value.trim();
+      const cityChoice = cityInput.value.trim();
       getWeather(cityChoice);
+
       const input = document.querySelector('#city-input');
       input.classList.remove('success');
-      console.log('Valid Form');
+
+      console.log('Valid form');
     } else {
-      console.log('Error in the form');
+      console.log('Invalid form');
     }
   });
 
   form.addEventListener('input', (e) => {
-    // eslint-disable-next-line default-case
     switch (e.target.id) {
       case 'city-input':
         checkInput();
         break;
+      default: // Default case to avoid error eslint
     }
   });
 };
