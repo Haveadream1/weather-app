@@ -83,20 +83,20 @@ const home = () => {
   };
 
   const isCityValid = () => {
-    const getError = document.querySelector('#form').className;
-    if (getError === 'invalid') {
+    const formClass = document.querySelector('#form').className;
+    if (formClass === 'invalid') {
       return false;
     }
     return true;
   };
 
   const showError = (input, message) => {
-    const formField = input.parentElement;
-    const inputForm = formField.querySelector('input');
+    const fieldSet = input.parentElement;
+    const inputForm = fieldSet.querySelector('input');
     inputForm.classList.add('error');
     inputForm.classList.remove('success');
 
-    const error = formField.querySelector('small');
+    const error = fieldSet.querySelector('small');
     error.textContent = message;
   };
 
