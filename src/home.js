@@ -7,12 +7,11 @@ const home = () => {
   const mainCity = document.querySelector('.main-city');
   const mainTemp = document.querySelector('.main-temp');
 
-
   // NEED TO FIND A BETTER WAY => getWeather
-  const childSection1 = document.querySelector('.time-section1');
-  const childSection2 = document.querySelector('.time-section2');
-  const childSection3 = document.querySelector('.time-section3');
-  const childSection4 = document.querySelector('.time-section4');
+  const childSection1 = document.querySelector('.time-section-1');
+  const childSection2 = document.querySelector('.time-section-2');
+  const childSection3 = document.querySelector('.time-section-3');
+  const childSection4 = document.querySelector('.time-section-4');
 
   // CREATE A SMALL
   const apiKey = 'bce6611d55994183931152601230107';
@@ -32,6 +31,8 @@ const home = () => {
       throw new Error(message);
     }
     console.log(data);
+
+    /// NEED TO UDPATE JS WITH COMMAND
 
     mainCity.textContent = data.location.name;
     const formatDate = data.current.last_updated;
