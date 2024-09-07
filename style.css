@@ -15,12 +15,14 @@ body {
 
 header {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /*grid-template-columns: 1fr 1fr;*/
+    justify-content: space-between;
     align-items: center;
 }
 #form {
     display: flex;
     align-items: center;
+    width: 200px;
 }
 fieldset {
     border: none;
@@ -51,9 +53,9 @@ small {
 .submit-button:active {
     opacity: 70%;
 }
-.api-credit {
+/* .api-credit {
     margin-left: auto;
-}
+} */
 
 main {
     display: flex;
@@ -122,9 +124,13 @@ footer > section {
 /* Mobile Styles */
 @media only screen and (max-width: 400px) {
     body {
-        height: 110vh;
+        background-color: rgba(127, 255, 212, 0.623);
     }
-    .main {
+    footer > section {
+        height: 160px;
+        width: 80px;
+    }
+    /* .main {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -142,7 +148,7 @@ footer > section {
         height: 45vh;
     }
     .time-choice {
-        flex: 0 0 100%; //specify a nowrap
+        flex: 0 0 100%; //specify a nowrap//
         margin-left: 20px;
     }
     .main-text, .main-temp {
@@ -167,12 +173,19 @@ footer > section {
     .img {
         height: 48px;
         width: 48px;
-    }
+    } */
 }
   
 /* Tablet Styles */
 @media only screen and (min-width: 401px) and (max-width: 960px) {
-    .main-section {
+    body {
+        background-color: rgba(206, 211, 163, 0.589);
+    }
+    footer > section {
+        height: 150px;
+        width: 150px;
+    }
+    /* .main-section {
         width: 60%;
         height: 30%;
     }
@@ -182,12 +195,15 @@ footer > section {
     .container-display-el section {
         width: 20vw;
         height: 18vh;
-    }
+    } */
 }
   
 /* Desktop Styles */
 @media only screen and (min-width: 961px) {
-    .main-section {
+    body {
+        background-color: rgba(127, 255, 212, 0.623);
+    }
+    /* .main-section {
         margin-right: 10px;
         width: 500px;
         height: 150px;
@@ -195,5 +211,5 @@ footer > section {
     .container-display-el section {
         width: 226px;
         height: 183px;
-    }
+    } */
 }
