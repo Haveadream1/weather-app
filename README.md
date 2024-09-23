@@ -21,6 +21,8 @@ The purpose of this project is to practice the API call and fetch the data.
     * Review resize container
     * Add responsiveness
     * Fix position of main image
+    * Fix header with space between
 3. Js
     * Review names
     * Review display format of the date
+    * Review the console log of the object
