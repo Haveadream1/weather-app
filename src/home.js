@@ -14,11 +14,11 @@ const home = () => {
   const childSection4 = document.querySelector('.time-section-4');
 
   // CREATE A SMALL
-  const apiKey = 'bce6611d55994183931152601230107';
-  const apiUrl = 'https://api.weatherapi.com/v1/forecast.json?';
+  const url = 'https://api.weatherapi.com/v1/forecast.json?';
+  const key = 'bce6611d55994183931152601230107';
 
   async function getWeather(cityChoice) {
-    const response = await fetch(`${apiUrl}key=${apiKey}&q=${cityChoice}&days=8&aqi=no&alerts=no`, { mode: 'cors' });
+    const response = await fetch(`${url}key=${key}&q=${cityChoice}&days=8&aqi=no&alerts=no`, { mode: 'cors' });
     const data = await response.json();
 
     if (!response.ok) {
@@ -31,8 +31,6 @@ const home = () => {
       throw new Error(message);
     }
     console.log(data);
-
-    /// NEED TO UDPATE JS WITH COMMAND
 
     mainCity.textContent = data.location.name;
     const formatDate = data.current.last_updated;
