@@ -1,5 +1,15 @@
 // eslint-disable prefer-destructuring
+import {format} from 'date-fns';
+
+
 const home = () => {
+  const date = new Date();
+  const formatedDate = format(date, 'EEEE, do LLLL');
+  console.log(formatedDate);
+
+  const mainDate = document.querySelector('.main-date');
+  mainDate.textContent = formatedDate;
+
   const form = document.querySelector('#form');
   const cityInput = document.querySelector('#city-input');
 
