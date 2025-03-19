@@ -23,7 +23,8 @@ header {
     justify-content: space-between;
 }
 .api-credit,
-#city-input {
+#city-input,
+.main-temp {
     font-size: 15px;
     font-family: 'Raleway', sans-serif;
 }
@@ -165,27 +166,31 @@ main {
     font-size: 20px;
 } */
 
-
+/* Footer */
 footer {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 50px 250px;
+    grid-template-rows: 50px 1fr;
     align-items: center;
     justify-items: center;
 }
 footer > section {
+    grid-row: 2;
     height: 200px;
     width: 250px;
-    grid-row: 2;
     border-radius: 40px;
-    background: var(--light-yellow);
-    box-shadow: 0px 4px 4px 0px var(--yellow);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: var(--light-yellow);
+    box-shadow: 0px 4px 4px 0px var(--yellow);
+}
+.time-choice {
+    font-size: 20px;
 }
 
+/* Form */
 .success {
     border: var(--green) 2px solid !important;
 }  
