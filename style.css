@@ -199,62 +199,36 @@ footer > section {
 }
 
 /* Mobile Styles */
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 512px) {
     body {
-        background-color: rgba(127, 255, 212, 0.623);
+        background-color: rgba(233, 96, 114, 0.623);
     }
-    footer > section {
-        height: 160px;
-        width: 80px;
-    }
-    /* .main {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    main {
+        flex-wrap: wrap;
     }
     .main-img {
-        bottom: 0;
+        top: 0;
         left: 0;
     }
-    .main-section {
-        width: 60%;
-        height: 30%;
-    }
-    .footer {
-        height: 45vh;
-    }
-    .time-choice {
-        flex: 0 0 100%; //specify a nowrap//
-        margin-left: 20px;
-    }
-    .main-text, .main-temp {
-        font-size: 35px;
-    }
-    .main-date {
-        font-size: 18px;
-    }
-    .container-display-el {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-    }
-    .container-display-el section {
-        width: 85px;
+    footer > section {
         height: 150px;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
+        width: 105px;
     }
-    .img {
-        height: 48px;
-        width: 48px;
-    } */
+}
+
+/* Smaller tablet Styles */
+@media only screen and (min-width: 513px) and (max-width: 702px) {
+    body {
+        background-color: rgba(240, 116, 229, 0.623);
+    }
+    footer > section {
+        height: 150px;
+        width: 120px;
+    }
 }
   
 /* Tablet Styles */
-@media only screen and (min-width: 401px) and (max-width: 960px) {
+@media only screen and (min-width: 703px) and (max-width: 1079px) {
     body {
         background-color: rgba(206, 211, 163, 0.589);
     }
@@ -262,31 +236,11 @@ footer > section {
         height: 150px;
         width: 150px;
     }
-    /* .main-section {
-        width: 60%;
-        height: 30%;
-    }
-    .main-text, .main-temp {
-        font-size: 40px;
-    }
-    .container-display-el section {
-        width: 20vw;
-        height: 18vh;
-    } */
 }
   
 /* Desktop Styles */
-@media only screen and (min-width: 961px) {
+@media only screen and (min-width: 1080px) {
     body {
         background-color: rgba(127, 255, 212, 0.623);
     }
-    /* .main-section {
-        margin-right: 10px;
-        width: 500px;
-        height: 150px;
-    }
-    .container-display-el section {
-        width: 226px;
-        height: 183px;
-    } */
 }
