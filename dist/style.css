@@ -30,11 +30,10 @@ header {
 }
 
 /* Header form */
-#form {
-    display: flex;
-}
 fieldset {
-    border: none; /* Dont forget small*/
+    padding: 0;
+    border: none;
+    display: flex;
 }
 #city-input {
     padding: 10px;
@@ -48,8 +47,13 @@ fieldset {
     outline: 2px solid var(--light-yellow);
 }
 .submit-button {
-    background: none;
     border: none;
+    background: none;
+}
+small {
+    position: absolute; /* Avoid pertubing the input */
+    padding-left: 11px;
+    top: 100px;
 }
 
 /* Main */
@@ -117,6 +121,10 @@ footer > section {
 }
 .time-choice {
     font-size: 20px;
+}
+.img {
+    width: 50px;
+    height: 50px;
 }
 
 /* Form */
