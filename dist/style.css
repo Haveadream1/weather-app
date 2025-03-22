@@ -2,6 +2,7 @@
     --yellow :  #FFA900;
     --light-yellow :#FFD88B;
     --green: rgb(0, 209, 0);
+    --red: rgb(255, 0, 0);
     --grey: rgba(120, 120, 120, 0.92);
     font-family: 'Raleway', sans-serif;
 }
@@ -129,10 +130,12 @@ footer > section {
 
 /* Form */
 .success {
-    border: var(--green) 2px solid !important;
+    outline: var(--green) 2px solid !important;
+    border: none !important;
 }  
 .error {
-    border: red 2px solid !important;
+    outline: var(--red) 2px solid !important;
+    border: none !important;
 }
 
 /* Mobile Styles */
