@@ -47,38 +47,36 @@ const home = () => {
     const input = cityInput.value.trim();
 
     if (!isRequired(input)) {
-      showError(cityInput, 'Choose a city');
+      showError(cityInput, '*Choose a city');
     } else if (!isCityValid()) {
-      showError(cityInput, 'Invalid city name');
+      showError(cityInput, '*Invalid city name');
     } else {
+      form.classList = 'valid';
       showSuccess(cityInput);
       valid = true;
     }
     return valid;
   };
 
-  // CREATE A SMALL
   const url = 'https://api.weatherapi.com/v1/forecast.json?';
   const key = 'bce6611d55994183931152601230107';
 
   async function getWeather(cityChoice) {
-    const response = await fetch(`${url}key=${key}&q=${cityChoice}&days=8&aqi=no&alerts=no`, { mode: 'cors' });
-    const data = await response.json();
+    try {
+      const response = await fetch(`${url}key=${key}&q=${cityChoice}&days=8&aqi=no&alerts=no`, { mode: 'cors' });
+      if (!response.ok) {
+        throw new Error(`HTTP error, status: ${response.status}`);
+      }
+      const data = await response.json();
 
-    if (!response.ok) {
-      const message = `An error has occurred: ${response.status}`;
-      form.classList = 'invalid';
-
-      // ERROR
-      checkInput(); // check form validity if code error
-
-      throw new Error(message);
+      console.log(data);
+      domHandler.displayMain(data);
+      domHandler.displayCurrentDate();
+      domHandler.displayFooter(data);
+    } catch (error) { // re-throwing the error, ensure error is propagated up the call stack
+      console.error('An error occurred while fetching data:', error);
+      throw error;
     }
-    console.log(data);
-
-    domHandler.displayMain(data);
-    domHandler.displayCurrentDate();
-    domHandler.displayFooter(data);
   }
 
   // initialization
