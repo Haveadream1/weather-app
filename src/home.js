@@ -51,7 +51,6 @@ const home = () => {
     } else if (!isCityValid()) {
       showError(cityInput, '*Invalid city name');
     } else {
-      form.classList = 'valid';
       showSuccess(cityInput);
       valid = true;
     }
@@ -68,13 +67,18 @@ const home = () => {
         throw new Error(`HTTP error, status: ${response.status}`);
       }
       const data = await response.json();
-
       console.log(data);
+
       domHandler.displayMain(data);
       domHandler.displayCurrentDate();
       domHandler.displayFooter(data);
     } catch (error) { // re-throwing the error, ensure error is propagated up the call stack
       console.error('An error occurred while fetching data:', error);
+
+      form.classList.add('invalid');
+      form.classList.remove('valid');
+      checkInput();
+
       throw error;
     }
   }
@@ -110,6 +114,9 @@ const home = () => {
   });
 
   form.addEventListener('input', (e) => {
+    form.classList.add('valid'); // As we can receive en error in the call, reset if input change
+    form.classList.remove('invalid');
+
     switch (e.target.id) {
       case 'city-input':
         checkInput();
