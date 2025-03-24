@@ -1,17 +1,21 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-else-return */
 import {format } from 'date-fns';
+import sunImage from '../dist/images/Sun.svg';
+import rainImage from '../dist/images/Rain.svg';
+import cloudImage from '../dist/images/Cloud.svg';
+import overcastImage from '../dist/images/Overcast.svg';
 
 function getWeatherImage(condition) {
   console.log(condition);
   if (condition === 'Cloudy') {
-    return '/dist/images/Cloud.svg';
+    return cloudImage;
   } else if (condition === 'Partly Cloudy ') {
-    return '/dist/images/Overcast.svg';
+    return overcastImage;
   } else if (condition === 'Sunny' || condition === 'Clear ') {
-    return '/dist/images/Sun.svg';
+    return sunImage;
   } else if (condition === 'Rain') {
-    return '/dist/images/Rain.svg';
+    return rainImage;
   }
 }
 

@@ -10,6 +10,46 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./dist/images/Cloud.svg":
+/*!*******************************!*\
+  !*** ./dist/images/Cloud.svg ***!
+  \*******************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"e51fecd758555753d247.svg\";\n\n//# sourceURL=webpack://weather-app/./dist/images/Cloud.svg?");
+
+/***/ }),
+
+/***/ "./dist/images/Overcast.svg":
+/*!**********************************!*\
+  !*** ./dist/images/Overcast.svg ***!
+  \**********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"5103b517cd2e70f65d3e.svg\";\n\n//# sourceURL=webpack://weather-app/./dist/images/Overcast.svg?");
+
+/***/ }),
+
+/***/ "./dist/images/Rain.svg":
+/*!******************************!*\
+  !*** ./dist/images/Rain.svg ***!
+  \******************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"8f3a049043753477ab36.svg\";\n\n//# sourceURL=webpack://weather-app/./dist/images/Rain.svg?");
+
+/***/ }),
+
+/***/ "./dist/images/Sun.svg":
+/*!*****************************!*\
+  !*** ./dist/images/Sun.svg ***!
+  \*****************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"9b17df27fbad600608a2.svg\";\n\n//# sourceURL=webpack://weather-app/./dist/images/Sun.svg?");
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/style.css":
 /*!*************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./src/style.css ***!
@@ -466,7 +506,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   displayCurrentDate: () => (/* binding */ displayCurrentDate),\n/* harmony export */   displayFooter: () => (/* binding */ displayFooter),\n/* harmony export */   displayMain: () => (/* binding */ displayMain)\n/* harmony export */ });\n/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns */ \"./node_modules/date-fns/format.js\");\n/* eslint-disable consistent-return */\n/* eslint-disable no-else-return */\n\n\nfunction getWeatherImage(condition) {\n  console.log(condition);\n  if (condition === 'Cloudy') {\n    return '/dist/images/Cloud.svg';\n  } else if (condition === 'Partly Cloudy ') {\n    return '/dist/images/Overcast.svg';\n  } else if (condition === 'Sunny' || condition === 'Clear ') {\n    return '/dist/images/Sun.svg';\n  } else if (condition === 'Rain') {\n    return '/dist/images/Rain.svg';\n  }\n}\n\nconst displayMain = (data) => {\n  const mainImg = document.querySelector('.main-img');\n  const mainCity = document.querySelector('.main-city');\n  const mainTemp = document.querySelector('.main-temp');\n\n  const formatDate = data.current.last_updated;\n  console.log(formatDate);\n  // mainDate.textContent = formatDate.slice(0, 11); // format date\n\n  mainCity.textContent = data.location.name;\n  mainTemp.textContent = `${data.current.temp_c}°c`;\n\n  const mainImagePath = getWeatherImage(data.current.condition.text);\n  mainImg.src = mainImagePath;\n  mainImg.alt = data.current.condition.text;\n};\n\nconst displayCurrentDate = () => {\n  const date = new Date();\n  const formatedDate = (0,date_fns__WEBPACK_IMPORTED_MODULE_0__.format)(date, 'EEEE, do LLLL');\n\n  const mainDate = document.querySelector('.main-date');\n  mainDate.textContent = formatedDate;\n};\n\n// const conditions = ['Sunny', 'Clear ', 'Partly Cloudy '];\n\nconst displayFooter = (data) => {\n  const timeSection1 = document.querySelector('.time-section-1');\n  const timeSection2 = document.querySelector('.time-section-2');\n  const timeSection3 = document.querySelector('.time-section-3');\n  const timeSection4 = document.querySelector('.time-section-4');\n\n  // 1st Cell\n  const timeSection1Path = data.forecast.forecastday[0].hour[6];\n  const timeSection1Date = timeSection1Path.time;\n  const imagePath1 = getWeatherImage(timeSection1Path.condition.text);\n\n  timeSection1.querySelector('.img').src = imagePath1;\n  timeSection1.querySelector('.time').textContent = timeSection1Date.slice(11, 16);\n  timeSection1.querySelector('.img').alt = timeSection1Path.condition.text;\n  timeSection1.querySelector('.temp').textContent = `${timeSection1Path.temp_c}°c`;\n\n  // 2nd Cell\n  const timeSection2Path = data.forecast.forecastday[0].hour[12];\n  const timeSection2Date = timeSection2Path.time;\n  const imagePath2 = getWeatherImage(timeSection2Path.condition.text);\n\n  timeSection2.querySelector('.img').src = imagePath2;\n  timeSection2.querySelector('.time').textContent = timeSection2Date.slice(11, 16);\n  timeSection2.querySelector('.img').src = timeSection2Path.condition.icon;\n\n  timeSection2.querySelector('.img').alt = timeSection2Path.condition.text;\n  timeSection2.querySelector('.temp').textContent = `${timeSection2Path.temp_c}°c`;\n\n  // 3rd Cell\n  const timeSection3Path = data.forecast.forecastday[0].hour[16];\n  const timeSection3Date = timeSection3Path.time;\n  const imagePath3 = getWeatherImage(timeSection3Path.condition.text);\n\n  timeSection3.querySelector('.img').src = imagePath3;\n  timeSection3.querySelector('.time').textContent = timeSection3Date.slice(11, 16);\n  timeSection3.querySelector('.img').src = timeSection3Path.condition.icon;\n\n  timeSection3.querySelector('.img').alt = timeSection3Path.condition.text;\n  timeSection3.querySelector('.temp').textContent = `${timeSection3Path.temp_c}°c`;\n\n  // 4th Cell\n  const timeSection4Path = data.forecast.forecastday[0].hour[21];\n  const timeSection4Date = timeSection4Path.time;\n  const imagePath4 = getWeatherImage(timeSection4Path.condition.text);\n\n  timeSection4.querySelector('.img').src = '/dist/images/Rain.svg';\n  console.log(imagePath4);\n  timeSection4.querySelector('.time').textContent = timeSection4Date.slice(11, 16);\n  timeSection4.querySelector('.img').src = timeSection4Path.condition.icon;\n  timeSection4.querySelector('.img').alt = timeSection4Path.condition.text;\n  timeSection4.querySelector('.temp').textContent = `${timeSection4Path.temp_c}°c`;\n};\n\n\n//# sourceURL=webpack://weather-app/./src/dom_handler.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   displayCurrentDate: () => (/* binding */ displayCurrentDate),\n/* harmony export */   displayFooter: () => (/* binding */ displayFooter),\n/* harmony export */   displayMain: () => (/* binding */ displayMain)\n/* harmony export */ });\n/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ \"./node_modules/date-fns/format.js\");\n/* harmony import */ var _dist_images_Sun_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../dist/images/Sun.svg */ \"./dist/images/Sun.svg\");\n/* harmony import */ var _dist_images_Rain_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dist/images/Rain.svg */ \"./dist/images/Rain.svg\");\n/* harmony import */ var _dist_images_Cloud_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dist/images/Cloud.svg */ \"./dist/images/Cloud.svg\");\n/* harmony import */ var _dist_images_Overcast_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dist/images/Overcast.svg */ \"./dist/images/Overcast.svg\");\n/* eslint-disable consistent-return */\n/* eslint-disable no-else-return */\n\n\n\n\n\n\nfunction getWeatherImage(condition) {\n  console.log(condition);\n  if (condition === 'Cloudy') {\n    return _dist_images_Cloud_svg__WEBPACK_IMPORTED_MODULE_2__;\n  } else if (condition === 'Partly Cloudy ') {\n    return _dist_images_Overcast_svg__WEBPACK_IMPORTED_MODULE_3__;\n  } else if (condition === 'Sunny' || condition === 'Clear ') {\n    return _dist_images_Sun_svg__WEBPACK_IMPORTED_MODULE_0__;\n  } else if (condition === 'Rain') {\n    return _dist_images_Rain_svg__WEBPACK_IMPORTED_MODULE_1__;\n  }\n}\n\nconst displayMain = (data) => {\n  const mainImg = document.querySelector('.main-img');\n  const mainCity = document.querySelector('.main-city');\n  const mainTemp = document.querySelector('.main-temp');\n\n  const formatDate = data.current.last_updated;\n  console.log(formatDate);\n  // mainDate.textContent = formatDate.slice(0, 11); // format date\n\n  mainCity.textContent = data.location.name;\n  mainTemp.textContent = `${data.current.temp_c}°c`;\n\n  const mainImagePath = getWeatherImage(data.current.condition.text);\n  mainImg.src = mainImagePath;\n  mainImg.alt = data.current.condition.text;\n};\n\nconst displayCurrentDate = () => {\n  const date = new Date();\n  const formatedDate = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__.format)(date, 'EEEE, do LLLL');\n\n  const mainDate = document.querySelector('.main-date');\n  mainDate.textContent = formatedDate;\n};\n\n// const conditions = ['Sunny', 'Clear ', 'Partly Cloudy '];\n\nconst displayFooter = (data) => {\n  const timeSection1 = document.querySelector('.time-section-1');\n  const timeSection2 = document.querySelector('.time-section-2');\n  const timeSection3 = document.querySelector('.time-section-3');\n  const timeSection4 = document.querySelector('.time-section-4');\n\n  // 1st Cell\n  const timeSection1Path = data.forecast.forecastday[0].hour[6];\n  const timeSection1Date = timeSection1Path.time;\n  const imagePath1 = getWeatherImage(timeSection1Path.condition.text);\n\n  timeSection1.querySelector('.img').src = imagePath1;\n  timeSection1.querySelector('.time').textContent = timeSection1Date.slice(11, 16);\n  timeSection1.querySelector('.img').alt = timeSection1Path.condition.text;\n  timeSection1.querySelector('.temp').textContent = `${timeSection1Path.temp_c}°c`;\n\n  // 2nd Cell\n  const timeSection2Path = data.forecast.forecastday[0].hour[12];\n  const timeSection2Date = timeSection2Path.time;\n  const imagePath2 = getWeatherImage(timeSection2Path.condition.text);\n\n  timeSection2.querySelector('.img').src = imagePath2;\n  timeSection2.querySelector('.time').textContent = timeSection2Date.slice(11, 16);\n  timeSection2.querySelector('.img').src = timeSection2Path.condition.icon;\n\n  timeSection2.querySelector('.img').alt = timeSection2Path.condition.text;\n  timeSection2.querySelector('.temp').textContent = `${timeSection2Path.temp_c}°c`;\n\n  // 3rd Cell\n  const timeSection3Path = data.forecast.forecastday[0].hour[16];\n  const timeSection3Date = timeSection3Path.time;\n  const imagePath3 = getWeatherImage(timeSection3Path.condition.text);\n\n  timeSection3.querySelector('.img').src = imagePath3;\n  timeSection3.querySelector('.time').textContent = timeSection3Date.slice(11, 16);\n  timeSection3.querySelector('.img').src = timeSection3Path.condition.icon;\n\n  timeSection3.querySelector('.img').alt = timeSection3Path.condition.text;\n  timeSection3.querySelector('.temp').textContent = `${timeSection3Path.temp_c}°c`;\n\n  // 4th Cell\n  const timeSection4Path = data.forecast.forecastday[0].hour[21];\n  const timeSection4Date = timeSection4Path.time;\n  const imagePath4 = getWeatherImage(timeSection4Path.condition.text);\n\n  timeSection4.querySelector('.img').src = '/dist/images/Rain.svg';\n  console.log(imagePath4);\n  timeSection4.querySelector('.time').textContent = timeSection4Date.slice(11, 16);\n  timeSection4.querySelector('.img').src = timeSection4Path.condition.icon;\n  timeSection4.querySelector('.img').alt = timeSection4Path.condition.text;\n  timeSection4.querySelector('.temp').textContent = `${timeSection4Path.temp_c}°c`;\n};\n\n\n//# sourceURL=webpack://weather-app/./src/dom_handler.js?");
 
 /***/ }),
 
@@ -551,6 +591,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -565,6 +617,29 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/^blob:/, "").replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
