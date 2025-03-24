@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <title>Weather forecast</title>
+</head>
+<body>
+    <header> 
+        <p class="api-credit">Powered by <a href="https://www.weatherapi.com/" title="Weather API">WeatherAPI.com</a></p>
+
+        <form id="form" class="valid" action="post" novalidate>
+            <fieldset>
+                <input id="city-input" type="text" placeholder="Choose a city">
+                <button type="button" class="submit-button"><img src="/dist/images/Vector.svg" alt="submit-button"></button>
+                <small></small>
+            </fieldset>
+        </form>
+    </header>
+
+    <main>
+        <img class="main-img" src="" alt="">
+    
+        <section class="main-section">
+            <section>
+                <p class="main-city"></p>
+                <p class="main-date">Monday, 8th May</p>
+            </section>
+
+            <p class="main-temp"></p>
+        </section>
+    </main>
+ 
+    <footer>
+        <p class="time-choice">Today:</p>
+
+        <section class="time-section-1">
+            <p class="time"></p>
+            <img class="img" src="" alt="">
+            <p class="temp"></p>
+        </section>
+
+        <section class="time-section-2">
+            <p class="time"></p>
+            <img class="img" src="" alt="">
+            <p class="temp"></p>
+        </section>
+
+        <section class="time-section-3">
+            <p class="time"></p>
+            <img class="img" src="" alt="">
+            <p class="temp"></p>
+        </section>
+
+        <section class="time-section-4">
+            <p class="time"></p>
+            <img class="img" src="" alt="">
+            <p class="temp"></p>
+        </section>
+    </footer>
+</body>
+</html>
