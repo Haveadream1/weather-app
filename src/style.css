@@ -1,6 +1,7 @@
 :root {
-    --yellow :  #FFA900;
-    --light-yellow :#FFD88B;
+    --yellow:  #FFA900;
+    --light-yellow:#FFD88B;
+    --background-orange: rgb(255 191 66 / 25%);
     --green: rgb(0, 209, 0);
     --red: rgb(255, 0, 0);
     --grey: rgba(120, 120, 120, 0.92);
@@ -11,6 +12,7 @@ body {
     margin: 0;
     height: 100vh;
     display: grid;
+    background-color: var(--background-orange);
     grid-template-rows: 1fr 3fr 2fr;
 }
 body > * {
@@ -81,7 +83,6 @@ main {
     position: relative;
     top: -60px;
     left: 50px;
-    background-color: #FFA900;
 }
 .main-section > :nth-child(1) {
     display: flex;
@@ -140,9 +141,9 @@ footer > section {
 
 /* Mobile Styles */
 @media only screen and (max-width: 512px) {
-    body {
+    /* body {
         background-color: rgba(233, 96, 114, 0.623);
-    }
+    } */
     main {
         flex-wrap: wrap;
     }
@@ -158,9 +159,9 @@ footer > section {
 
 /* Smaller tablet Styles */
 @media only screen and (min-width: 513px) and (max-width: 702px) {
-    body {
+    /* body {
         background-color: rgba(240, 116, 229, 0.623);
-    }
+    } */
     footer > section {
         height: 150px;
         width: 120px;
@@ -169,9 +170,9 @@ footer > section {
   
 /* Tablet Styles */
 @media only screen and (min-width: 703px) and (max-width: 1079px) {
-    body {
+    /* body {
         background-color: rgba(206, 211, 163, 0.589);
-    }
+    } */
     footer > section {
         height: 150px;
         width: 150px;
@@ -179,8 +180,8 @@ footer > section {
 }
   
 /* Desktop Styles */
-@media only screen and (min-width: 1080px) {
+/* @media only screen and (min-width: 1080px) {
     body {
         background-color: rgba(127, 255, 212, 0.623);
     }
-}
+} */
