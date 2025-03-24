@@ -4,7 +4,6 @@ import * as domHandler from './dom_handler';
 const home = () => {
   const form = document.querySelector('#form');
   const cityInput = document.querySelector('#city-input');
-
   const submitButton = document.querySelector('.submit-button');
 
   const isRequired = (value) => {
