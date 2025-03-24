@@ -10,7 +10,7 @@ function getWeatherImage(condition) {
   console.log(condition);
   if (condition === 'Cloudy') {
     return cloudImage;
-  } else if (condition === 'Partly Cloudy ') {
+  } else if (condition === 'Partly Cloudy ' || condition === 'Overcast ') {
     return overcastImage;
   } else if (condition === 'Sunny' || condition === 'Clear ') {
     return sunImage;
@@ -58,8 +58,8 @@ export const displayFooter = (data) => {
   const imagePath1 = getWeatherImage(timeSection1Path.condition.text);
 
   timeSection1.querySelector('.img').src = imagePath1;
-  timeSection1.querySelector('.time').textContent = timeSection1Date.slice(11, 16);
   timeSection1.querySelector('.img').alt = timeSection1Path.condition.text;
+  timeSection1.querySelector('.time').textContent = timeSection1Date.slice(11, 16);
   timeSection1.querySelector('.temp').textContent = `${timeSection1Path.temp_c}°c`;
 
   // 2nd Cell
@@ -68,10 +68,8 @@ export const displayFooter = (data) => {
   const imagePath2 = getWeatherImage(timeSection2Path.condition.text);
 
   timeSection2.querySelector('.img').src = imagePath2;
-  timeSection2.querySelector('.time').textContent = timeSection2Date.slice(11, 16);
-  timeSection2.querySelector('.img').src = timeSection2Path.condition.icon;
-
   timeSection2.querySelector('.img').alt = timeSection2Path.condition.text;
+  timeSection2.querySelector('.time').textContent = timeSection2Date.slice(11, 16);
   timeSection2.querySelector('.temp').textContent = `${timeSection2Path.temp_c}°c`;
 
   // 3rd Cell
@@ -80,10 +78,8 @@ export const displayFooter = (data) => {
   const imagePath3 = getWeatherImage(timeSection3Path.condition.text);
 
   timeSection3.querySelector('.img').src = imagePath3;
-  timeSection3.querySelector('.time').textContent = timeSection3Date.slice(11, 16);
-  timeSection3.querySelector('.img').src = timeSection3Path.condition.icon;
-
   timeSection3.querySelector('.img').alt = timeSection3Path.condition.text;
+  timeSection3.querySelector('.time').textContent = timeSection3Date.slice(11, 16);
   timeSection3.querySelector('.temp').textContent = `${timeSection3Path.temp_c}°c`;
 
   // 4th Cell
@@ -91,10 +87,8 @@ export const displayFooter = (data) => {
   const timeSection4Date = timeSection4Path.time;
   const imagePath4 = getWeatherImage(timeSection4Path.condition.text);
 
-  timeSection4.querySelector('.img').src = '/dist/images/Rain.svg';
-  console.log(imagePath4);
-  timeSection4.querySelector('.time').textContent = timeSection4Date.slice(11, 16);
-  timeSection4.querySelector('.img').src = timeSection4Path.condition.icon;
+  timeSection4.querySelector('.img').src = imagePath4;
   timeSection4.querySelector('.img').alt = timeSection4Path.condition.text;
+  timeSection4.querySelector('.time').textContent = timeSection4Date.slice(11, 16);
   timeSection4.querySelector('.temp').textContent = `${timeSection4Path.temp_c}°c`;
 };
