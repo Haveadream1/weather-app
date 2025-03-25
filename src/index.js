@@ -1,4 +1,4 @@
-import './style.css';
-import initializeWebsite from './home';
+import "./style.css";
+import initializeWebsite from "./home";
 
 initializeWebsite();

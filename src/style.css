@@ -1,184 +1,193 @@
 :root {
-    --yellow:  #FFA900;
-    --light-yellow:#FFD88B;
-    --background-orange: rgb(255 191 66 / 25%);
-    --green: rgb(0, 209, 0);
-    --red: rgb(255, 0, 0);
-    --grey: rgba(120, 120, 120, 0.92);
-    font-family: 'Raleway', sans-serif;
+  --yellow: #ffa900;
+  --light-yellow: #ffd88b;
+  --background-orange: rgb(255 191 66 / 25%);
+  --green: rgb(0, 209, 0);
+  --red: rgb(255, 0, 0);
+  --grey: rgba(120, 120, 120, 0.92);
+  font-family: "Raleway", sans-serif;
 }
 
 body {
-    margin: 0;
-    height: 100vh;
-    display: grid;
-    background-color: var(--background-orange);
-    grid-template-rows: 1fr 3fr 2fr;
+  margin: 0;
+  height: 100vh;
+  display: grid;
+  background-color: var(--background-orange);
+  grid-template-rows: 1fr 3fr 2fr;
 }
 body > * {
-    padding: 8px;
+  padding: 8px;
 }
 
 /* Header */
 header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .api-credit,
 #city-input,
 .main-temp {
-    font-size: 15px;
-    font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-family: "Raleway", sans-serif;
 }
 
 /* Header form */
 fieldset {
-    padding: 0;
-    border: none;
-    display: flex;
+  padding: 0;
+  border: none;
+  display: flex;
 }
 #city-input {
-    padding: 10px;
-    border-radius: 40px;
-    border: 1px solid var(--light-yellow);
-    background: linear-gradient(100deg, rgba(255, 255, 255, 0.40) -15.43%, rgba(255, 255, 255, 0.10) 122.5%);
-    box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.06) inset;
-    backdrop-filter: blur(19px);
+  padding: 10px;
+  border-radius: 40px;
+  border: 1px solid var(--light-yellow);
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0.4) -15.43%,
+    rgba(255, 255, 255, 0.1) 122.5%
+  );
+  box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.06) inset;
+  backdrop-filter: blur(19px);
 }
 #city-input:focus {
-    outline: 2px solid var(--light-yellow);
+  outline: 2px solid var(--light-yellow);
 }
 .submit-button {
-    border: none;
-    background: none;
+  border: none;
+  background: none;
 }
 small {
-    position: absolute; /* Avoid pertubing the input */
-    padding-left: 11px;
-    top: 100px;
+  position: absolute; /* Avoid pertubing the input */
+  padding-left: 11px;
+  top: 100px;
 }
 
 /* Main */
 main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .main-section {
-    height: 150px;
-    width: 350px;
-    border-radius: 41px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    justify-items: center;
-    backdrop-filter: blur(19px);
-    box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.20);
-    background: linear-gradient(133deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.10) 100%);
+  height: 150px;
+  width: 350px;
+  border-radius: 41px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  backdrop-filter: blur(19px);
+  box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(
+    133deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
 }
-.main-img { /* Change to svg and take off bc*/
-    height: 150px;
-    width: 150px;
-    position: relative;
-    top: -60px;
-    left: 50px;
+.main-img {
+  /* Change to svg and take off bc*/
+  height: 150px;
+  width: 150px;
+  position: relative;
+  top: -60px;
+  left: 50px;
 }
 .main-section > :nth-child(1) {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .main-city {
-    font-size: 35px;
-    margin: 0px 5px 0px 5px;
+  font-size: 35px;
+  margin: 0px 5px 0px 5px;
 }
 .main-date {
-    font-size: 15px;
-    margin: 5px;
-    color: var(--grey);
+  font-size: 15px;
+  margin: 5px;
+  color: var(--grey);
 }
 .main-temp {
-    font-size: 35px;
+  font-size: 35px;
 }
 
 /* Footer */
 footer {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 50px 1fr;
-    align-items: center;
-    justify-items: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 50px 1fr;
+  align-items: center;
+  justify-items: center;
 }
 footer > section {
-    grid-row: 2;
-    height: 200px;
-    width: 250px;
-    border-radius: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: var(--light-yellow);
-    box-shadow: 0px 4px 4px 0px var(--yellow);
+  grid-row: 2;
+  height: 200px;
+  width: 250px;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--light-yellow);
+  box-shadow: 0px 4px 4px 0px var(--yellow);
 }
 .time-choice {
-    font-size: 20px;
+  font-size: 20px;
 }
 .img {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 /* Form */
 .success {
-    outline: var(--green) 2px solid !important;
-    border: none !important;
-}  
+  outline: var(--green) 2px solid !important;
+  border: none !important;
+}
 .error {
-    outline: var(--red) 2px solid !important;
-    border: none !important;
+  outline: var(--red) 2px solid !important;
+  border: none !important;
 }
 
 /* Mobile Styles */
 @media only screen and (max-width: 512px) {
-    /* body {
+  /* body {
         background-color: rgba(233, 96, 114, 0.623);
     } */
-    main {
-        flex-wrap: wrap;
-    }
-    .main-img {
-        top: 0;
-        left: 0;
-    }
-    footer > section {
-        height: 150px;
-        width: 105px;
-    }
+  main {
+    flex-wrap: wrap;
+  }
+  .main-img {
+    top: 0;
+    left: 0;
+  }
+  footer > section {
+    height: 150px;
+    width: 105px;
+  }
 }
 
 /* Smaller tablet Styles */
 @media only screen and (min-width: 513px) and (max-width: 702px) {
-    /* body {
+  /* body {
         background-color: rgba(240, 116, 229, 0.623);
     } */
-    footer > section {
-        height: 150px;
-        width: 120px;
-    }
+  footer > section {
+    height: 150px;
+    width: 120px;
+  }
 }
-  
+
 /* Tablet Styles */
 @media only screen and (min-width: 703px) and (max-width: 1079px) {
-    /* body {
+  /* body {
         background-color: rgba(206, 211, 163, 0.589);
     } */
-    footer > section {
-        height: 150px;
-        width: 150px;
-    }
+  footer > section {
+    height: 150px;
+    width: 150px;
+  }
 }
-  
+
 /* Desktop Styles */
 /* @media only screen and (min-width: 1080px) {
     body {
