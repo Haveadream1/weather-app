@@ -1,11 +1,10 @@
-
       import API from "!../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js";
       import domAPI from "!../node_modules/style-loader/dist/runtime/styleDomAPI.js";
       import insertFn from "!../node_modules/style-loader/dist/runtime/insertBySelector.js";
       import setAttributes from "!../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js";
       import insertStyleElement from "!../node_modules/style-loader/dist/runtime/insertStyleElement.js";
       import styleTagTransformFn from "!../node_modules/style-loader/dist/runtime/styleTagTransform.js";
-      import content, * as namedExport from "!!../node_modules/css-loader/dist/cjs.js!./style.css";
+      import content, * as namedExport from "!!../node_modules/css-loader/dist/cjs.js!../src/style.css";
       
       
 
@@ -21,5 +20,6 @@ var update = API(content, options);
 
 
 
-export * from "!!../node_modules/css-loader/dist/cjs.js!./style.css";
+export * from "!!../node_modules/css-loader/dist/cjs.js!../src/style.css";
        export default content && content.locals ? content.locals : undefined;
+
