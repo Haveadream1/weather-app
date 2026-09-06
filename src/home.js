@@ -1,6 +1,11 @@
 // eslint-disable prefer-destructuring
 import * as domHandler from "./dom_handler";
 
+require("dotenv").config();
+
+// Object destructuring
+const {API_KEY} = process.env;
+
 const home = () => {
   const form = document.querySelector("#form");
   const cityInput = document.querySelector("#city-input");
@@ -57,12 +62,11 @@ const home = () => {
   };
 
   const url = "https://api.weatherapi.com/v1/forecast.json?";
-  const key = "";
 
   async function getWeather(cityChoice) {
     try {
       const response = await fetch(
-        `${url}key=${key}&q=${cityChoice}&days=8&aqi=no&alerts=no`,
+        `${url}key=${API_KEY}&q=${cityChoice}&days=8&aqi=no&alerts=no`,
         { mode: "cors" },
       );
       if (!response.ok) {
