@@ -11,8 +11,24 @@ The purpose of this project is to practice the API call and incorporate linter a
 
 [Weather online](https://haveadream1.github.io/weather-app/)
 
-## Credit
+## Credits
 
 [The Odin Project](https://www.theodinproject.com/)  
 [Weather API](https://www.weatherapi.com/)  
 [Images](https://www.figma.com/design/BVKtenvFGEaYqOo2Y6q28I/Weather-Icons---Community-(Community)?node-id=101-2&t=L06xq648i0cax0lN-1)
+
+## To-dos
+* Order the repository
+* Replace the compromised key and use env variables
+* Delete the committed node_modules and mention in .gitignore
+* Move the images folder from the dist folder to src
+* Fixes conflicting eslint configuration
+* Separate the API call from the logic
+* Separate the form validation and formatting from the logic
+
+## Project hierarchy
+1. dist/: contain the code bundled with webpack (collection of compiled files to make website faster)
+2. src/: contain the source code
+1. dom_handler: manage the manipulation of the Document Object Model
+2. home: contains the application logic
+3. index: entrance point
