@@ -1,10 +1,10 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-else-return */
 import { format } from "date-fns";
-import sunImage from "../dist/images/Sun.svg";
-import rainImage from "../dist/images/Rain.svg";
-import cloudImage from "../dist/images/Cloud.svg";
-import overcastImage from "../dist/images/Overcast.svg";
+import sunImage from "./assets/Sun.svg";
+import rainImage from "./assets/Rain.svg";
+import cloudImage from "./assets/Cloud.svg";
+import overcastImage from "./assets/Overcast.svg";
 
 function getWeatherImage(condition) {
   const conditionText = condition.text;
