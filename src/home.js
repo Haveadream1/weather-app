@@ -57,7 +57,7 @@ const home = () => {
   };
 
   const url = "https://api.weatherapi.com/v1/forecast.json?";
-  const key = "bce6611d55994183931152601230107";
+  const key = "";
 
   async function getWeather(cityChoice) {
     try {
