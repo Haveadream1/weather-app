@@ -21,6 +21,7 @@
   "homepage": "https://github.com/Haveadream1/weather-app#readme",
   "devDependencies": {
     "css-loader": "^7.1.2",
+    "dotenv-webpack": "^9.0.0",
     "eslint": "^8.44.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^10.1.1",
@@ -35,7 +36,6 @@
     "webpack-merge": "^6.0.1"
   },
   "dependencies": {
-    "date-fns": "^4.1.0",
-    "dotenv": "^17.4.2"
+    "date-fns": "^4.1.0"
   }
 }
