@@ -32,31 +32,36 @@ function getWeatherImage(condition) {
   }
 }
 
-export const displayMain = (data) => {
-  const mainImg = document.querySelector(".main-img");
-  const mainCity = document.querySelector(".main-city");
-  const mainTemp = document.querySelector(".main-temp");
+const displayCurrentDate = (data) => {
+  // Fetch the local time zone to display the correct local date
+  const localTimeZone = data.location.tz_id;
 
-  // ! WRONG check with localTime
-  const formatDate = data.current.last_updated;
-  console.log(formatDate);
-  // mainDate.textContent = formatDate.slice(0, 11); // format date
+  const date = new Date();
+  const localTime = new Intl.DateTimeFormat("en-us", {
+    timeZone: localTimeZone,
+    dateStyle: "full"
+  }).format(date);
 
-  mainCity.textContent = data.location.name;
-  mainTemp.textContent = `${data.current.temp_c}°c`;
-
-  const mainImagePath = getWeatherImage(data.current.condition);
-  mainImg.src = mainImagePath;
-  mainImg.alt = data.current.condition.text;
+  // Full name of the day of the week - Day of the month with suffix - Full name of the month
+  // Monday, 7th September
+  return format(localTime, "EEEE, do LLLL");
 };
 
-// ! WRONG should be localTime
-export const displayCurrentDate = () => {
-  const date = new Date();
-  const formatedDate = format(date, "EEEE, do LLLL");
+export const displayMain = (data) => {
+  const imgEl = document.querySelector(".main-img");
+  const cityEL = document.querySelector(".main-city");
+  const tempEl = document.querySelector(".main-temp");
+  const dateEl = document.querySelector(".main-date");
 
-  const mainDate = document.querySelector(".main-date");
-  mainDate.textContent = formatedDate;
+  const formattedDate = displayCurrentDate(data);
+
+  cityEL.textContent = data.location.name;
+  tempEl.textContent = `${data.current.temp_c}°c`;
+  dateEl.textContent = formattedDate;
+
+  const mainImagePath = getWeatherImage(data.current.condition);
+  imgEl.src = mainImagePath;
+  imgEl.alt = data.current.condition.text;
 };
 
 export const displayTimeSection = (data, timeObject, timeSections) => {
@@ -74,7 +79,7 @@ export const displayTimeSection = (data, timeObject, timeSections) => {
     timeSection.querySelector(".img").src = image;
     timeSection.querySelector(".img").alt = path.condition.text;
     
-    // Slice the full date to get only the text of time
+    // Clean format while slicing the full date instead of formatting hour constante
     timeSection.querySelector(".time").textContent = date.slice(11, 16);
     timeSection.querySelector(".temp").textContent = `${path.temp_c}°c`;
   }

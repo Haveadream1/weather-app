@@ -115,8 +115,7 @@ const home = () => {
       console.log(data);
 
       domHandler.displayMain(data);
-      domHandler.displayCurrentDate();
-
+      
       const initialDay = 0;
       const {currentDay, currentHour} = getCurrentLocalTime(initialDay, data.location.localtime);
       const timeObject = getForecastTime(currentDay, currentHour);
