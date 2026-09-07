@@ -1,10 +1,7 @@
 // eslint-disable prefer-destructuring
 import * as domHandler from "./dom_handler";
 
-require("dotenv").config();
-
-// Object destructuring
-const {API_KEY} = process.env;
+const KEY = process.env.API_KEY;
 
 const home = () => {
   const form = document.querySelector("#form");
@@ -66,7 +63,7 @@ const home = () => {
   async function getWeather(cityChoice) {
     try {
       const response = await fetch(
-        `${url}key=${API_KEY}&q=${cityChoice}&days=8&aqi=no&alerts=no`,
+        `${url}key=${KEY}&q=${cityChoice}&days=8&aqi=no&alerts=no`,
         { mode: "cors" },
       );
       if (!response.ok) {
@@ -77,7 +74,12 @@ const home = () => {
 
       domHandler.displayMain(data);
       domHandler.displayCurrentDate();
-      domHandler.displayFooter(data);
+
+      const day = 0;
+      const hourArray = [6, 12, 16, 21];
+      const timeSections = document.querySelectorAll(".time-section");
+
+      domHandler.displayTimeSection(data, day, hourArray, timeSections);
     } catch (error) {
       // re-throwing the error, ensure error is propagated up the call stack
       console.error("An error occurred while fetching data:", error);
