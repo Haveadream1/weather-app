@@ -2,6 +2,7 @@
 import * as domHandler from "./dom_handler";
 
 const KEY = process.env.API_KEY;
+const url = "https://api.weatherapi.com/v1/forecast.json?";
 
 const home = () => {
   const form = document.querySelector("#form");
@@ -58,7 +59,48 @@ const home = () => {
     return valid;
   };
 
-  const url = "https://api.weatherapi.com/v1/forecast.json?";
+  // Calculate the forecast time starting with the local time up to 6 hours
+  const getForecastTime = (startingDay, startingHour) => {
+    // Populate array with the starting day and hours
+    const timeArray = [
+      {
+        day: startingDay, 
+        hour: startingHour
+      },
+    ]
+
+    let forecastDay = startingDay;
+    let forecastHour = startingHour;
+
+    for (let i = 0; i < 3; i+=1) {
+      forecastHour += 2;
+
+      // Reset hours and increase days as midnight is considered as next day
+      if (forecastHour >= 24) {
+        forecastHour -= 24;
+        forecastDay += 1;
+      }
+      timeArray.push({day: forecastDay, hour: forecastHour});
+    }
+    return timeArray;
+  }
+
+  const getCurrentLocalTime = (initialDay, localFulltime) => {
+    const localtime = localFulltime.slice(11, 16);
+
+    let currentDay = initialDay;
+    let currentHour = Number(localtime.slice(0, 2));
+    const currentMinutes = localtime.slice(3, 5);
+
+    // Midnight is considered as next day on API
+    if (currentHour === 24) currentDay += 1;
+
+    // Round time to nearest hour, if minutes >= 30 then hour += 1, < 30 keep same hour
+    if (currentMinutes >= 30) currentHour += 1;
+
+    // No need to think about minutes, we use clock hours
+    return {currentDay, currentHour};
+  }
 
   async function getWeather(cityChoice) {
     try {
@@ -75,11 +117,12 @@ const home = () => {
       domHandler.displayMain(data);
       domHandler.displayCurrentDate();
 
-      const day = 0;
-      const hourArray = [6, 12, 16, 21];
+      const initialDay = 0;
+      const {currentDay, currentHour} = getCurrentLocalTime(initialDay, data.location.localtime);
+      const timeObject = getForecastTime(currentDay, currentHour);
       const timeSections = document.querySelectorAll(".time-section");
 
-      domHandler.displayTimeSection(data, day, hourArray, timeSections);
+      domHandler.displayTimeSection(data, timeObject, timeSections);
     } catch (error) {
       // re-throwing the error, ensure error is propagated up the call stack
       console.error("An error occurred while fetching data:", error);

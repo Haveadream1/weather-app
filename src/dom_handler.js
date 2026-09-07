@@ -37,6 +37,7 @@ export const displayMain = (data) => {
   const mainCity = document.querySelector(".main-city");
   const mainTemp = document.querySelector(".main-temp");
 
+  // ! WRONG check with localTime
   const formatDate = data.current.last_updated;
   console.log(formatDate);
   // mainDate.textContent = formatDate.slice(0, 11); // format date
@@ -49,6 +50,7 @@ export const displayMain = (data) => {
   mainImg.alt = data.current.condition.text;
 };
 
+// ! WRONG should be localTime
 export const displayCurrentDate = () => {
   const date = new Date();
   const formatedDate = format(date, "EEEE, do LLLL");
@@ -57,9 +59,12 @@ export const displayCurrentDate = () => {
   mainDate.textContent = formatedDate;
 };
 
-export const displayTimeSection = (data, day, hours, timeSections) => {
+export const displayTimeSection = (data, timeObject, timeSections) => {
   for (let i = 0; i < 4; i+=1) {
-    const path = data.forecast.forecastday[day].hour[hours[i]];
+    const {day} = timeObject[i];
+    const {hour} = timeObject[i];
+
+    const path = data.forecast.forecastday[day].hour[hour];
     const date = path.time;
     const image = getWeatherImage(path.condition);
 
