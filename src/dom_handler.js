@@ -1,35 +1,15 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-else-return */
 import { format } from "date-fns";
-import sunImage from "./assets/Sun.svg";
-import rainImage from "./assets/Rain.svg";
-import cloudImage from "./assets/Cloud.svg";
-import overcastImage from "./assets/Overcast.svg";
 
-function getWeatherImage(condition) {
-  const conditionText = condition.text;
-  if (conditionText === "Cloudy" || conditionText === "Mist") {
-    return cloudImage;
-  } else if (
-    conditionText === "Partly Cloudy " ||
-    conditionText === "Overcast " ||
-    conditionText === "Partly Cloudy"
-  ) {
-    return overcastImage;
-  } else if (
-    conditionText === "Sunny" ||
-    conditionText === "Clear " ||
-    conditionText === "Clear"
-  ) {
-    return sunImage;
-  } else if (
-    conditionText === "Rain" ||
-    conditionText === "Patchy rain nearby"
-  ) {
-    return rainImage;
-  } else {
-    return condition.icon; // Handle other conditions with api icon
-  }
+import weatherConditions from "./utils/cond_icons_mapping";
+
+const getWeatherIcons = (isDay, code) => {
+  // Return default in case icon cannot be found
+  if (!weatherConditions[code].day || !weatherConditions[code].night) return weatherConditions[code].day;
+
+  // Display different icons depending on day/night time
+  return (isDay === 0) ? weatherConditions[code].day : weatherConditions[code].night;
 }
 
 const displayCurrentDate = (data) => {
@@ -59,8 +39,8 @@ export const displayMain = (data) => {
   tempEl.textContent = `${data.current.temp_c}°c`;
   dateEl.textContent = formattedDate;
 
-  const mainImagePath = getWeatherImage(data.current.condition);
-  imgEl.src = mainImagePath;
+  const imagePath = getWeatherIcons(data.current.is_day, data.current.condition.code);
+  imgEl.src = imagePath;
   imgEl.alt = data.current.condition.text;
 };
 
@@ -71,7 +51,7 @@ export const displayTimeSection = (data, timeObject, timeSections) => {
 
     const path = data.forecast.forecastday[day].hour[hour];
     const date = path.time;
-    const image = getWeatherImage(path.condition);
+    const image = getWeatherIcons(path.condition.is_day, path.condition.code);
 
     // Avoid eslint errors assignment to function parameter
     const timeSection = timeSections[i];
