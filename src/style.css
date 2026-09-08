@@ -148,6 +148,11 @@ footer > section {
   border: none !important;
 }
 
+/* TESTING */
+.hidden {
+  display: none;
+}
+
 /* Mobile Styles */
 @media only screen and (max-width: 512px) {
   /* body {

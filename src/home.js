@@ -103,6 +103,7 @@ const home = () => {
   }
 
   async function getWeather(cityChoice) {
+    domHandler.showLoader();
     try {
       const response = await fetch(
         `${url}key=${KEY}&q=${cityChoice}&days=8&aqi=no&alerts=no`,
@@ -131,7 +132,8 @@ const home = () => {
       checkInput();
 
       throw error;
-    }
+    } 
+    domHandler.hideLoader();
   }
 
   // initialization

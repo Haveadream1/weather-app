@@ -64,3 +64,11 @@ export const displayTimeSection = (data, timeObject, timeSections) => {
     timeSection.querySelector(".temp").textContent = `${path.temp_c}°c`;
   }
 }
+
+export const showLoader = () => {
+  document.querySelector("#loader").classList.remove("hidden");
+}
+
+export const hideLoader = () => {
+  document.querySelector("#loader").classList.add("hidden");
+}
