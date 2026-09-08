@@ -3,98 +3,131 @@
 
 // Import from the library icons meteocons the image path
 import clearDay from "@meteocons/svg/fill/clear-day.svg";
-import partlyCloudy from "@meteocons/svg/fill/partly-cloudy-day.svg";
+import partlyCloudyDay from "@meteocons/svg/fill/partly-cloudy-day.svg";
+import partlyCloudyNight from "@meteocons/svg/fill/partly-cloudy-night.svg";
+import overcastDay from "@meteocons/svg/fill/overcast-day.svg";
+import overcastNight from "@meteocons/svg/fill/overcast-night.svg";
+import extremeDayHaze from "@meteocons/svg/fill/extreme-day-haze.svg";
+import extremeNightHaze from "@meteocons/svg/fill/extreme-night-haze.svg";
+import partlyCloudyDayHaze from "@meteocons/svg/fill/partly-cloudy-day-haze.svg";
+import partlyCloudyNightHaze from "@meteocons/svg/fill/partly-cloudy-night-haze.svg";
+import dustDay from "@meteocons/svg/fill/dust-day.svg";
+import dustNight from "@meteocons/svg/fill/dust-night.svg";
+import extremeDaySmoke from "@meteocons/svg/fill/extreme-day-smoke.svg";
+import extremeNightSmoke from "@meteocons/svg/fill/extreme-night-smoke.svg";
+import mostlyClearDayRain from "@meteocons/svg/fill/mostly-clear-day-rain.svg";
+import mostlyClearNightRain from "@meteocons/svg/fill/mostly-clear-night-rain.svg";
+import overcastDayRain from "@meteocons/svg/fill/overcast-day-rain.svg";
+import overcastNightRain from "@meteocons/svg/fill/overcast-night-rain.svg";
+import extremeDayRain from "@meteocons/svg/fill/extreme-day-rain.svg";
+import extremeNightRain from "@meteocons/svg/fill/extreme-night-rain.svg";
+import thunderstormsDayRain from "@meteocons/svg/fill/thunderstorms-day-rain.svg";
+import thunderstormsNightRain from "@meteocons/svg/fill/thunderstorms-night-rain.svg";
+import thunderstormsExtremeDayRain from "@meteocons/svg/fill/thunderstorms-extreme-day-rain.svg";
+import thunderstormsExtremeNightRain from "@meteocons/svg/fill/thunderstorms-extreme-night-rain.svg";
+import mostlyClearDaySnow from "@meteocons/svg/fill/mostly-clear-day-snow.svg";
+import mostlyClearNightSnow from "@meteocons/svg/fill/mostly-clear-night-snow.svg";
+import overcastDaySnow from "@meteocons/svg/fill/overcast-day-snow.svg";
+import overcastNightSnow from "@meteocons/svg/fill/overcast-night-snow.svg";
+import extremeDaySnow from "@meteocons/svg/fill/extreme-day-snow.svg";
+import extremeNightSnow from "@meteocons/svg/fill/extreme-night-snow.svg";
+import thunderstormsDaySnow from "@meteocons/svg/fill/thunderstorms-day-snow.svg";
+import thunderstormsNightSnow from "@meteocons/svg/fill/thunderstorms-night-snow.svg";
+import thunderstormsExtremeDaySnow from "@meteocons/svg/fill/thunderstorms-extreme-day-snow.svg";
+import thunderstormsExtremeNightSnow from "@meteocons/svg/fill/thunderstorms-extreme-night-snow.svg";
+import mostlyClearDaySleet from "@meteocons/svg/fill/mostly-clear-day-sleet.svg";
+import mostlyClearNightSleet from "@meteocons/svg/fill/mostly-clear-night-sleet.svg";
+import extremeDaySleet from "@meteocons/svg/fill/extreme-day-sleet.svg";
+import extremeNightSleet from "@meteocons/svg/fill/extreme-night-sleet.svg";
+import mostlyClearDayFog from "@meteocons/svg/fill/mostly-clear-day-fog.svg";
+import mostlyClearNightFog from "@meteocons/svg/fill/mostly-clear-night-fog.svg";
+import mostlyClearDayDrizzle from "@meteocons/svg/fill/mostly-clear-day-drizzle.svg";
+import mostlyClearNightDrizzle from "@meteocons/svg/fill/mostly-clear-night-drizzle.svg";
+import overcastDayDrizzle from "@meteocons/svg/fill/overcast-day-drizzle.svg";
+import overcastNightDrizzle from "@meteocons/svg/fill/overcast-night-drizzle.svg";
+import extremeDayDrizzle from "@meteocons/svg/fill/extreme-day-drizzle.svg";
+import extremeNightDrizzle from "@meteocons/svg/fill/extreme-night-drizzle.svg";
+import thunderstormsDay from "@meteocons/svg/fill/thunderstorms-day.svg";
+import thunderstormsNight from "@meteocons/svg/fill/thunderstorms-night.svg";
+import thunderstormsExtremeSnow from "@meteocons/svg/fill/thunderstorms-extreme-snow.svg";
+import cyclone from "@meteocons/svg/fill/hurricane.svg";
 import cloudy from "@meteocons/svg/fill/cloudy.svg";
-import overcast from "@meteocons/svg/fill/overcast.svg";
 import haze from "@meteocons/svg/fill/haze.svg";
 import dust from "@meteocons/svg/fill/dust.svg";
 import windDust from "@meteocons/svg/fill/wind-dust.svg";
-import thunderstorms from "@meteocons/svg/fill/thunderstorms.svg";
-import thunderstormsExtreme from "@meteocons/svg/fill/thunderstorms-extreme.svg";
 import partlyCloudyDayFog from "@meteocons/svg/fill/partly-cloudy-day-fog.svg";
+import partlyCloudyNightFog from "@meteocons/svg/fill/partly-cloudy-night-fog.svg";
 import smoke from "@meteocons/svg/fill/smoke.svg";
-import overcastSmoke from "@meteocons/svg/fill/overcast-smoke.svg";
 import smokeParticles from "@meteocons/svg/fill/smoke-particles.svg";
-import extremeSmoke from "@meteocons/svg/fill/extreme-smoke.svg";
 import rain from "@meteocons/svg/fill/rain.svg";
 import snow from "@meteocons/svg/fill/snow.svg";
 import sleet from "@meteocons/svg/fill/sleet.svg";
-import drizzle from "@meteocons/svg/fill/drizzle.svg";
 import windSnow from "@meteocons/svg/fill/wind-snow.svg";
 import extremeSnow from "@meteocons/svg/fill/extreme-snow.svg";
 import fog from "@meteocons/svg/fill/fog.svg";
-import overcastSnow from "@meteocons/svg/fill/overcast-snow.svg";
-import extremeDrizzle from "@meteocons/svg/fill/extreme-drizzle.svg";
 import extremeRain from "@meteocons/svg/fill/extreme-rain.svg";
-import extremeSleet from "@meteocons/svg/fill/extreme-sleet.svg";
 import snowflake from "@meteocons/svg/fill/snowflake.svg";
-import overcastRain from "@meteocons/svg/fill/overcast-rain.svg";
-import thunderstormsExtremeRain from "@meteocons/svg/fill/thunderstorms-extreme-rain.svg";
-import overcastSleet from "@meteocons/svg/fill/overcast-sleet.svg";
-import thunderstormsRain from "@meteocons/svg/fill/thunderstorms-rain.svg";
-import thunderstormsSnow from "@meteocons/svg/fill/thunderstorms-snow.svg";
-import thunderstormsExtremeSnow from "@meteocons/svg/fill/thunderstorms-extreme-snow.svg";
 
 const weatherConditions = {
-    1000: { day: "Sunny", night: "Clear", icon: clearDay },
-    1003: { day: "Partly cloudy", night: "Partly cloudy", icon: partlyCloudy },
-    1006: { day: "Cloudy", night: "Cloudy", icon: cloudy },
-    1009: { day: "Overcast", night: "Overcast", icon: overcast },
-    1012: { day: "Haze", night: "Haze", icon: haze },
-    1015: { day: "Dust haze", night: "Dust haze", icon: haze },
-    1018: { day: "Blowing dust", night: "Blowing dust", icon: dust },
-    1021: { day: "Dust storm", night: "Dust storm", icon: windDust },
-    1024: { day: "Sandstorm", night: "Sandstorm", icon: thunderstorms },
-    1027: { day: "Severe sandstorm", night: "Severe sandstorm", icon: thunderstormsExtreme },
-    1030: { day: "Mist", night: "Mist", icon: partlyCloudyDayFog },
-    1033: { day: "Smoke", night: "Smoke", icon: smoke },
-    1036: { day: "Smoky haze", night: "Smoky haze", icon: overcastSmoke },
-    1039: { day: "Smog", night: "Smog", icon: smokeParticles },
-    1042: { day: "Severe smog", night: "Severe smog", icon: extremeSmoke },
-    1045: { day: "Saharan dust", night: "Saharan dust", icon: windDust },
-    1048: { day: "Dust", night: "Dust", icon: dust },
-    1063: { day: "Patchy rain possible", night: "Patchy rain possible", icon: rain },
-    1066: { day: "Patchy snow possible", night: "Patchy snow possible", icon: snow },
-    1069: { day: "Patchy sleet possible", night: "Patchy sleet possible", icon: sleet },
-    1072: { day: "Patchy freezing drizzle possible", night: "Patchy freezing drizzle possible", icon: drizzle },
-    1087: { day: "Thundery outbreaks possible", night: "Thundery outbreaks possible", icon: thunderstorms },
-    1114: { day: "Blowing snow", night: "Blowing snow", icon: windSnow },
-    1117: { day: "Blizzard", night: "Blizzard", icon: extremeSnow },
-    1135: { day: "Fog", night: "Fog", icon: fog },
-    1147: { day: "Freezing fog", night: "Freezing fog", icon: overcastSnow },
-    1150: { day: "Patchy light drizzle", night: "Patchy light drizzle", icon: drizzle },
-    1153: { day: "Light drizzle", night: "Light drizzle", icon: drizzle },
-    1168: { day: "Freezing drizzle", night: "Freezing drizzle", icon: drizzle },
-    1171: { day: "Heavy freezing drizzle", night: "Heavy freezing drizzle", icon: extremeDrizzle },
-    1180: { day: "Patchy light rain", night: "Patchy light rain", icon: rain },
-    1183: { day: "Light rain", night: "Light rain", icon: rain },
-    1186: { day: "Moderate rain at times", night: "Moderate rain at times", icon: rain },
-    1189: { day: "Moderate rain", night: "Moderate rain", icon: rain },
-    1192: { day: "Heavy rain at times", night: "Heavy rain at times", icon: extremeRain },
-    1195: { day: "Heavy rain", night: "Heavy rain", icon: extremeRain },
-    1198: { day: "Light freezing rain", night: "Light freezing rain", icon: rain },
-    1201: { day: "Moderate or heavy freezing rain", night: "Moderate or heavy freezing rain", icon: extremeRain },
-    1204: { day: "Light sleet", night: "Light sleet", icon: sleet  },
-    1207: { day: "Moderate or heavy sleet", night: "Moderate or heavy sleet", icon: extremeSleet },
-    1210: { day: "Patchy light snow", night: "Patchy light snow", icon: snow },
-    1213: { day: "Light snow", night: "Light snow", icon: snow },
-    1216: { day: "Patchy moderate snow", night: "Patchy moderate snow", icon: overcastSnow },
-    1219: { day: "Moderate snow", night: "Moderate snow", icon: overcastSnow },
-    1222: { day: "Patchy heavy snow", night: "Patchy heavy snow", icon: extremeSnow },
-    1225: { day: "Heavy snow", night: "Heavy snow", icon: extremeSnow },
-    1237: { day: "Ice pellets", night: "Ice pellets", icon: snowflake },
-    1240: { day: "Light rain shower", night: "Light rain shower", icon: rain },
-    1243: { day: "Moderate or heavy rain shower", night: "Moderate or heavy rain shower", icon: overcastRain },
-    1246: { day: "Torrential rain shower", night: "Torrential rain shower", icon: thunderstormsExtremeRain },
-    1249: { day: "Light sleet showers", night: "Light sleet showers", icon: sleet },
-    1252: { day: "Moderate or heavy sleet showers", night: "Moderate or heavy sleet showers", icon: overcastSleet },
-    1255: { day: "Light snow showers", night: "Light snow showers", icon: snow },
-    1258: { day: "Moderate or heavy snow showers", night: "Moderate or heavy snow showers", icon: overcastSnow },
-    1261: { day: "Light showers of ice pellets", night: "Light showers of ice pellets", icon: snowflake },
-    1264: { day: "Moderate or heavy showers of ice pellets", night: "Moderate or heavy showers of ice pellets", icon: extremeSnow },
-    1273: { day: "Patchy light rain with thunder", night: "Patchy light rain with thunder", icon: thunderstormsRain},
-    1276: { day: "Moderate or heavy rain with thunder", night: "Moderate or heavy rain with thunder", icon: thunderstormsExtremeRain },
-    1279: { day: "Patchy light snow with thunder", night: "Patchy light snow with thunder", icon: thunderstormsSnow },
-    1282: { day: "Moderate or heavy snow with thunder", night: "Moderate or heavy snow with thunder", icon: thunderstormsExtremeSnow }
+    1000: { day: clearDay, night: clearDay },
+    1003: { day: partlyCloudyDay, night: partlyCloudyNight },
+    1006: { day: cloudy, night: cloudy },
+    1009: { day: overcastDay, night: overcastNight },
+    1012: { day: haze, night: haze },
+    1015: { day: partlyCloudyDayHaze , night: partlyCloudyNightHaze },
+    1018: { day: dust, night: dust },
+    1021: { day: windDust, night: windDust },
+    1024: { day: windDust, night: windDust },
+    1027: { day: cyclone, night: cyclone },
+    1030: { day: partlyCloudyDayFog, night: partlyCloudyNightFog },
+    1033: { day: smoke, night: smoke },
+    1036: { day: extremeDayHaze, night: extremeNightHaze },
+    1039: { day: smokeParticles, night: smokeParticles },
+    1042: { day: extremeDaySmoke, night: extremeNightSmoke },
+    1045: { day: dust, night: dust },
+    1048: { day: dustDay, night: dustNight },
+    1063: { day: rain, night: rain },
+    1066: { day: mostlyClearDaySnow, night: mostlyClearNightSnow },
+    1069: { day: sleet, night: sleet },
+    1072: { day: mostlyClearDaySleet, night: mostlyClearNightSleet },
+    1087: { day: thunderstormsDay, night: thunderstormsNight },
+    1114: { day: windSnow, night: windSnow },
+    1117: { day: thunderstormsExtremeSnow, night: thunderstormsExtremeSnow},
+    1135: { day: mostlyClearDayFog, night: mostlyClearNightFog },
+    1147: { day: fog , night: fog },
+    1150: { day: mostlyClearDayDrizzle, night: mostlyClearNightDrizzle },
+    1153: { day: mostlyClearDayDrizzle, night: mostlyClearNightDrizzle },
+    1168: { day: overcastDayDrizzle, night: overcastNightDrizzle },
+    1171: { day: extremeDayDrizzle, night: extremeNightDrizzle },
+    1180: { day: mostlyClearDayRain, night: mostlyClearNightRain },
+    1183: { day: mostlyClearDayRain, night: mostlyClearNightRain },
+    1186: { day: overcastDayRain, night: overcastNightRain },
+    1189: { day: overcastDayRain, night: overcastNightRain },
+    1192: { day: extremeDayRain, night: extremeNightRain },
+    1195: { day: extremeRain, night: extremeRain },
+    1198: { day: mostlyClearDayRain, night: mostlyClearNightRain },
+    1201: { day: extremeDayRain, night: extremeNightRain },
+    1204: { day: mostlyClearDaySleet, night: mostlyClearNightSleet },
+    1207: { day: extremeDaySleet, night: extremeNightSleet },
+    1210: { day: mostlyClearDaySnow, night: mostlyClearNightSnow },
+    1213: { day: mostlyClearDaySnow, night: mostlyClearNightSnow},
+    1216: { day: overcastDaySnow, night: overcastNightSnow },
+    1219: { day: overcastDaySnow, night: overcastNightSnow },
+    1222: { day: extremeDaySnow, night: extremeNightSnow },
+    1225: { day: extremeDaySnow, night: extremeNightSnow },
+    1237: { day: snowflake, night: snowflake },
+    1240: { day: mostlyClearDayRain, night: mostlyClearNightRain },
+    1243: { day: extremeDayRain, night: extremeNightRain },
+    1246: { day: extremeRain, night: extremeRain },
+    1249: { day: mostlyClearDaySleet, night: mostlyClearNightSleet },
+    1252: { day: extremeDaySnow, night: extremeNightSnow },
+    1255: { day: mostlyClearDaySnow, night: mostlyClearNightSnow },
+    1258: { day: extremeDaySnow, night: extremeNightSnow },
+    1261: { day: snow, night: snow },
+    1264: { day: extremeSnow, night: extremeSnow },
+    1273: { day: thunderstormsDayRain, night: thunderstormsNightRain },
+    1276: { day: thunderstormsExtremeDayRain, night: thunderstormsExtremeNightRain },
+    1279: { day: thunderstormsDaySnow, night: thunderstormsNightSnow },
+    1282: { day: thunderstormsExtremeDaySnow, night: thunderstormsExtremeNightSnow }
 };
 export default weatherConditions;
