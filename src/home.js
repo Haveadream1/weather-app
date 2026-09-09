@@ -112,13 +112,14 @@ const home = () => {
 
     // Small array limited to 3 elements, so complexity shouldn't be an issue with unshift
     recentCitiesArr.unshift(queryChoice);
-    console.log(recentCitiesArr);
 
     // Use localStorage to save the historic of cities searched
-    localStorage.setItem("recentSearches", recentCitiesArr);
+    localStorage.setItem("recentSearches", JSON.stringify(recentCitiesArr));
 
     const readTest = localStorage.getItem("recentSearches");
-    console.log(readTest);
+
+    // Use JSON methods to pass and retrieve the JS object
+    console.log(JSON.parse(readTest));
   }
 
   // Param can be a city or coordinates
