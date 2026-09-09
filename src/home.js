@@ -243,7 +243,21 @@ const home = () => {
     // On refresh, instead of default, fetch the last search
     // Class
 
-  // Limited to 3 cities
+  const switchUnit = () => {
+    const unitBtn = document.querySelector("#unit-btn");
+    let unitInUse = unitBtn.value;
+    
+    unitInUse = (unitInUse === "celsius") ? "fahrenheit" : "celsius";
+    unitBtn.value = unitInUse
+    
+    localStorage.setItem("unitPreference", unitInUse);
+
+    const readValue = localStorage.getItem("unitPreference");
+    console.log(readValue);
+  }
+
+  // UNIT preferences
+  document.querySelector("#unit-btn").addEventListener("click", switchUnit);
 
   
 };
