@@ -16,15 +16,19 @@ The purpose of this project is to practice the API call and incorporate linter a
 [The Odin Project](https://www.theodinproject.com/)  
 [Weather API](https://www.weatherapi.com/)  
 [Images](https://www.figma.com/design/BVKtenvFGEaYqOo2Y6q28I/Weather-Icons---Community-(Community)?node-id=101-2&t=L06xq648i0cax0lN-1)
+Meteoicons
+Lucidicons
+Geolocation API
 
 ## To-dos
 * Order the repository
 * Replace the compromised key and use env variables
-* Delete the committed node_modules and mention in .gitignore
-* Move the images folder from the dist folder to src
-* Fixes conflicting eslint configuration
-* Separate the API call from the logic
-* Separate the form validation and formatting from the logic
+* Separate the API call and handle key from the logic src/api
+* Separate the form validation and formatting from the logic src/utils
+* Check if we remove .vscode, said t be used for to avoid spell-check
+* Disable the submit button while submit
+* Check if loader can be more pretty on display (go on and off too fast)
+* Check hidden icon that pop up on refresh (instead of popup, it can be like show at the top/ same space as the refresh)
 
 ## Project hierarchy
 1. dist/: contain the code bundled with webpack (collection of compiled files to make website faster)
@@ -32,3 +36,15 @@ The purpose of this project is to practice the API call and incorporate linter a
 1. dom_handler: manage the manipulation of the Document Object Model
 2. home: contains the application logic
 3. index: entrance point
+
+1. API secrety -> Fix issues -> Refactor Code -> Implement new features -> Re-design for mobile -> Prepare for PWA -> Refactor README
+
+Better for one fecth, store info and retrieve from local ? Like for switch C/F
+
+http://localhost:8080/
+
+MAKE it works first, clean, improve after
+
+## Known issues
+* Time to time small el 'Choose a city' pop up
+* Check Tab size differences between files
