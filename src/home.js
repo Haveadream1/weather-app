@@ -102,12 +102,33 @@ const home = () => {
     return {currentDay, currentHour};
   }
 
-  // Rename params
-  async function getWeather(cityChoice) {
+  // TODO: relocate
+  // Array limited to 3 elements
+  const recentCitiesArr = [];
+
+  const handleRecentCities = (queryChoice) => {
+    // Remove the oldest city saved
+    if (recentCitiesArr.length >= 3) recentCitiesArr.pop();
+
+    // Small array limited to 3 elements, so complexity shouldn't be an issue with unshift
+    recentCitiesArr.unshift(queryChoice);
+    console.log(recentCitiesArr);
+
+    // Use localStorage to save the historic of cities searched
+    localStorage.setItem("recentSearches", recentCitiesArr);
+
+    const readTest = localStorage.getItem("recentSearches");
+    console.log(readTest);
+  }
+
+  // Param can be a city or coordinates
+  async function getWeather(queryChoice) {
     domHandler.showLoader();
+
+    handleRecentCities(queryChoice);
     try {
       const response = await fetch(
-        `${url}key=${KEY}&q=${cityChoice}&days=8&aqi=no&alerts=no`,
+        `${url}key=${KEY}&q=${queryChoice}&days=8&aqi=no&alerts=no`,
         { mode: "cors" },
       );
       if (!response.ok) {
@@ -186,8 +207,9 @@ const home = () => {
 
   const statusEl = document.querySelector("#status");
 
+  // TODO: Fix indentation
   const success = (position) => {
-      const {latitude} = position.coords;
+    const {latitude} = position.coords;
       const {longitude} = position.coords;
 
       statusEl.textContent = "";
@@ -197,6 +219,7 @@ const home = () => {
   }
 
   const error = () => {
+    // Can also be led by localisation not allowed in browser parameters
       statusEl.textContent = "Error while locating user's position";
       // Add also error class
   }
@@ -212,6 +235,16 @@ const home = () => {
       }
   }
   document.querySelector("#location-btn").addEventListener("click", findGeolocation); 
+
+
+  // Local storage
+    // Store the last 3 cities searches
+    // On refresh, instead of default, fetch the last search
+    // Class
+
+  // Limited to 3 cities
+
+  
 };
 export default home;
 
