@@ -102,6 +102,7 @@ const home = () => {
     return {currentDay, currentHour};
   }
 
+  // Rename params
   async function getWeather(cityChoice) {
     domHandler.showLoader();
     try {
@@ -177,6 +178,40 @@ const home = () => {
       default: // Default case to avoid error eslint
     }
   });
+
+  // Use the Geolocation API
+  // Listen to user click on the fetchLocation button 
+    // -> use Geolocation to find lat/long 
+    // -> trigger a new fetch with coords instead of city
+
+  const statusEl = document.querySelector("#status");
+
+  const success = (position) => {
+      const {latitude} = position.coords;
+      const {longitude} = position.coords;
+
+      statusEl.textContent = "";
+      console.log(latitude, longitude);
+
+      getWeather(`${latitude},${longitude}`);
+  }
+
+  const error = () => {
+      statusEl.textContent = "Error while locating user's position";
+      // Add also error class
+  }
+
+  const findGeolocation = () => {
+      if (!navigator.geolocation) {
+          statusEl.textContent = "Geolocation not supported for this browser";
+      } else {
+          statusEl.textContent = "Locating position...";
+
+          // Need to have success / error callback as parameters
+          navigator.geolocation.getCurrentPosition(success, error);
+      }
+  }
+  document.querySelector("#location-btn").addEventListener("click", findGeolocation); 
 };
 export default home;
 
