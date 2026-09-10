@@ -134,14 +134,15 @@ const home = () => {
   }
 
   const handleFetchSuccess = (data) => {
-    domHandler.displayMain(data);
+    const unitPreference = localStorage.getItem("unitPreference");
+    domHandler.displayMain(data, unitPreference);
     
     const initialDay = 0;
     const {currentDay, currentHour} = getCurrentLocalTime(initialDay, data.location.localtime);
     const timeObject = getForecastTime(currentDay, currentHour);
     const timeSections = document.querySelectorAll(".time-section");
 
-    domHandler.displayTimeSection(data, timeObject, timeSections);
+    domHandler.displayTimeSection(data, timeObject, timeSections, unitPreference);
   }
 
   // Param can be a city or coordinates
@@ -183,6 +184,9 @@ const home = () => {
     const savedCity = JSON.parse(localStorage.getItem("weatherCache"));
     const {data} = savedCity;
     console.log("LocalStorage fetch trigger !")
+
+    const unitBtn = document.querySelector("#unit-btn");
+    unitBtn.value = (!unitBtn.value) ? localStorage.getItem("unitPreference") : "celsius";
 
     handleFetchSuccess(data);
   } else {
@@ -282,6 +286,13 @@ const home = () => {
 
     const readValue = localStorage.getItem("unitPreference");
     console.log(readValue);
+
+    // Improve performance by retrieving the localStorage instead of making an API call (Faster)
+    const savedCity = JSON.parse(localStorage.getItem("weatherCache"));
+    const {data} = savedCity;
+    console.log("LocalStorage fetch trigger !")
+
+    handleFetchSuccess(data);
   }
   document.querySelector("#unit-btn").addEventListener("click", switchUnit);
 

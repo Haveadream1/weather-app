@@ -27,7 +27,7 @@ const displayCurrentDate = (data) => {
   return format(localTime, "EEEE, do LLLL");
 };
 
-export const displayMain = (data) => {
+export const displayMain = (data, unitPreference) => {
   const imgEl = document.querySelector(".main-img");
   const cityEL = document.querySelector(".main-city");
   const tempEl = document.querySelector(".main-temp");
@@ -36,7 +36,7 @@ export const displayMain = (data) => {
   const formattedDate = displayCurrentDate(data);
 
   cityEL.textContent = data.location.name;
-  tempEl.textContent = `${data.current.temp_c}°c`;
+  tempEl.textContent = (unitPreference === "celsius") ? `${data.current.temp_c}°C` : `${data.current.temp_f}°F`;
   dateEl.textContent = formattedDate;
 
   const imagePath = getWeatherIcons(data.current.is_day, data.current.condition.code);
@@ -44,7 +44,7 @@ export const displayMain = (data) => {
   imgEl.alt = data.current.condition.text;
 };
 
-export const displayTimeSection = (data, timeObject, timeSections) => {
+export const displayTimeSection = (data, timeObject, timeSections, unitPreference) => {
   for (let i = 0; i < 4; i+=1) {
     const {day} = timeObject[i];
     const {hour} = timeObject[i];
@@ -61,7 +61,7 @@ export const displayTimeSection = (data, timeObject, timeSections) => {
     
     // Clean format while slicing the full date instead of formatting hour constante
     timeSection.querySelector(".time").textContent = date.slice(11, 16);
-    timeSection.querySelector(".temp").textContent = `${path.temp_c}°c`;
+    timeSection.querySelector(".temp").textContent = (unitPreference === "celsius") ? `${path.temp_c}°C` : `${path.temp_f}°F`;
   }
 }
 
