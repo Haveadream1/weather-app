@@ -1,5 +1,6 @@
 // eslint-disable prefer-destructuring
 import * as domHandler from "./dom_handler";
+import StoredWeather from "./weather_class";
 
 const KEY = process.env.API_KEY;
 const url = "https://api.weatherapi.com/v1/forecast.json?";
@@ -122,8 +123,30 @@ const home = () => {
     console.log(JSON.parse(readTest));
   }
 
+  const storeWeatherData = (queryChoice, data) => {
+    const weatherClass = new StoredWeather(queryChoice, data);
+    
+    localStorage.setItem("weatherCache", JSON.stringify(weatherClass));
+
+    // For debugging purpose
+    const readValue = localStorage.getItem("weatherCache");
+    console.log("Stored weather data: ", JSON.parse(readValue));
+  }
+
+  const handleFetchSuccess = (data) => {
+    domHandler.displayMain(data);
+    
+    const initialDay = 0;
+    const {currentDay, currentHour} = getCurrentLocalTime(initialDay, data.location.localtime);
+    const timeObject = getForecastTime(currentDay, currentHour);
+    const timeSections = document.querySelectorAll(".time-section");
+
+    domHandler.displayTimeSection(data, timeObject, timeSections);
+  }
+
   // Param can be a city or coordinates
   async function getWeather(queryChoice) {
+    console.log("API Fetch trigger !")
     domHandler.showLoader();
 
     handleRecentCities(queryChoice);
@@ -138,14 +161,10 @@ const home = () => {
       const data = await response.json();
       console.log(data);
 
-      domHandler.displayMain(data);
-      
-      const initialDay = 0;
-      const {currentDay, currentHour} = getCurrentLocalTime(initialDay, data.location.localtime);
-      const timeObject = getForecastTime(currentDay, currentHour);
-      const timeSections = document.querySelectorAll(".time-section");
+      // Store data only on fetch, so outside handleFecthSuccess
+      storeWeatherData(queryChoice, data);
 
-      domHandler.displayTimeSection(data, timeObject, timeSections);
+      handleFetchSuccess(data);
     } catch (error) {
       // re-throwing the error, ensure error is propagated up the call stack
       console.error("An error occurred while fetching data:", error);
@@ -159,8 +178,16 @@ const home = () => {
     domHandler.hideLoader();
   }
 
-  // initialization
-  getWeather("Seoul");
+  // Initialization, fetch data from localStorage if exist
+  if(localStorage.getItem("weatherCache")) {
+    const savedCity = JSON.parse(localStorage.getItem("weatherCache"));
+    const {data} = savedCity;
+    console.log("LocalStorage fetch trigger !")
+
+    handleFetchSuccess(data);
+  } else {
+    getWeather("Seoul");
+  }
 
   function formHandler() {
     const isCityChoiceValid = checkInput();
@@ -243,6 +270,7 @@ const home = () => {
     // On refresh, instead of default, fetch the last search
     // Class
 
+  // UNIT preferences
   const switchUnit = () => {
     const unitBtn = document.querySelector("#unit-btn");
     let unitInUse = unitBtn.value;
@@ -255,10 +283,12 @@ const home = () => {
     const readValue = localStorage.getItem("unitPreference");
     console.log(readValue);
   }
-
-  // UNIT preferences
   document.querySelector("#unit-btn").addEventListener("click", switchUnit);
 
+  // Store in the localStorage the last city searched for now, go to 3 later
+  // So on refresh if the data is still time relevant display it, otherwise trigger a new fetch
+  
+  
   
 };
 export default home;
