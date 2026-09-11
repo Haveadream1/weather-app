@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- TODO: meta description, favicon, title, content for PWA -->
+    <title>WeatherPWA</title>
+</head>
+<body>
+    <header>
+        <!-- ? No submit button, only keyboard enter -->
+        <!-- ? No action because we handle with event.preventDefault(); ?? -->
+        <form action="">
+            <label for="city-input" class="sr-only">Search a city</label>
+            <input id="city-input" type="text" placeholder="Search location...">
+            
+            <button type="submit" class="sr-only">Search</button>
+        </form>
+
+        <button id="geolocation-btn" type="button">
+            <img src="" alt="Geolocation search">
+        </button>
+
+        <button id="switch-unit-btn" type="button">
+            <span class="unit-in-use">C</span>
+            <span>F</span>
+        </button>
+    </header>
+
+    <main>
+        <section aria-labelledby="today-heading">
+            <h1 id="today-heading" class="sr-only">Today's weather</h1>
+            
+            <img id="main-weather-img" src="" alt="Mostly sunny">
+
+            <div class="glass-card">
+                <div>
+                    <span id="city-choice">Seoul</span>
+                    <p id="full-date">Monday, Sep 12 * 10:30 AM</p>
+                </div>
+
+                <div>
+                    <span id="today-temp">20</span>
+                    <span id="prefered-unit">Celsius</span>
+                    <p id="feels-like-temp">Feels like 19</p>
+                </div>
+            </div>
+        </section>
+
+        <section aria-labelledby="metrics-heading">
+            <h2 id="metrics-heading" class="sr-only">Metrics</h2>
+
+            <dl>
+                <div id="humidity-metric" class="metric-container">
+                    <img class="metric-icon" src="" alt="" aria-hidden="true">
+                    <dt>Humidity</dt>
+                    <dd>54%</dd>
+                </div>
+
+                <div id="wind-metric" class="metric-container">
+                    <img class="metric-icon" src="" alt="" aria-hidden="true">
+                    <dt>Wind</dt>
+                    <dd>23km/h</dd>
+                </div>
+
+                <div id="uv-metric" class="metric-container">
+                    <img class="metric-icon" src="" alt="" aria-hidden="true">
+                    <dt>UV index</dt>
+                    <dd>1(Low)</dd>
+                </div>
+            </dl>
+        </section>
+
+        <section aria-labelledby="hourly-forecast-heading">
+            <h3 id="hourly-forecast-heading" class="sr-only">Hourly forecast</h3>
+            
+            <!-- TODO: Don't forget to add class to target bck colour dynamically with temp -->
+            <dl>
+                <div class="hourly-forecast-container">
+                    <dt>10:30 AM</dt>
+                    <img src="" alt="Sunny">
+                    <dd>20</dd>
+                </div>
+
+                <div class="hourly-forecast-container">
+                    <dt>12:00 AM</dt>
+                    <img src="" alt="Sunny">
+                    <dd>22</dd>
+                </div>
+
+                <div class="hourly-forecast-container">
+                    <dt>1:30 PM</dt>
+                    <img src="" alt="Cloudy">
+                    <dd>18</dd>
+                </div>
+
+                <div class="hourly-forecast-container">
+                    <dt>3:00 PM</dt>
+                    <img src="" alt="Sunny">
+                    <dd>21</dd>
+                </div>
+            </dl>
+            <span>Next 6 Hours</span>
+        </section>
+
+        <section aria-labelledby="daily-forecast-heading">
+            <h3 id="daily-forecast-heading">3-Day Forecast</h3>
+            
+            <div class="daily-forecast-container">
+                <span>Tuesday</span>
+                <img src="" alt="Rainy">
+                <span class="max-min-temperature">15/23</span>
+            </div>
+
+            <div class="daily-forecast-container">
+                <span>Wednesday</span>
+                <img src="" alt="Rainy">
+                <span class="max-min-temperature">14/19</span>
+            </div>
+
+            <div class="daily-forecast-container">
+                <span>Thursday</span>
+                <img src="" alt="Sunny">
+                <span class="max-min-temperature">17/25</span>
+            </div>
+        </section>
+
+        <section aria-labelledby="sun-time-heading">
+            <h3 id="sun-time-heading" class="sr-only">Sunrise/down time</h3>
+            
+            <div id="sunrise-container">
+                <span>Sunrise</span>
+                <img src="" alt="" aria-hidden="true">
+                <span id="sunrise-time">6:32</span>
+            </div>
+
+            <div id="sunset-container">
+                <span>Sunset</span>
+                <img src="" alt="" aria-hidden="true">
+                <span id="sunset-time">19:22</span>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
