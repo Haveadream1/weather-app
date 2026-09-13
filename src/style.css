@@ -131,7 +131,7 @@ header {
     position: absolute;
     bottom: var(--font-sm);
 
-    padding: var(--space-md);
+    padding: var(--font-xs) var(--font-md);
     border-radius: var(--space-md);
     width: 90%;
 
@@ -236,7 +236,7 @@ header {
 }
 
 .hourly-forecast-container {
-    background-color: beige;
+    background-color: var(--light-grey);
     display: flex;
     flex-direction: column;
     border-radius: var(--space-md);
@@ -260,23 +260,57 @@ header {
 
 /* :daily-section */
 #daily-section {
-    background-color: cornflowerblue;
-    margin: var(--space-md) 0;
+    background-color: var(--light-blue);
+    margin: var(--space-md) var(--space-sm);
+    border-radius: var(--font-md);
+    padding: var(--font-sm);
+    max-width: 100%;
+}
+
+#daily-forecast-heading {
+    color: var(--light-grey);
+    font-weight: 600;
+    font-size: var(--font-sm);
+    margin-bottom: 0.25rem;
+}
+
+#daily-section > :nth-child(2) {
+    border-top: 1px solid var(--light-grey);
 }
 
 .daily-forecast-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
     padding: var(--space-sm);
+    font-size: var(--font-xs);
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
 }
 
-.daily-forecast-icon {
-    max-width: 20px;
+.layout {
+    display: grid;
+    gap: var(--space-sm);
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr 5fr 1fr;
+    align-items: center;
+    text-align: center;
+}
+
+.thermal-range {
+    background-color: #FFFFFF;
+    /* TODO: change later */
+    height: 10px;
+}
+
+.min-temp,
+.max-temp {
+    color: var(--light-grey);
 }
 
  /* :sun-time-section */
 #sun-time-section {
-    background-color: aliceblue;
+    background-color: var(--dark-blue);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding: var(--font-md) var(--space-sm);
