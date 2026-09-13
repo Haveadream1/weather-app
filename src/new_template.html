@@ -87,6 +87,7 @@
             <h3 id="hourly-forecast-heading" class="sr-only">Hourly forecast</h3>
             
             <!-- ? Check use the already declared h3 or not -->
+            <!-- TODO: refactor id name for span -->
             <p id="time-info-text">
                 <span id="info-heading">Today</span>
                 <span id="info-additional">Next 6 Hours</span>
@@ -147,15 +148,16 @@
         <section id="sun-time-section" aria-labelledby="sun-time-heading">
             <h3 id="sun-time-heading" class="sr-only">Sunrise/down time</h3>
             
+            <!-- TODO: refactor id name for span -->
             <div class="sun-time-container">
-                <span>Sunrise</span>
-                <span id="sunrise-time">6:32</span>
+                <span class="sun-text">Sunrise</span>
+                <span id="sunrise-time" class="sun-time">6:32</span>
                 <img class="sun-time-icon" src="https://placehold.co/20x20" alt="" aria-hidden="true">
             </div>
 
             <div class="sun-time-container">
-                <span>Sunset</span>
-                <span id="sunset-time">19:22</span>
+                <span class="sun-text">Sunset</span>
+                <span id="sunset-time" class="sun-time">19:22</span>
                 <img class="sun-time-icon" src="https://placehold.co/20x20" alt="" aria-hidden="true">
             </div>
         </section>

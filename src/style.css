@@ -258,6 +258,7 @@ header {
     padding: 0.125rem 0;
  }
 
+/* :daily-section */
 #daily-section {
     background-color: cornflowerblue;
     margin: var(--space-md) 0;
@@ -273,19 +274,36 @@ header {
     max-width: 20px;
 }
 
+ /* :sun-time-section */
 #sun-time-section {
     background-color: aliceblue;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    padding: var(--font-md) var(--space-sm);
+    margin: 0 var(--space-sm) var(--space-sm);
+    border-radius: var(--space-md);
 }
 
 .sun-time-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
+
+.sun-text {
+    text-align: center;
+    font-weight: 500;
+    color: var(--light-grey);
+    font-size: var(--font-sm);
+}
+
+.sun-time {
+    text-align: center;
+    padding: 0.125rem 0;
+    font-size: var(--font-xs);
+}
+
 .sun-time-icon {
-    max-height: 120px;
+    max-height: 55px;
 }
 
 
