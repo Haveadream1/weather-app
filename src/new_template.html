@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     
     <!-- TODO: meta description, favicon, title, content for PWA -->
     <title>WeatherPWA</title>
@@ -13,7 +17,7 @@
     <header>
         <!-- ? No submit button, only keyboard enter -->
         <!-- ? No action because we handle with event.preventDefault(); ?? -->
-        <form action="">
+        <form id="form" action="">
             <label for="city-input" class="sr-only">Search a city</label>
             <input id="city-input" type="text" placeholder="Search location...">
             
@@ -21,13 +25,13 @@
         </form>
 
         <button id="geolocation-btn" type="button">
-            <img src="./assets/Search.svg" alt="Geolocation search">
+            <img src="https://placehold.co/20x20" alt="Geolocation search">
         </button>
 
-        <button id="switch-unit-btn" type="button">
-            <span class="unit-in-use">C</span>
-            <span>F</span>
-        </button>
+        <div id="unit-switch-container">
+            <button id="active-unit" class="unit-btn" type="button" value="Celsius">°C</button>
+            <button class="unit-btn" type="button" value="Fahrenheit">°F</button>
+        </div>
     </header>
 
     <main>
@@ -38,18 +42,19 @@
         <section id="today-section" aria-labelledby="today-heading">
             <h1 id="today-heading" class="sr-only">Today's weather</h1>
             
-            <img id="main-weather-img" src="./assets/Sun.svg" alt="Mostly sunny">
+            <img id="main-weather-img" src="https://placehold.co/260x240" alt="Mostly sunny">
 
+            <!-- ? Small dot like green or yellow to mean weather on time ? -->
             <div class="glass-card">
                 <div>
                     <span id="city-choice">Seoul</span>
-                    <p id="full-date">Monday, Sep 12 * 10:30 AM</p>
+                    <p id="full-date">Monday, Sep 12 · 10:30 AM</p>
                 </div>
 
                 <div>
                     <span id="today-temp">20</span>
-                    <span id="prefered-unit">Celsius</span>
-                    <p id="feels-like-temp">Feels like 19</p>
+                    <span id="preferred-unit">°C</span>
+                    <p id="feels-like-temp">Feels like 19°</p>
                 </div>
             </div>
         </section>
@@ -59,19 +64,19 @@
 
             <dl id="metrics-list">
                 <div id="humidity-metric" class="metric-container">
-                    <img class="metric-icon" src="./assets/Search.svg" alt="" aria-hidden="true">
+                    <img class="metric-icon" src="https://placehold.co/20x20" alt="" aria-hidden="true">
                     <dt>Humidity</dt>
                     <dd>54%</dd>
                 </div>
 
                 <div id="wind-metric" class="metric-container">
-                    <img class="metric-icon" src="./assets/Search.svg" alt="" aria-hidden="true">
+                    <img class="metric-icon" src="https://placehold.co/20x20" alt="" aria-hidden="true">
                     <dt>Wind</dt>
                     <dd>23km/h</dd>
                 </div>
 
                 <div id="uv-metric" class="metric-container">
-                    <img class="metric-icon" src="./assets/Search.svg" alt="" aria-hidden="true">
+                    <img class="metric-icon" src="https://placehold.co/20x20" alt="" aria-hidden="true">
                     <dt>UV index</dt>
                     <dd>1(Low)</dd>
                 </div>
@@ -88,25 +93,25 @@
             <dl id="hourly-list">
                 <div class="hourly-forecast-container">
                     <dt>10:30 AM</dt>
-                    <img class="hourly-forecast-icon" src="./assets/Sun.svg" alt="Sunny">
+                    <img class="hourly-forecast-icon" src="https://placehold.co/20x20" alt="Sunny">
                     <dd>20</dd>
                 </div>
 
                 <div class="hourly-forecast-container">
                     <dt>12:00 AM</dt>
-                    <img class="hourly-forecast-icon" src="./assets/Sun.svg" alt="Sunny">
+                    <img class="hourly-forecast-icon" src="https://placehold.co/20x20" alt="Sunny">
                     <dd>22</dd>
                 </div>
 
                 <div class="hourly-forecast-container">
                     <dt>1:30 PM</dt>
-                    <img class="hourly-forecast-icon" src="./assets/Cloud.svg" alt="Cloudy">
+                    <img class="hourly-forecast-icon" src="https://placehold.co/20x20" alt="Cloudy">
                     <dd>18</dd>
                 </div>
 
                 <div class="hourly-forecast-container">
                     <dt>3:00 PM</dt>
-                    <img class="hourly-forecast-icon" src="./assets/Sun.svg" alt="Sunny">
+                    <img class="hourly-forecast-icon" src="https://placehold.co/20x20" alt="Sunny">
                     <dd>21</dd>
                 </div>
             </dl>
@@ -118,19 +123,19 @@
             <!-- Not descriptive list because migth have more el -->
             <div class="daily-forecast-container">
                 <span>Tuesday</span>
-                <img class="daily-forecast-icon" src="./assets/Rain.svg" alt="Rainy">
+                <img class="daily-forecast-icon" src="https://placehold.co/20x20" alt="Rainy">
                 <span class="max-min-temperature">15/23</span>
             </div>
 
             <div class="daily-forecast-container">
                 <span>Wednesday</span>
-                <img class="daily-forecast-icon" src="./assets/Rain.svg" alt="Rainy">
+                <img class="daily-forecast-icon" src="https://placehold.co/20x20" alt="Rainy">
                 <span class="max-min-temperature">14/19</span>
             </div>
 
             <div class="daily-forecast-container">
                 <span>Thursday</span>
-                <img class="daily-forecast-icon" src="./assets/Sun.svg" alt="Sunny">
+                <img class="daily-forecast-icon" src="https://placehold.co/20x20" alt="Sunny">
                 <span class="max-min-temperature">17/25</span>
             </div>
         </section>
@@ -141,13 +146,13 @@
             <div class="sun-time-container">
                 <span>Sunrise</span>
                 <span id="sunrise-time">6:32</span>
-                <img class="sun-time-icon" src="./assets/Overcast.svg" alt="" aria-hidden="true">
+                <img class="sun-time-icon" src="https://placehold.co/20x20" alt="" aria-hidden="true">
             </div>
 
             <div class="sun-time-container">
                 <span>Sunset</span>
                 <span id="sunset-time">19:22</span>
-                <img class="sun-time-icon" src="./assets/Overcast.svg" alt="" aria-hidden="true">
+                <img class="sun-time-icon" src="https://placehold.co/20x20" alt="" aria-hidden="true">
             </div>
         </section>
     </main>

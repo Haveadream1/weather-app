@@ -7,11 +7,12 @@
 }
 
 :root {
-    /* TODO: choose font */
+    font-family: "Plus Jakarta Sans", sans-serif;
 
     /* Colors */
     --light-blue: #E3E8F0;
     --dark-blue: #5B6D86;
+    --light-grey: rgb(148 163 184);
 
     /* Spacing */
     --space-xs: 0.25rem;
@@ -25,16 +26,21 @@
     --font-sm: 0.875rem; /* Additional text, sidebar, dense UI body */
     --font-md: 1rem; /* Standard body font size */
     --font-lg: 1.125rem; /* Large body text, emphasized text, lead paragraph */
-    --font-lg: 1.25rem; /* Small Title (H4, H5) */
-    --font-lg: 1.5rem; /* Medium Title, Subtitle (H3) */
-    --font-lg: 1.875rem; /* Large Title (H2) */
-    --font-lg: 2.25rem; /* Main Page Large Title (H1) */
+    --font-xl: 1.25rem; /* Small Title (H4, H5) */
+    --font-xxl: 1.5rem; /* Medium Title, Subtitle (H3) */
+    --font-xxxl: 1.875rem; /* Large Title (H2) */
+    --font-xxxxl: 2.25rem; /* Main Page Large Title (H1) */
 }
 
 /* ! For debugging purpose */
 html {
     display: flex;
     justify-content: center;
+}
+
+input,
+button {
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 body {
@@ -76,6 +82,7 @@ header {
     padding: var(--space-xs);
     border-radius: var(--space-xs);
     border: 1.5px solid var(--light-blue);
+    background-color: white;
 
     display: flex;
     justify-content: center;
@@ -109,16 +116,48 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    position: relative;
+    padding: var(--font-md);
 }
 
 .glass-card {
+    position: absolute;
+    bottom: var(--font-sm);
+
     padding: var(--space-md);
-    background-color: aliceblue;
     border-radius: var(--space-md);
     width: 90%;
 
     display: flex;
-    justify-content: space-between;
+    align-items: flex-end;
+    justify-content: center;
+    gap: var(--space-lg);
+
+    background-color: #FFFFFF;
+    box-shadow: 0px 8px 20px 1px rgb(232 236 242);
+}
+
+#city-choice {
+    font-size: var(--font-xxl);
+    font-weight: 600;
+}
+
+#full-date,
+#feels-like-temp  {
+    font-size: var(--font-xs);
+    color: var(--light-grey);
+}
+
+#today-temp {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+#preferred-unit {
+    font-size: var(--font-xxl);
+    color: var(--light-grey);
+    font-weight: 500;
 }
 
 #metrics-section {
