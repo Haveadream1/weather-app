@@ -101,6 +101,7 @@ header {
 }
 
 #active-unit {
+    color: black;
     background-color: #FFFFFF;
 }
 
@@ -110,6 +111,9 @@ header {
     padding: 0.375rem; 
     border-radius: var(--space-sm);
     background-color: var(--light-blue);
+    font-size: var(--font-xs);
+    color: var(--dark-blue);
+    font-weight: 500;
 }
 
 /* MAIN */
@@ -170,7 +174,7 @@ header {
 
 /* :metrics-section */
 #metrics-section {
-    padding: var(--space-md) var(--space-sm) var(--space-sm);
+    padding: var(--space-md) var(--space-sm);
 }
 
 #metrics-list {
@@ -203,14 +207,30 @@ header {
     font-weight: 600;
 }
 
+/* :hourly-section */
+#hourly-section {
+    padding: 0 var(--space-sm)
+}
+
 #time-info-text {
     display: flex;
     justify-content: space-between;
 }
 
+#info-heading {
+    font-size: var(--font-sm);
+    font-weight: 600;
+}
+
+#info-additional {
+    color: var(--light-grey);
+    font-size: var(--font-xs);
+}
+
 #hourly-list {
     display: grid;
     grid-auto-flow: column;
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--space-md);
     padding: var(--space-md) 0 0 0;
 }
@@ -219,15 +239,24 @@ header {
     background-color: beige;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;;
     border-radius: var(--space-md);
+    padding: var(--font-xs);
 }
 
-/* TODO: all icons should have the same height */
-.hourly-forecast-icon {
-    max-width: 100%;
+.hourly-forecast-container > dt {
+    font-size: 0.6875rem;
+    text-align: center;
 }
+
+.hourly-forecast-container > dd {
+    font-size: var(--font-sm);
+    font-weight: 500;
+    text-align: center;
+}
+
+.hourly-forecast-icon {
+    padding: 0.125rem 0;
+ }
 
 #daily-section {
     background-color: cornflowerblue;

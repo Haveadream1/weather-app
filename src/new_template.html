@@ -87,7 +87,10 @@
             <h3 id="hourly-forecast-heading" class="sr-only">Hourly forecast</h3>
             
             <!-- ? Check use the already declared h3 or not -->
-            <p id="time-info-text"><span>Today</span><span>Next 6 Hours</span></p>
+            <p id="time-info-text">
+                <span id="info-heading">Today</span>
+                <span id="info-additional">Next 6 Hours</span>
+            </p>
 
             <!-- TODO: Don't forget to add class to target bck colour dynamically with temp -->
             <dl id="hourly-list">
@@ -103,14 +106,15 @@
                     <dd>22</dd>
                 </div>
 
+                <!-- ? Check should be formatter hh:mm -->
                 <div class="hourly-forecast-container">
-                    <dt>1:30 PM</dt>
+                    <dt>01:30 PM</dt>
                     <img class="hourly-forecast-icon" src="https://placehold.co/20x20" alt="Cloudy">
                     <dd>18</dd>
                 </div>
 
                 <div class="hourly-forecast-container">
-                    <dt>3:00 PM</dt>
+                    <dt>03:00 PM</dt>
                     <img class="hourly-forecast-icon" src="https://placehold.co/20x20" alt="Sunny">
                     <dd>21</dd>
                 </div>
