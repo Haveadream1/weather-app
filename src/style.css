@@ -32,6 +32,8 @@
     --font-xxxxl: 2.25rem; /* Main Page Large Title (H1) */
 }
 
+/* TODO: refactor box-shadow */
+
 /* ! For debugging purpose */
 html {
     display: flex;
@@ -111,7 +113,7 @@ header {
 }
 
 /* MAIN */
-
+/* :today-section */
 #today-section {
     display: flex;
     flex-direction: column;
@@ -138,6 +140,12 @@ header {
     box-shadow: 0px 8px 20px 1px rgb(232 236 242);
 }
 
+/* Avoid the unit from being separated from temp value */
+/* ? First div too  or exclude ? */
+.glass-card > * {
+    white-space: nowrap;
+}
+
 #city-choice {
     font-size: var(--font-xxl);
     font-weight: 600;
@@ -160,8 +168,9 @@ header {
     font-weight: 500;
 }
 
+/* :metrics-section */
 #metrics-section {
-    padding: var(--space-md) 0;
+    padding: var(--space-md) var(--space-sm) var(--space-sm);
 }
 
 #metrics-list {
@@ -171,7 +180,7 @@ header {
 }
 
 .metric-container {
-    background-color: antiquewhite;
+    background-color: #FFFFFF;
     padding: var(--space-md);
     border-radius: var(--space-md);
 
@@ -179,6 +188,19 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+
+    box-shadow: 0px 0px 20px 0px rgb(232, 236, 242);
+}
+
+.metric-container > dt {
+    font-size: 0.625rem;
+    color: var(--light-grey);
+    padding: 0.125rem 0;
+}
+
+.metric-container > dd {
+    font-size: var(--font-xs);
+    font-weight: 600;
 }
 
 #time-info-text {
