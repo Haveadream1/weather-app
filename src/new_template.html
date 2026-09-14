@@ -29,8 +29,9 @@
         </button>
 
         <div id="unit-switch-container">
-            <button id="active-unit" class="unit-btn" type="button" value="Celsius">°C</button>
-            <button class="unit-btn" type="button" value="Fahrenheit">°F</button>
+            <!-- Use data attribute to store information about each button unit -->
+            <button class="unit-btn is-active" type="button" data-unit="celsius" aria-pressed="true">°C</button>
+            <button class="unit-btn is-not-active" type="button" value="fahrenheit" aria-pressed="false">°F</button>
         </div>
     </header>
 

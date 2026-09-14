@@ -12,7 +12,9 @@
     /* Colors */
     --light-blue: #E3E8F0;
     --dark-blue: #5B6D86;
-    --light-grey: rgb(148 163 184);
+    --light-grey: rgb(148, 163, 184);
+    --white-bck: white;
+    --black-text: black;
 
     /* Spacing */
     --space-xs: 0.25rem;
@@ -66,25 +68,22 @@ header {
 }
 
 #form {
-    width: 100%;
+    flex: 1;
 }
 
 #city-input {
-    min-height: 100%;
     min-width: 100%;
     padding: var(--space-sm);
 
     border-radius: var(--font-xs);
     border: 1.5px solid var(--light-blue);
-
-    /* box-shadow: 0 1px 2px rgb(232 236 242); */
 }
 
 #geolocation-btn {
     padding: var(--space-xs);
     border-radius: var(--space-xs);
     border: 1.5px solid var(--light-blue);
-    background-color: white;
+    background-color: var(--white-bck);
 
     display: flex;
     justify-content: center;
@@ -100,19 +99,23 @@ header {
     background-color: var(--light-blue);
 }
 
-#active-unit {
-    color: black;
-    background-color: #FFFFFF;
+/* TODO: check after finishing with JS */
+.is-active {
+    color: var(--black-text);
+    background-color: var(--white-bck);
+}
+
+.is-not-active {
+    color: var(--dark-blue);
+    background-color: var(--light-blue);
 }
 
 .unit-btn {
     min-height: 100%;
     border: 0 none;
-    padding: 0.375rem; 
+    padding: 0.375rem;
     border-radius: var(--space-sm);
-    background-color: var(--light-blue);
     font-size: var(--font-xs);
-    color: var(--dark-blue);
     font-weight: 500;
 }
 
@@ -140,8 +143,8 @@ header {
     justify-content: center;
     gap: var(--space-lg);
 
-    background-color: #FFFFFF;
-    box-shadow: 0px 8px 20px 1px rgb(232 236 242);
+    background-color: var(--white-bck);
+    box-shadow: 0px 8px 20px 1px rgb(232, 236, 242);
 }
 
 /* Avoid the unit from being separated from temp value */
@@ -184,7 +187,7 @@ header {
 }
 
 .metric-container {
-    background-color: #FFFFFF;
+    background-color: var(--white-bck);
     padding: var(--space-md);
     border-radius: var(--space-md);
 
@@ -274,7 +277,8 @@ header {
     margin-bottom: 0.25rem;
 }
 
-#daily-section > :nth-child(2) {
+/* Next sibling combinator, so target the one directly after heading should be that container */
+#daily-forecast-heading + .daily-forecast-container {
     border-top: 1px solid var(--light-grey);
 }
 
@@ -298,7 +302,7 @@ header {
 }
 
 .thermal-range {
-    background-color: #FFFFFF;
+    background-color: var(--white-bck);
     /* TODO: change later */
     height: 10px;
 }
