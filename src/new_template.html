@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Weather progressive web app">
     <link rel="stylesheet" href="style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,12 +12,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     
     <!-- TODO: meta description, favicon, title, content for PWA -->
-    <title>WeatherPWA</title>
+    <title>Weather</title>
 </head>
 <body>
     <header>
-        <!-- ? No submit button, only keyboard enter -->
-        <!-- ? No action because we handle with event.preventDefault(); ?? -->
+        <!-- ? CHECK: No action because we handle with event.preventDefault(); ?? -->
         <form id="form" action="">
             <label for="city-input" class="sr-only">Search a city</label>
             <input id="city-input" type="text" placeholder="Search location...">
@@ -44,7 +44,7 @@
             
             <img id="main-weather-img" src="https://placehold.co/260x240" alt="Mostly sunny">
 
-            <!-- ? Small dot like green or yellow to mean weather on time ? -->
+            <!-- ? Small dot like green or yellow to mean weather is freshly fetched ? -->
             <div class="glass-card">
                 <div>
                     <span id="city-choice">Seoul</span>
@@ -62,25 +62,25 @@
         <section id="metrics-section" aria-labelledby="metrics-heading">
             <h2 id="metrics-heading" class="sr-only">Metrics</h2>
 
-            <dl id="metrics-list">
+            <div id="metrics-list">
                 <div id="humidity-metric" class="metric-container">
                     <img class="metric-icon" src="https://placehold.co/30x30" alt="" aria-hidden="true">
-                    <dt>Humidity</dt>
-                    <dd>54%</dd>
+                    <span class="metric-name">Humidity</span>
+                    <span class="metric-value">54%</span>
                 </div>
 
                 <div id="wind-metric" class="metric-container">
                     <img class="metric-icon" src="https://placehold.co/30x30" alt="" aria-hidden="true">
-                    <dt>Wind</dt>
-                    <dd>23km/h</dd>
+                    <span class="metric-name">Wind</span>
+                    <span class="metric-value">23km/h</span>
                 </div>
 
                 <div id="uv-metric" class="metric-container">
                     <img class="metric-icon" src="https://placehold.co/30x30" alt="" aria-hidden="true">
-                    <dt>UV index</dt>
-                    <dd>1(Low)</dd>
+                    <span class="metric-name">UV index</span>
+                    <span class="metric-value">1(Low)</span>
                 </div>
-            </dl>
+            </div>
         </section>
 
         <section id="hourly-section" aria-labelledby="hourly-forecast-heading">
@@ -88,48 +88,47 @@
             
             <!-- ? Check use the already declared h3 or not -->
             <!-- TODO: refactor id name for span -->
-            <p id="time-info-text">
+            <p id="hourly-descriptive-text">
                 <span id="info-heading">Today</span>
                 <span id="info-additional">Next 6 Hours</span>
             </p>
 
             <!-- TODO: Don't forget to add class to target bck colour dynamically with temp -->
-            <dl id="hourly-list">
+            <div id="hourly-list">
                 <div class="hourly-forecast-container">
-                    <dt>10:30 AM</dt>
+                    <span class="forecast-hour">10:30 AM</span>
                     <img class="hourly-forecast-icon" src="https://placehold.co/20x20" alt="Sunny">
-                    <dd>20°</dd>
+                    <span class="forecast-hourly-temp">20°</dd>
                 </div>
 
                 <div class="hourly-forecast-container">
-                    <dt>12:00 AM</dt>
+                    <span class="forecast-hour">12:00 AM</span>
                     <img class="hourly-forecast-icon" src="https://placehold.co/20x20" alt="Sunny">
-                    <dd>22°</dd>
+                    <span class="forecast-hourly-temp">22°</dd>
                 </div>
 
-                <!-- ? Check should be formatter hh:mm -->
+                <!-- ? CHECK: JS should be formatter hh:mm -->
                 <div class="hourly-forecast-container">
-                    <dt>01:30 PM</dt>
+                    <span class="forecast-hour">01:30 PM</span>
                     <img class="hourly-forecast-icon" src="https://placehold.co/20x20" alt="Cloudy">
-                    <dd>18°</dd>
+                    <span class="forecast-hourly-temp">18°</span>
                 </div>
 
                 <div class="hourly-forecast-container">
-                    <dt>03:00 PM</dt>
+                    <span class="forecast-hour">03:00 PM</span>
                     <img class="hourly-forecast-icon" src="https://placehold.co/20x20" alt="Sunny">
-                    <dd>21°</dd>
+                    <span class="forecast-hourly-temp">21°</span>
                 </div>
-            </dl>
+            </div>
         </section>
 
         <section id="daily-section" aria-labelledby="daily-forecast-heading">
             <h3 id="daily-forecast-heading">3-Day Forecast</h3>
             
-            <!-- Not descriptive list because migth have more el -->
             <div class="daily-forecast-container">
                 <span>Tuesday</span>
 
-                <div class="layout">
+                <div class="daily-layout">
                     <img class="daily-forecast-icon" src="https://placehold.co/20x20" alt="Rainy">
                     <span class="min-temp">15°</span>
                     <div class="thermal-range"></div>
@@ -140,7 +139,7 @@
             <div class="daily-forecast-container">
                 <span>Wednesday</span>
 
-                <div class="layout">
+                <div class="daily-layout">
                     <img class="daily-forecast-icon" src="https://placehold.co/20x20" alt="Rainy">
                     <span class="min-temp">12°</span>
                     <div class="thermal-range"></div>
@@ -151,7 +150,7 @@
             <div class="daily-forecast-container">
                 <span>Thursday</span>
 
-                <div class="layout">
+                <div class="daily-layout">
                     <img class="daily-forecast-icon" src="https://placehold.co/20x20" alt="Sunny">
                     <span class="min-temp">17°</span>
                     <div class="thermal-range"></div>
@@ -160,20 +159,19 @@
             </div>
         </section>
 
-        <section id="sun-time-section" aria-labelledby="sun-time-heading">
-            <h3 id="sun-time-heading" class="sr-only">Sunrise/down time</h3>
+        <section id="twilight-section" aria-labelledby="twilight-heading">
+            <h3 id="twilight-heading" class="sr-only">Twilight time</h3>
             
-            <!-- TODO: refactor id name for span -->
-            <div class="sun-time-container">
-                <span class="sun-text">Sunrise</span>
-                <span id="sunrise-time" class="sun-time">6:32</span>
-                <img class="sun-time-icon" src="https://placehold.co/20x20" alt="" aria-hidden="true">
+            <div class="twilight-container">
+                <span class="twilight-text">Sunrise</span>
+                <span id="sunrise-time" class="twilight-time">6:32</span>
+                <img class="twilight-icon" src="https://placehold.co/60x60" alt="" aria-hidden="true">
             </div>
 
-            <div class="sun-time-container">
-                <span class="sun-text">Sunset</span>
-                <span id="sunset-time" class="sun-time">19:22</span>
-                <img class="sun-time-icon" src="https://placehold.co/20x20" alt="" aria-hidden="true">
+            <div class="twilight-container">
+                <span class="twilight-text">Sunset</span>
+                <span id="sunset-time" class="twilight-time">19:22</span>
+                <img class="twilight-icon" src="https://placehold.co/60x60" alt="" aria-hidden="true">
             </div>
         </section>
     </main>

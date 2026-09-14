@@ -196,13 +196,13 @@ header {
     box-shadow: 0px 0px 20px 0px rgb(232, 236, 242);
 }
 
-.metric-container > dt {
+.metric-name {
     font-size: 0.625rem;
     color: var(--light-grey);
     padding: 0.125rem 0;
 }
 
-.metric-container > dd {
+.metric-value {
     font-size: var(--font-xs);
     font-weight: 600;
 }
@@ -212,7 +212,7 @@ header {
     padding: 0 var(--space-sm)
 }
 
-#time-info-text {
+#hourly-descriptive-text {
     display: flex;
     justify-content: space-between;
 }
@@ -243,12 +243,12 @@ header {
     padding: var(--font-xs);
 }
 
-.hourly-forecast-container > dt {
+.forecast-hour {
     font-size: 0.6875rem;
     text-align: center;
 }
 
-.hourly-forecast-container > dd {
+.forecast-hourly-temp{
     font-size: var(--font-sm);
     font-weight: 500;
     text-align: center;
@@ -288,7 +288,7 @@ header {
     align-items: center;
 }
 
-.layout {
+.daily-layout {
     display: grid;
     gap: var(--space-sm);
     grid-auto-flow: column;
@@ -308,8 +308,8 @@ header {
     color: var(--light-grey);
 }
 
- /* :sun-time-section */
-#sun-time-section {
+ /* :twilight-section */
+#twilight-section {
     background-color: var(--dark-blue);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -318,28 +318,24 @@ header {
     border-radius: var(--space-md);
 }
 
-.sun-time-container {
+.twilight-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-.sun-text {
+.twilight-text {
     text-align: center;
     font-weight: 500;
     color: var(--light-grey);
     font-size: var(--font-sm);
 }
 
-.sun-time {
+.twilight-time {
     text-align: center;
     padding: 0.125rem 0;
     font-size: var(--font-xs);
 }
-
-.sun-time-icon {
-    max-height: 55px;
-}
-
 
 /* TODO: Check name */
 /* UTILS */
