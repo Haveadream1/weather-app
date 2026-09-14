@@ -17,21 +17,27 @@
     --black-text: black;
 
     /* Spacing */
-    --space-xs: 0.25rem;
-    --space-sm: 0.5rem;
-    --space-md: 1rem;
-    --space-lg: 1.5rem;
+    --space-5xs: 0.125rem;
+    --space-4xs: 0.25rem;
+    --space-3xs: 0.375rem;
+    --space-2xs: 0.5rem;
+    --space-xs: 0.75rem;
+    --space-base: 1rem;
+    --space-md: 1.5rem;
 
-    /* TODO: see what we use, remove the rest later */
+    /* Border-radius */
+    --border-rad-2xs: 0.5rem;
+    --border-rad-xs: 0.75rem;
+    --border-rad-sm: 0.875rem;
+    --border-rad-base: 1rem;
+
     /* Font scale */
-    --font-xs: 0.75rem; /* Small text for captions, footers, and supplementary information */
-    --font-sm: 0.875rem; /* Additional text, sidebar, dense UI body */
-    --font-md: 1rem; /* Standard body font size */
-    --font-lg: 1.125rem; /* Large body text, emphasized text, lead paragraph */
-    --font-xl: 1.25rem; /* Small Title (H4, H5) */
-    --font-xxl: 1.5rem; /* Medium Title, Subtitle (H3) */
-    --font-xxxl: 1.875rem; /* Large Title (H2) */
-    --font-xxxxl: 2.25rem; /* Main Page Large Title (H1) */
+    --font-3xs: 0.625rem;
+    --font-2xs: 0.6875rem;
+    --font-xs: 0.75rem; 
+    --font-sm: 0.875rem; 
+    --font-md: 1.5rem;
+    --font-xl: 2.5rem; 
 }
 
 /* TODO: refactor box-shadow */
@@ -62,8 +68,8 @@ body {
 /* HEADER */
 header {
     display: flex;
-    gap: var(--space-md);
-    padding: var(--space-sm);
+    gap: var(--space-base);
+    padding: var(--space-2xs);
     justify-content: space-between;
 }
 
@@ -73,15 +79,15 @@ header {
 
 #city-input {
     min-width: 100%;
-    padding: var(--space-sm);
+    padding: var(--space-2xs);
 
-    border-radius: var(--font-xs);
+    border-radius: var(--border-rad-xs);
     border: 1.5px solid var(--light-blue);
 }
 
 #geolocation-btn {
-    padding: var(--space-xs);
-    border-radius: var(--space-xs);
+    padding: var(--space-4xs);
+    border-radius: var(--border-rad-xs);
     border: 1.5px solid var(--light-blue);
     background-color: var(--white-bck);
 
@@ -93,9 +99,9 @@ header {
 #unit-switch-container {
     display: flex;
     align-items: center;
-    gap: var(--space-xs);
-    padding: var(--space-xs);
-    border-radius: var(--font-sm);
+    gap: var(--space-4xs);
+    padding: var(--space-4xs);
+    border-radius: var(--border-rad-sm);
     background-color: var(--light-blue);
 }
 
@@ -113,8 +119,8 @@ header {
 .unit-btn {
     min-height: 100%;
     border: 0 none;
-    padding: 0.375rem;
-    border-radius: var(--space-sm);
+    padding: var(--space-3xs);
+    border-radius: var(--border-rad-2xs);
     font-size: var(--font-xs);
     font-weight: 500;
 }
@@ -127,21 +133,21 @@ header {
     align-items: center;
 
     position: relative;
-    padding: var(--font-md);
+    padding: var(--space-base);
 }
 
 .glass-card {
     position: absolute;
     bottom: var(--font-sm);
 
-    padding: var(--font-xs) var(--font-md);
-    border-radius: var(--space-md);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--border-rad-base);
     width: 90%;
 
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    gap: var(--space-lg);
+    gap: var(--space-md);
 
     background-color: var(--white-bck);
     box-shadow: 0px 8px 20px 1px rgb(232, 236, 242);
@@ -154,7 +160,7 @@ header {
 }
 
 #city-choice {
-    font-size: var(--font-xxl);
+    font-size: var(--font-md);
     font-weight: 600;
 }
 
@@ -165,31 +171,31 @@ header {
 }
 
 #today-temp {
-    font-size: 2.5rem;
+    font-size: var(--font-xl);
     font-weight: 600;
 }
 
 #preferred-unit {
-    font-size: var(--font-xxl);
+    font-size: var(--font-md);
     color: var(--light-grey);
     font-weight: 500;
 }
 
 /* :metrics-section */
 #metrics-section {
-    padding: var(--space-md) var(--space-sm);
+    padding: var(--space-base) var(--space-2xs);
 }
 
 #metrics-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-md);
+    gap: var(--space-base);
 }
 
 .metric-container {
     background-color: var(--white-bck);
-    padding: var(--space-md);
-    border-radius: var(--space-md);
+    padding: var(--space-base);
+    border-radius: var(--border-rad-base);
 
     display: flex;
     flex-direction: column;
@@ -200,9 +206,9 @@ header {
 }
 
 .metric-name {
-    font-size: 0.625rem;
+    font-size: var(--font-3xs);
     color: var(--light-grey);
-    padding: 0.125rem 0;
+    padding: var(--space-5xs) 0;
 }
 
 .metric-value {
@@ -212,7 +218,7 @@ header {
 
 /* :hourly-section */
 #hourly-section {
-    padding: 0 var(--space-sm)
+    padding: 0 var(--space-2xs)
 }
 
 #hourly-descriptive-text {
@@ -234,20 +240,20 @@ header {
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-md);
-    padding: var(--space-md) 0 0 0;
+    gap: var(--space-base);
+    padding: var(--space-base) 0 0 0;
 }
 
 .hourly-forecast-container {
     background-color: var(--light-grey);
     display: flex;
     flex-direction: column;
-    border-radius: var(--space-md);
+    border-radius: var(--border-rad-base);
     padding: var(--font-xs);
 }
 
 .forecast-hour {
-    font-size: 0.6875rem;
+    font-size: var(--font-2xs);
     text-align: center;
 }
 
@@ -258,14 +264,14 @@ header {
 }
 
 .hourly-forecast-icon {
-    padding: 0.125rem 0;
+    padding: var(--space-5xs) 0;
  }
 
 /* :daily-section */
 #daily-section {
     background-color: var(--light-blue);
-    margin: var(--space-md) var(--space-sm);
-    border-radius: var(--font-md);
+    margin: var(--space-base) var(--space-2xs);
+    border-radius: var(--border-rad-base);
     padding: var(--font-sm);
     max-width: 100%;
 }
@@ -274,7 +280,7 @@ header {
     color: var(--light-grey);
     font-weight: 600;
     font-size: var(--font-sm);
-    margin-bottom: 0.25rem;
+    margin-bottom: var(--space-4xs);
 }
 
 /* Next sibling combinator, so target the one directly after heading should be that container */
@@ -283,7 +289,7 @@ header {
 }
 
 .daily-forecast-container {
-    padding: var(--space-sm);
+    padding: var(--space-2xs);
     font-size: var(--font-xs);
 
     display: grid;
@@ -294,7 +300,7 @@ header {
 
 .daily-layout {
     display: grid;
-    gap: var(--space-sm);
+    gap: var(--space-2xs);
     grid-auto-flow: column;
     grid-template-columns: 1fr 1fr 5fr 1fr;
     align-items: center;
@@ -317,9 +323,9 @@ header {
     background-color: var(--dark-blue);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    padding: var(--font-md) var(--space-sm);
-    margin: 0 var(--space-sm) var(--space-sm);
-    border-radius: var(--space-md);
+    padding: var(--space-md) var(--space-2xs);
+    margin: 0 var(--space-2xs) var(--space-2xs);
+    border-radius: var(--border-rad-base);
 }
 
 .twilight-container {
@@ -337,7 +343,7 @@ header {
 
 .twilight-time {
     text-align: center;
-    padding: 0.125rem 0;
+    padding: var(--space-5xs) 0;
     font-size: var(--font-xs);
 }
 
