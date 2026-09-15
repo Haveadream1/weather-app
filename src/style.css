@@ -15,6 +15,7 @@
     --light-grey: rgb(148, 163, 184);
     --white-bck: white;
     --black-text: black;
+    --red-dot: red;
 
     /* Spacing */
     --space-5xs: 0.125rem;
@@ -24,6 +25,7 @@
     --space-xs: 0.75rem;
     --space-base: 1rem;
     --space-md: 1.5rem;
+    --space-xl: 2.25rem;
 
     /* Border-radius */
     --border-rad-2xs: 0.5rem;
@@ -75,6 +77,7 @@ header {
 
 form {
     flex: 1;
+    position: relative;
 }
 
 .form__input {
@@ -83,6 +86,16 @@ form {
 
     border-radius: var(--border-rad-xs);
     border: 1.5px solid var(--light-blue);
+}
+
+.form__small {
+    font-size: var(--font-2xs);
+    position: absolute;
+    left: var(--space-2xs);
+    top: var(--space-xl);
+}
+.form__small--red-dot {
+    color: var(--red-dot);
 }
 
 .geolocation-btn {
