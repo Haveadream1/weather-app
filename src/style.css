@@ -73,11 +73,11 @@ header {
     justify-content: space-between;
 }
 
-#form {
+form {
     flex: 1;
 }
 
-#city-input {
+.form__input {
     min-width: 100%;
     padding: var(--space-2xs);
 
@@ -85,7 +85,7 @@ header {
     border: 1.5px solid var(--light-blue);
 }
 
-#geolocation-btn {
+.geolocation-btn {
     padding: var(--space-4xs);
     border-radius: var(--border-rad-xs);
     border: 1.5px solid var(--light-blue);
@@ -96,7 +96,7 @@ header {
     align-items: center;
 }
 
-#unit-switch-container {
+.unit-switch {
     display: flex;
     align-items: center;
     gap: var(--space-4xs);
@@ -105,29 +105,25 @@ header {
     background-color: var(--light-blue);
 }
 
-/* TODO: check after finishing with JS */
-.is-active {
-    color: var(--black-text);
-    background-color: var(--white-bck);
-}
-
-.is-not-active {
-    color: var(--dark-blue);
-    background-color: var(--light-blue);
-}
-
-.unit-btn {
+.unit-switch__btn {
     min-height: 100%;
     border: 0 none;
     padding: var(--space-3xs);
     border-radius: var(--border-rad-2xs);
-    font-size: var(--font-xs);
     font-weight: 500;
+    font-size: var(--font-xs);
+    color: var(--dark-blue);
+    background-color: var(--light-blue);
+}
+
+.unit-switch__btn--is-active {
+    color: var(--black-text);
+    background-color: var(--white-bck);
 }
 
 /* MAIN */
 /* :today-section */
-#today-section {
+.today-section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -136,7 +132,7 @@ header {
     padding: var(--space-base);
 }
 
-.glass-card {
+.today-card {
     position: absolute;
     bottom: var(--font-sm);
 
@@ -155,44 +151,44 @@ header {
 
 /* Avoid the unit from being separated from temp value */
 /* ? First div too  or exclude ? */
-.glass-card > * {
+.today-card > * {
     white-space: nowrap;
 }
 
-#city-choice {
+.today-card__city{
     font-size: var(--font-md);
     font-weight: 600;
 }
 
-#full-date,
-#feels-like-temp  {
+.today-card__date,
+.today-card__feels-like {
     font-size: var(--font-xs);
     color: var(--light-grey);
 }
 
-#today-temp {
+.today-card__temp {
     font-size: var(--font-xl);
     font-weight: 600;
 }
 
-#preferred-unit {
+.today-card__unit {
     font-size: var(--font-md);
     color: var(--light-grey);
     font-weight: 500;
 }
 
 /* :metrics-section */
-#metrics-section {
+.metrics-section {
     padding: var(--space-base) var(--space-2xs);
 }
 
-#metrics-list {
+.metrics-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-base);
 }
 
-.metric-container {
+.metric {
     background-color: var(--white-bck);
     padding: var(--space-base);
     border-radius: var(--border-rad-base);
@@ -205,38 +201,38 @@ header {
     box-shadow: 0px 0px 20px 0px rgb(232, 236, 242);
 }
 
-.metric-name {
+.metric__name {
     font-size: var(--font-3xs);
     color: var(--light-grey);
     padding: var(--space-5xs) 0;
 }
 
-.metric-value {
+.metric__value {
     font-size: var(--font-xs);
     font-weight: 600;
 }
 
 /* :hourly-section */
-#hourly-section {
+.hourly-section {
     padding: 0 var(--space-2xs)
 }
 
-#hourly-descriptive-text {
+.hourly-text {
     display: flex;
     justify-content: space-between;
 }
 
-#info-heading {
+.hourly-text__heading {
     font-size: var(--font-sm);
     font-weight: 600;
 }
 
-#info-additional {
+.hourly-text__addtl {
     color: var(--light-grey);
     font-size: var(--font-xs);
 }
 
-#hourly-list {
+.hourly-list {
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: repeat(4, 1fr);
@@ -244,7 +240,7 @@ header {
     padding: var(--space-base) 0 0 0;
 }
 
-.hourly-forecast-container {
+.hourly-forecast {
     background-color: var(--light-grey);
     display: flex;
     flex-direction: column;
@@ -253,23 +249,23 @@ header {
     padding: var(--font-xs);
 }
 
-.forecast-hour {
+.hourly-forecast__time {
     font-size: var(--font-2xs);
     text-align: center;
 }
 
-.forecast-hourly-temp{
+.hourly-forecast__icon {
+    padding: var(--space-5xs) 0;
+ }
+
+.hourly-forecast__temp {
     font-size: var(--font-sm);
     font-weight: 500;
     text-align: center;
 }
 
-.hourly-forecast-icon {
-    padding: var(--space-5xs) 0;
- }
-
 /* :daily-section */
-#daily-section {
+.daily-section {
     background-color: var(--light-blue);
     margin: var(--space-base) var(--space-2xs);
     border-radius: var(--border-rad-base);
@@ -277,7 +273,7 @@ header {
     max-width: 100%;
 }
 
-#daily-forecast-heading {
+.daily-section__heading {
     color: var(--light-grey);
     font-weight: 600;
     font-size: var(--font-sm);
@@ -285,11 +281,11 @@ header {
 }
 
 /* Next sibling combinator, so target the one directly after heading should be that container */
-#daily-forecast-heading + .daily-forecast-container {
+.daily-section__heading + .daily-forecast {
     border-top: 1px solid var(--light-grey);
 }
 
-.daily-forecast-container {
+.daily-forecast {
     padding: var(--space-2xs);
     font-size: var(--font-xs);
 
@@ -299,7 +295,7 @@ header {
     align-items: center;
 }
 
-.daily-layout {
+.daily-item {
     display: grid;
     gap: var(--space-2xs);
     grid-auto-flow: column;
@@ -308,19 +304,19 @@ header {
     text-align: center;
 }
 
-.thermal-range {
+.daily-item__bar {
     background-color: var(--white-bck);
     /* TODO: change later */
     height: 10px;
 }
 
-.min-temp,
-.max-temp {
+.daily-item__temp-min,
+.daily-item__temp-max {
     color: var(--light-grey);
 }
 
  /* :twilight-section */
-#twilight-section {
+.twilight-section {
     background-color: var(--dark-blue);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -329,20 +325,20 @@ header {
     border-radius: var(--border-rad-base);
 }
 
-.twilight-container {
+.twilight {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.twilight-text {
+.twilight__text{
     text-align: center;
     font-weight: 500;
     color: var(--light-grey);
     font-size: var(--font-sm);
 }
 
-.twilight-time {
+.twilight__time {
     text-align: center;
     padding: var(--space-5xs) 0;
     font-size: var(--font-xs);
