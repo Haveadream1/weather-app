@@ -26,6 +26,21 @@ const displayCurrentDate = (data) => {
 	return format(localTime, "EEEE, do LLLL");
 };
 
+export const displayTwilightSection = (data) => {
+	const sunriseTime = document.querySelector("#sunrise-time");
+	const sunsetTime = document.querySelector("#sunset-time");
+	const sunriseImg = document.querySelector("#sunrise-image");
+	const sunsetImg = document.querySelector("#sunset-image");
+
+	const path = data.forecast.forecastday[0].astro;
+	sunriseTime.textContent =  path.sunrise;
+	sunsetTime.textContent = path.sunset;
+
+	// No need alt, already defined as decorative icons
+	sunriseImg.src = weatherConditions[6000].rise;
+	sunsetImg.src = weatherConditions[6000].set;
+}
+
 export const displayTodaySection = (data, unitPreference) => {
 	const imgEl = document.querySelector(".today-section__img");
 	const cityEL = document.querySelector(".today-card__city");
@@ -48,7 +63,3 @@ export const displayTodaySection = (data, unitPreference) => {
 	imgEl.src = imagePath;
 	imgEl.alt = data.current.condition.text;
 };
-
-export const test = () => {
-	console.log("test")
-}

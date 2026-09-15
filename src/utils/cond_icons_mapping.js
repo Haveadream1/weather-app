@@ -2,6 +2,8 @@
 // Use to decide which icon should be used depending on weather conditions code
 
 // Import from the library icons meteocons the image path
+import sunrise from "@meteocons/svg/fill/sunrise.svg";
+import sunset from "@meteocons/svg/fill/sunset.svg";
 import clearDay from "@meteocons/svg/fill/clear-day.svg";
 import partlyCloudyDay from "@meteocons/svg/fill/partly-cloudy-day.svg";
 import partlyCloudyNight from "@meteocons/svg/fill/partly-cloudy-night.svg";
@@ -69,6 +71,7 @@ import extremeRain from "@meteocons/svg/fill/extreme-rain.svg";
 import snowflake from "@meteocons/svg/fill/snowflake.svg";
 
 const weatherConditions = {
+    6000: { rise: sunrise, set: sunset },
     1000: { day: clearDay, night: clearDay },
     1003: { day: partlyCloudyDay, night: partlyCloudyNight },
     1006: { day: cloudy, night: cloudy },
