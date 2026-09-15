@@ -19,8 +19,11 @@ const showError = (input, message) => {
     input.classList.add("form__input--error");
     input.classList.remove("form__input--success");
 
-    // Create DOM element to make the error more visible
     const small = form.querySelector(".form__small");
+    // Avoid to re-create element if already exists
+    if (small.textContent) return;
+
+    // Create DOM element to make the error more visible
     const smallSpan = document.createElement("span");
     smallSpan.classList.add("form__small--red-dot");
     smallSpan.textContent = "*";
@@ -49,6 +52,6 @@ const checkInput = (cityInput, city) => {
         showSuccess(cityInput);
         valid = true;
     }
-    return valid;    
+    return valid;
 };
 export default checkInput;
