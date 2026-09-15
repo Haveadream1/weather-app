@@ -6,11 +6,52 @@ import checkInput from "./utils/form_validation";
 const KEY = process.env.API_KEY;
 const url = "https://api.weatherapi.com/v1/forecast.json?";
 
-// TODO: add the valid/invalid class in the style
-// TODO: once everything is passed, move the form validation in a utils file
-
 const home = () => {
-const form = document.querySelector("#form");
+	const form = document.querySelector("#form");
+	const submitButton = document.querySelector("#submit-btn");
+
+	// ?
+
+	// Param can be a city or coordinates
+	async function getWeather(queryChoice) {
+		console.log("API Fetch trigger !")
+		// domHandler.showLoader();
+
+		// handleRecentCities(queryChoice);
+		try {
+			const response = await fetch(
+				`${url}key=${KEY}&q=${queryChoice}&days=8&aqi=no&alerts=no`,
+				{ mode: "cors" },
+			);
+			if (!response.ok) {
+				throw new Error(`HTTP error, status: ${response.status}`);
+			}
+			const data = await response.json();
+			console.log(data);
+
+			domHandler.displayTodaySection(data, "celsius");
+
+			// Store data only on fetch, so outside handleFecthSuccess
+			// storeWeatherData(queryChoice, data);
+
+			// handleFetchSuccess(data);
+		} catch (error) {
+			// re-throwing the error, ensure error is propagated up the call stack
+			console.error("An error occurred while fetching data:", error);
+
+			form.classList.add("invalid");
+			form.classList.remove("valid");
+			
+			const cityInput = document.querySelector("#city-input");
+			// WHY check here ?
+			checkInput(cityInput, queryChoice);
+
+			throw error;
+		} 
+		// domHandler.hideLoader();
+	}
+
+	// ?
 
 	const formHandler = () => {
 		const cityInput = document.querySelector("#city-input");
@@ -19,7 +60,7 @@ const form = document.querySelector("#form");
 		const isFormValid = isCityChoiceValid;
 
 		if (isFormValid) {
-			// getWeather(city);
+			getWeather(city);
 
 			cityInput.classList.remove("success");
 
@@ -32,6 +73,27 @@ const form = document.querySelector("#form");
 	form.addEventListener("submit", (e) => {
 		e.preventDefault();
 		formHandler();
+	});
+
+	submitButton.addEventListener("click", (e) => {
+		e.preventDefault();
+		formHandler();
+	});
+
+	form.addEventListener("input", (e) => {
+		const cityInput = document.querySelector("#city-input");
+		const city = cityInput.value.trim();
+
+		form.classList.add("valid"); // As we can receive en error in the call, reset if input change
+		form.classList.remove("invalid");
+
+		switch (e.target.id) {
+			case "city-input":
+				checkInput(cityInput, city);
+				break;
+			default: // Default case to avoid error eslint
+			// TODO: check
+		}
 	});
 };
 export default home;

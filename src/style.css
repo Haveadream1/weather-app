@@ -27,7 +27,9 @@
     --space-xs: 0.75rem;
     --space-base: 1rem;
     --space-md: 1.5rem;
-    --space-xl: 2.25rem;
+    --space-xl: 2.1875rem;
+    /* ! Too big I think, check at the end */
+    /* --space-xl: 2.25rem; */
 
     /* Border-radius */
     --border-rad-2xs: 0.5rem;
