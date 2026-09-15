@@ -16,8 +16,8 @@ const isCityValid = () => {
 };
 
 const showError = (input, message) => {
-    input.classList.add("error");
-    input.classList.remove("success");
+    input.classList.add("form__input--error");
+    input.classList.remove("form__input--success");
 
     // Create DOM element to make the error more visible
     const small = form.querySelector(".form__small");
@@ -29,8 +29,8 @@ const showError = (input, message) => {
 };
 
 const showSuccess = (input) => {
-    input.classList.remove("error");
-    input.classList.add("success");
+    input.classList.remove("form__input--error");
+    input.classList.add("form__input--success");
 
     const small = form.querySelector(".form__small");
     small.textContent = "";

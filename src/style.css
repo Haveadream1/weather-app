@@ -16,6 +16,8 @@
     --white-bck: white;
     --black-text: black;
     --red-dot: red;
+    --success: green;
+    --error: red;
 
     /* Spacing */
     --space-5xs: 0.125rem;
@@ -88,12 +90,21 @@ form {
     border: 1.5px solid var(--light-blue);
 }
 
+.form__input--success {
+  outline: var(--success) 2px solid;
+}
+
+.form__input--error {
+  outline: var(--error) 2px solid;
+}
+
 .form__small {
     font-size: var(--font-2xs);
     position: absolute;
     left: var(--space-2xs);
     top: var(--space-xl);
 }
+
 .form__small--red-dot {
     color: var(--red-dot);
 }
