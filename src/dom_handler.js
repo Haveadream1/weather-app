@@ -2,6 +2,8 @@ import { format } from "date-fns";
 import weatherConditions from "./utils/cond_icons_mapping";
 
 // TODO: Maybe full date like design 
+// TODO: choose between max_wind or wind
+// ? Metric image is handled on the html template, as icon
 
 const getWeatherIcons = (isDay, code) => {
 	// Return default in case icon cannot be found
@@ -26,6 +28,56 @@ const displayCurrentDate = (data) => {
 	return format(localTime, "EEEE, do LLLL");
 };
 
+const determineUvLabel = (uv) => {
+	// Based on the Global Solar UV Index (UVI)
+	if (uv <= 2) return "Low";
+	if (uv <= 5) return "Moderate";
+	if (uv <= 7) return "High";
+	if (uv <= 10) return "Very High";
+	
+	return "Extreme";
+};
+
+export const displayTodaySection = (data, unit) => {
+	const imgEl = document.querySelector(".today-section__img");
+	const cityEL = document.querySelector(".today-card__city");
+	const dateEl = document.querySelector(".today-card__date");
+	const tempEl = document.querySelector(".today-card__temp");
+	const unitEL = document.querySelector(".today-card__unit");
+	const feelsLikeEl = document.querySelector(".today-card__feels-like");
+
+	const formattedDate = displayCurrentDate(data);
+
+	cityEL.textContent = data.location.name;
+	dateEl.textContent = formattedDate;
+
+	const path = data.current;
+
+	// ? Need to refactor: seems a bit long and redundant ?
+	tempEl.textContent = (unit === "celsius") ? path.temp_c : path.temp_f;
+	unitEL.textContent = (unit === "celsius") ? "°C" : "°F";
+	feelsLikeEl.textContent = (unit === "celsius") ? `Feels like ${path.feelslike_c}°` : `Feels like ${path.feelslike_f}°`;
+
+	const imagePath = getWeatherIcons(path.is_day, path.condition.code);
+	imgEl.src = imagePath;
+	imgEl.alt = path.condition.text;
+};
+
+export const displayMetricsSection = (data, unit) => {
+	const humidityEl = document.querySelector("#humidity-value");
+	const windEl = document.querySelector("#wind-value");
+	const uvEl = document.querySelector("#uv-value");
+
+	const path = data.current;
+	humidityEl.textContent =  `${path.humidity}%`;
+	windEl.textContent = (unit === "celsius") ? `${path.wind_kph}km/h` : `${path.wind_mph}mph`
+
+	// UV at the exact time is not retrievable so use UV of the day
+	const uvValue = data.forecast.forecastday[0].day.uv;
+	const uvLabel = determineUvLabel(uvValue)
+	uvEl.textContent = `${uvValue}(${uvLabel})`;
+}
+
 export const displayTwilightSection = (data) => {
 	const sunriseTime = document.querySelector("#sunrise-time");
 	const sunsetTime = document.querySelector("#sunset-time");
@@ -40,26 +92,3 @@ export const displayTwilightSection = (data) => {
 	sunriseImg.src = weatherConditions[6000].rise;
 	sunsetImg.src = weatherConditions[6000].set;
 }
-
-export const displayTodaySection = (data, unitPreference) => {
-	const imgEl = document.querySelector(".today-section__img");
-	const cityEL = document.querySelector(".today-card__city");
-	const dateEl = document.querySelector(".today-card__date");
-	const tempEl = document.querySelector(".today-card__temp");
-	const unitEL = document.querySelector(".today-card__unit");
-	const feelsLikeEl = document.querySelector(".today-card__feels-like");
-
-	const formattedDate = displayCurrentDate(data);
-
-	cityEL.textContent = data.location.name;
-	dateEl.textContent = formattedDate;
-
-	// ? Need to refactor: seems a bit long and redundant ?
-	tempEl.textContent = (unitPreference === "celsius") ? data.current.temp_c : data.current.temp_f;
-	unitEL.textContent = (unitPreference === "celsius") ? "°C" : "°F";
-	feelsLikeEl.textContent = (unitPreference === "celsius") ? `Feels like ${data.current.feelslike_c}°` : `Feels like ${data.current.feelslike_f}°`;
-
-	const imagePath = getWeatherIcons(data.current.is_day, data.current.condition.code);
-	imgEl.src = imagePath;
-	imgEl.alt = data.current.condition.text;
-};

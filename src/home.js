@@ -30,6 +30,7 @@ const home = () => {
 			console.log(data);
 
 			domHandler.displayTodaySection(data, "celsius");
+			domHandler.displayMetricsSection(data, "celsius");
 			domHandler.displayTwilightSection(data);
 
 			// Store data only on fetch, so outside handleFecthSuccess
