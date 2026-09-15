@@ -1,4 +1,5 @@
 import * as domHandler from "./dom_handler";
+import * as hourlyHandler from "./utils/local_forecast_time";
 import StoredWeather from "./weather_class";
 
 import checkInput from "./utils/form_validation";
@@ -9,8 +10,6 @@ const url = "https://api.weatherapi.com/v1/forecast.json?";
 const home = () => {
 	const form = document.querySelector("#form");
 	const submitButton = document.querySelector("#submit-btn");
-
-	// ?
 
 	// Param can be a city or coordinates
 	async function getWeather(queryChoice) {
@@ -29,9 +28,19 @@ const home = () => {
 			const data = await response.json();
 			console.log(data);
 
+			// ?
+
+			const initialDay = 0;
+			const {currentDay, currentHour} = hourlyHandler.getCurrentLocalTime(initialDay, data.location.localtime);
+			const timeObject = hourlyHandler.getForecastTime(currentDay, currentHour);
+
 			domHandler.displayTodaySection(data, "celsius");
 			domHandler.displayMetricsSection(data, "celsius");
+			domHandler.displayHourlySection(data, timeObject, "celsius");
 			domHandler.displayTwilightSection(data);
+
+
+			// ?
 
 			// Store data only on fetch, so outside handleFecthSuccess
 			// storeWeatherData(queryChoice, data);
@@ -52,8 +61,6 @@ const home = () => {
 		} 
 		// domHandler.hideLoader();
 	}
-
-	// ?
 
 	const formHandler = () => {
 		const cityInput = document.querySelector("#city-input");

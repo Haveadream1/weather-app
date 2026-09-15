@@ -3,6 +3,7 @@ import weatherConditions from "./utils/cond_icons_mapping";
 
 // TODO: Maybe full date like design 
 // TODO: choose between max_wind or wind
+// TODO: Need to decide between ° or °C/F
 // ? Metric image is handled on the html template, as icon
 
 const getWeatherIcons = (isDay, code) => {
@@ -76,6 +77,29 @@ export const displayMetricsSection = (data, unit) => {
 	const uvValue = data.forecast.forecastday[0].day.uv;
 	const uvLabel = determineUvLabel(uvValue)
 	uvEl.textContent = `${uvValue}(${uvLabel})`;
+}
+
+export const displayHourlySection = (data, timeObject, unit) => {
+	const hourlyForecast = document.querySelectorAll(".hourly-forecast");
+
+	for (let i = 0; i < 4; i+=1) {
+		const {day} = timeObject[i];
+		const {hour} = timeObject[i];
+
+		const path = data.forecast.forecastday[day].hour[hour];
+		const date = path.time;
+		const image = getWeatherIcons(path.condition.is_day, path.condition.code);
+
+		// Avoid eslint errors assignment to function parameter
+		const hourlyItem = hourlyForecast[i];
+
+		hourlyItem.querySelector(".hourly-forecast__icon").src = image;
+		hourlyItem.querySelector(".hourly-forecast__icon").alt = path.condition.text;
+
+		// Clean format while slicing the full date instead of formatting hour constante
+		hourlyItem.querySelector(".hourly-forecast__time").textContent = date.slice(11, 16);
+		hourlyItem.querySelector(".hourly-forecast__temp").textContent = (unit === "celsius") ? `${path.temp_c}°C` : `${path.temp_f}°F`;
+	}
 }
 
 export const displayTwilightSection = (data) => {
