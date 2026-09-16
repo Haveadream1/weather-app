@@ -1,6 +1,6 @@
 import * as domHandler from "./dom_handler";
 import * as hourlyHandler from "./utils/local_forecast_time";
-import StoredWeather from "./weather_class";
+import * as storageHandler from "./utils/localStorage_handler";
 
 import checkInput from "./utils/form_validation";
 
@@ -11,12 +11,25 @@ const home = () => {
 	const form = document.querySelector("#form");
 	const submitButton = document.querySelector("#submit-btn");
 
+	const handleFetchSuccess = (data) => {
+		// const unitPreference = localStorage.getItem("unitPreference");
+		const initialDay = 0;
+		const {currentDay, currentHour} = hourlyHandler.getCurrentLocalTime(initialDay, data.location.localtime);
+		const timeObject = hourlyHandler.getForecastTime(currentDay, currentHour);
+
+		domHandler.displayTodaySection(data, "celsius");
+		domHandler.displayMetricsSection(data, "celsius");
+		domHandler.displayHourlySection(data, timeObject, "celsius");
+		domHandler.displayDailySection(data, "celsius");
+		domHandler.displayTwilightSection(data);
+	}
+
 	// Param can be a city or coordinates
 	async function getWeather(queryChoice) {
 		console.log("API Fetch trigger !")
 		// domHandler.showLoader();
 
-		// handleRecentCities(queryChoice);
+		storageHandler.handleRecentCities(queryChoice);
 		try {
 			const response = await fetch(
 				`${url}key=${KEY}&q=${queryChoice}&days=8&aqi=no&alerts=no`,
@@ -28,23 +41,14 @@ const home = () => {
 			const data = await response.json();
 			console.log(data);
 
-			// ?
+			// ? Testing zone
 
-			const initialDay = 0;
-			const {currentDay, currentHour} = hourlyHandler.getCurrentLocalTime(initialDay, data.location.localtime);
-			const timeObject = hourlyHandler.getForecastTime(currentDay, currentHour);
-
-			domHandler.displayTodaySection(data, "celsius");
-			domHandler.displayMetricsSection(data, "celsius");
-			domHandler.displayHourlySection(data, timeObject, "celsius");
-			domHandler.displayDailySection(data, "celsius");
-			domHandler.displayTwilightSection(data);
-
-
-			// ?
-
+			handleFetchSuccess(data);
+	
 			// Store data only on fetch, so outside handleFecthSuccess
-			// storeWeatherData(queryChoice, data);
+			storageHandler.storeWeatherData(queryChoice, data);
+
+			// ? Testing zone
 
 			// handleFetchSuccess(data);
 		} catch (error) {
@@ -61,6 +65,20 @@ const home = () => {
 			throw error;
 		} 
 		// domHandler.hideLoader();
+	}
+
+	// Initialization, fetch data from localStorage if exist
+	if(localStorage.getItem("weatherCache")) {
+		const savedCity = JSON.parse(localStorage.getItem("weatherCache"));
+		const {data} = savedCity;
+		console.log("LocalStorage fetch trigger !")
+
+		// const unitBtn = document.querySelector("#unit-btn");
+		// unitBtn.value = (!unitBtn.value) ? localStorage.getItem("unitPreference") : "celsius";
+
+		handleFetchSuccess(data);
+	} else {
+		getWeather("Seoul");
 	}
 
 	const formHandler = () => {
