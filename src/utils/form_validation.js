@@ -1,3 +1,5 @@
+import * as domHandler from "../dom_handler";
+
 const form = document.querySelector("#form");
 
 const isRequired = (inputValue) => {
@@ -24,11 +26,7 @@ const showError = (input, message) => {
     if (small.textContent) return;
 
     // Create DOM element to make the error more visible
-    const smallSpan = document.createElement("span");
-    smallSpan.classList.add("form__small--red-dot");
-    smallSpan.textContent = "*";
-    small.appendChild(smallSpan);
-    small.insertAdjacentText("beforeend", message);
+    domHandler.displayErrorMessage(message);
 };
 
 const showSuccess = (input) => {
@@ -39,17 +37,17 @@ const showSuccess = (input) => {
     small.textContent = "";
 };
 
-const checkInput = (cityInput, city) => {
+const checkInput = (input, city) => {
     let valid = false;
 
     // Check the input is not empty
     if (!isRequired(city)) {
-        showError(cityInput, "Choose a city");
+        showError(input, "Choose a city");
     // Check if the form is not flagged by the API call for invalid city
     } else if (!isCityValid()) {
-        showError(cityInput, "Invalid city name");
+        showError(input, "Invalid city name");
     } else {
-        showSuccess(cityInput);
+        showSuccess(input);
         valid = true;
     }
     return valid;

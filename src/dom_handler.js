@@ -1,11 +1,10 @@
 import { format } from "date-fns";
-import weatherConditions from "./utils/cond_icons_mapping";
+import weatherConditions from "./utils/weather_icons";
 
 // TODO: Maybe full date like design 
 // TODO: choose between max_wind or wind
 // TODO: Need to decide between ° or °C/F
 // TODO: Need to do daily bar
-// ? Metric image is handled on the html template, as icon
 
 const getWeatherIcons = (isDay, code) => {
 	// Return default in case icon cannot be found
@@ -39,6 +38,17 @@ const determineUvLabel = (uv) => {
 	
 	return "Extreme";
 };
+
+export const displayErrorMessage = (message) => {
+	const small = document.querySelector(".form__small");
+	if (small.textContent) small.textContent = "";
+
+	const smallSpan = document.createElement("span");
+	smallSpan.classList.add("form__small--red-dot");
+	smallSpan.textContent = "*";
+	small.appendChild(smallSpan);
+	small.insertAdjacentText("beforeend", message);
+}
 
 export const switchUnitButtonOnReload = (savedUnit) => {
 	// On refresh, the saved unit in localStorage can be different than the default in HTML template, so switch
