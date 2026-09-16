@@ -4,6 +4,8 @@ import weatherConditions from "./utils/cond_icons_mapping";
 // TODO: Maybe full date like design 
 // TODO: choose between max_wind or wind
 // TODO: Need to decide between ° or °C/F
+// TODO: Need to do daily bar
+// TODO: Loader
 // ? Metric image is handled on the html template, as icon
 
 const getWeatherIcons = (isDay, code) => {
@@ -39,6 +41,32 @@ const determineUvLabel = (uv) => {
 	return "Extreme";
 };
 
+export const switchUnitButtonOnReload = (savedUnit) => {
+	// On refresh, the saved unit in localStorage can be different than the default in HTML template, so switch
+	const defaultActiveBtn = document.querySelector(".unit-switch__btn--is-active");
+	if (defaultActiveBtn.getAttribute("data-unit") !== savedUnit) {
+		defaultActiveBtn.setAttribute("aria-pressed", "false");
+		defaultActiveBtn.classList.remove("unit-switch__btn--is-active");
+
+		// Can only happen to fahrenheit button as celsius is the default active
+		const newActiveBtn = document.querySelector("#fahrenheit-btn");
+		newActiveBtn.setAttribute("aria-pressed", "true");
+		newActiveBtn.classList.add("unit-switch__btn--is-active");
+	}
+}
+
+export const handleUnitButton = (element) => {
+	// HTML template should have a default active button
+	const previousActiveBtn = document.querySelector(".unit-switch__btn--is-active");
+	previousActiveBtn.setAttribute("aria-pressed", "false");
+	previousActiveBtn.classList.remove("unit-switch__btn--is-active");
+
+	// Target always the button element not what we might click inside the button
+	element.setAttribute("aria-pressed", "true");
+	element.classList.add("unit-switch__btn--is-active");
+	return  element.getAttribute("data-unit");
+}
+
 export const displayTodaySection = (data, unit) => {
 	const imgEl = document.querySelector(".today-section__img");
 	const cityEL = document.querySelector(".today-card__city");
@@ -69,11 +97,11 @@ export const displayMetricsSection = (data, unit) => {
 
 	const path = data.current;
 	humidityEl.textContent =  `${path.humidity}%`;
-	windEl.textContent = (unit === "celsius") ? `${path.wind_kph}km/h` : `${path.wind_mph}mph`
+	windEl.textContent = (unit === "celsius") ? `${path.wind_kph}km/h` : `${path.wind_mph}mph`;
 
 	// UV at the exact time is not retrievable so use UV of the day
 	const uvValue = data.forecast.forecastday[0].day.uv;
-	const uvLabel = determineUvLabel(uvValue)
+	const uvLabel = determineUvLabel(uvValue);
 	uvEl.textContent = `${uvValue}(${uvLabel})`;
 }
 

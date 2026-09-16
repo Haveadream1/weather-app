@@ -12,17 +12,39 @@ const home = () => {
 	const submitButton = document.querySelector("#submit-btn");
 
 	const handleFetchSuccess = (data) => {
-		// const unitPreference = localStorage.getItem("unitPreference");
+		const unit = localStorage.getItem("unitPreference");
 		const initialDay = 0;
 		const {currentDay, currentHour} = hourlyHandler.getCurrentLocalTime(initialDay, data.location.localtime);
 		const timeObject = hourlyHandler.getForecastTime(currentDay, currentHour);
 
-		domHandler.displayTodaySection(data, "celsius");
-		domHandler.displayMetricsSection(data, "celsius");
-		domHandler.displayHourlySection(data, timeObject, "celsius");
-		domHandler.displayDailySection(data, "celsius");
+		domHandler.displayTodaySection(data, unit);
+		domHandler.displayMetricsSection(data, unit);
+		domHandler.displayHourlySection(data, timeObject, unit);
+		domHandler.displayDailySection(data, unit);
 		domHandler.displayTwilightSection(data);
 	}
+
+	const switchUnit = (unit) => {
+		localStorage.setItem("unitPreference", unit);
+
+		const readValue = localStorage.getItem("unitPreference");
+		console.log(readValue);
+
+		// Improve performance by retrieving the localStorage instead of making an API call (Faster)
+		const savedCity = JSON.parse(localStorage.getItem("weatherCache"));
+		const {data} = savedCity;
+		console.log("LocalStorage fetch trigger !")
+
+		handleFetchSuccess(data);
+	}
+
+	document.querySelectorAll(".unit-switch__btn").forEach(el => {
+		el.addEventListener("click", (e) => {
+			const unit = domHandler.handleUnitButton(e.currentTarget);
+			switchUnit(unit);
+		});
+	})
+
 
 	// Param can be a city or coordinates
 	async function getWeather(queryChoice) {
@@ -73,8 +95,8 @@ const home = () => {
 		const {data} = savedCity;
 		console.log("LocalStorage fetch trigger !")
 
-		// const unitBtn = document.querySelector("#unit-btn");
-		// unitBtn.value = (!unitBtn.value) ? localStorage.getItem("unitPreference") : "celsius";
+		const savedUnit = localStorage.getItem("unitPreference");
+		domHandler.switchUnitButtonOnReload(savedUnit);
 
 		handleFetchSuccess(data);
 	} else {
