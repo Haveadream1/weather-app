@@ -1,13 +1,11 @@
 import * as domHandler from "./dom_handler";
-import * as hourlyHandler from "./utils/local_forecast_time";
-import * as storageHandler from "./utils/localStorage_handler";
+import * as hourlyHandler from "./utils/forecast_time";
+import * as storageHandler from "./utils/storage";
 
 import checkInput from "./utils/form_validation";
 
 const KEY = process.env.API_KEY;
 const url = "https://api.weatherapi.com/v1/forecast.json?";
-
-// TODO: separate the API call in his own utils file
 
 const home = () => {
 	const form = document.querySelector("#form");
@@ -52,7 +50,6 @@ const home = () => {
 		console.log("API Fetch trigger !")
 		domHandler.showLoader();
 
-		storageHandler.handleRecentCities(queryChoice);
 		try {
 			const response = await fetch(
 				`${url}key=${KEY}&q=${queryChoice}&days=8&aqi=no&alerts=no`,
@@ -64,15 +61,12 @@ const home = () => {
 			const data = await response.json();
 			console.log(data);
 
-			// ? Testing zone
-
+			// Store the fetched city name instead of the input as it might be more intuitive
+			storageHandler.handleRecentCities(data.location.name);
 			handleFetchSuccess(data);
 	
 			// Store data only on fetch, so outside handleFecthSuccess
 			storageHandler.storeWeatherData(queryChoice, data);
-
-			// ? Testing zone
-
 		} catch (error) {
 			// re-throwing the error, ensure error is propagated up the call stack
 			console.error("An error occurred while fetching data:", error);
@@ -81,14 +75,12 @@ const home = () => {
 			form.classList.remove("valid");
 			
 			const cityInput = document.querySelector("#city-input");
-			// TODO: WHY check here ?
 			checkInput(cityInput, queryChoice);
-
-			throw error;
 		} 
 		domHandler.hideLoader();
 	}
 
+	// Run on each time the file is loaded
 	domHandler.displayMetricsIcon();
 
 	// Initialization, fetch data from localStorage if exist
@@ -105,8 +97,6 @@ const home = () => {
 		getWeather("Seoul");
 	}
 
-	// ? TESTING
-
 	const small = document.querySelector(".form__small");
 	const success = (position) => {
 		const {latitude} = position.coords;
@@ -118,31 +108,19 @@ const home = () => {
 		getWeather(`${latitude},${longitude}`);
 	}
 
-	const error = () => {
-		// Can also be led by localisation not allowed in browser parameters
-		if (small.textContent) small.textContent = "";
-
-		// TODO: Move it to DOM
-		const smallSpan = document.createElement("span");
-		smallSpan.classList.add("form__small--red-dot");
-		smallSpan.textContent = "*";
-		small.appendChild(smallSpan);
-		small.insertAdjacentText("beforeend", "Error during geolocation");
-	}
-
 	const findGeolocation = () => {
 		if (!navigator.geolocation) {
 			small.textContent = "Geolocation not supported for this browser";
 		} else {
 			small.textContent = "Locating position...";
 
-			// Need to have success / error callback as parameters
+			// Error an also be led by localisation not allowed in browser parameters
+			const error = domHandler.displayErrorMessage("Error during geolocation");
 			navigator.geolocation.getCurrentPosition(success, error);
 		}
 	}
 	document.querySelector(".geolocation-btn").addEventListener("click", findGeolocation);
-	// ? TESTING
-
+	
 	const formHandler = () => {
 		const cityInput = document.querySelector("#city-input");
 		const city = cityInput.value.trim();
@@ -151,7 +129,6 @@ const home = () => {
 
 		if (isFormValid) {
 			getWeather(city);
-
 			cityInput.classList.remove("success");
 
 			console.log("Valid form");
@@ -174,16 +151,11 @@ const home = () => {
 		const cityInput = document.querySelector("#city-input");
 		const city = cityInput.value.trim();
 
-		form.classList.add("valid"); // As we can receive en error in the call, reset if input change
+		// As we can receive en error in the call, reset if input change
+		form.classList.add("valid");
 		form.classList.remove("invalid");
 
-		switch (e.target.id) {
-			case "city-input":
-				checkInput(cityInput, city);
-				break;
-			default: // Default case to avoid error eslint
-			// TODO: check
-		}
+		if (e.target.id === "city-input") checkInput(cityInput, city);
 	});
 };
 export default home;
