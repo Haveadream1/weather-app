@@ -1,9 +1,9 @@
 import StoredWeather from "../weather_class";
 
-// Array limited to 3 elements
-const recentCitiesArr = [];
-
 export const handleRecentCities = (queryChoice) => {
+    // Fetch array if already exists otherwise create it; limited to 3 elements
+    const recentCitiesArr = JSON.parse(localStorage.getItem("recentSearches")) || [];
+    
     // Remove the oldest city saved
     if (recentCitiesArr.length >= 3) recentCitiesArr.pop();
 
