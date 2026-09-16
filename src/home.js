@@ -50,7 +50,7 @@ const home = () => {
 	// Param can be a city or coordinates
 	async function getWeather(queryChoice) {
 		console.log("API Fetch trigger !")
-		// domHandler.showLoader();
+		domHandler.showLoader();
 
 		storageHandler.handleRecentCities(queryChoice);
 		try {
@@ -73,7 +73,6 @@ const home = () => {
 
 			// ? Testing zone
 
-			// handleFetchSuccess(data);
 		} catch (error) {
 			// re-throwing the error, ensure error is propagated up the call stack
 			console.error("An error occurred while fetching data:", error);
@@ -82,16 +81,16 @@ const home = () => {
 			form.classList.remove("valid");
 			
 			const cityInput = document.querySelector("#city-input");
-			// WHY check here ?
+			// TODO: WHY check here ?
 			checkInput(cityInput, queryChoice);
 
 			throw error;
 		} 
-		// domHandler.hideLoader();
+		domHandler.hideLoader();
 	}
 
 	domHandler.displayMetricsIcon();
-	
+
 	// Initialization, fetch data from localStorage if exist
 	if(localStorage.getItem("weatherCache")) {
 		const savedCity = JSON.parse(localStorage.getItem("weatherCache"));

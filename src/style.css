@@ -149,6 +149,15 @@ form {
 
 /* MAIN */
 /* :today-section */
+.loader {
+    position: absolute;
+    top: 10%;
+}
+
+.loader--hidden {
+    display: none;
+}
+
 .today-section {
     display: flex;
     flex-direction: column;

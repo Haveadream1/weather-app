@@ -5,7 +5,6 @@ import weatherConditions from "./utils/cond_icons_mapping";
 // TODO: choose between max_wind or wind
 // TODO: Need to decide between ° or °C/F
 // TODO: Need to do daily bar
-// TODO: Loader
 // ? Metric image is handled on the html template, as icon
 
 const getWeatherIcons = (isDay, code) => {
@@ -65,6 +64,14 @@ export const handleUnitButton = (element) => {
 	element.setAttribute("aria-pressed", "true");
 	element.classList.add("unit-switch__btn--is-active");
 	return  element.getAttribute("data-unit");
+}
+
+export const showLoader = () => {
+  document.querySelector("#loader").classList.remove("loader--hidden");
+}
+
+export const hideLoader = () => {
+  document.querySelector("#loader").classList.add("loader--hidden");
 }
 
 export const displayTodaySection = (data, unit) => {
