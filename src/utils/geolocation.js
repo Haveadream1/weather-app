@@ -1,32 +1,33 @@
-// // Use the Geolocation API
-// import * as home from "../home";
-
-// const statusEl = document.querySelector("#status");
-
+// const small = document.querySelector(".form__small");
 // const success = (position) => {
 //     const {latitude} = position.coords;
 //     const {longitude} = position.coords;
 
-//     statusEl.textContent = "";
+//     small.textContent = "";
 //     console.log(latitude, longitude);
 
-//     home.getWeather(`${latitude},${longitude}`);
-//     return {latitude, longitude};
+//     getWeather(`${latitude},${longitude}`);
 // }
 
 // const error = () => {
-//     statusEl.textContent = "Error while locating user's position";
-//     // Add also error class
+//     // Can also be led by localisation not allowed in browser parameters
+//     if (small.textContent) small.textContent = "";
+
+//     const smallSpan = document.createElement("span");
+//     smallSpan.classList.add("form__small--red-dot");
+//     smallSpan.textContent = "*";
+//     small.appendChild(smallSpan);
+//     small.insertAdjacentText("beforeend", "Error during geolocation");
 // }
 
-// // eslint-disable-next-line import/prefer-default-export
-// export const findGeolocation = () => {
+// const findGeolocation = () => {
 //     if (!navigator.geolocation) {
-//         statusEl.textContent = "Geolocation not supported for this browser";
+//         small.textContent = "Geolocation not supported for this browser";
 //     } else {
-//         statusEl.textContent = "Locating position...";
+//         small.textContent = "Locating position...";
 
 //         // Need to have success / error callback as parameters
 //         navigator.geolocation.getCurrentPosition(success, error);
 //     }
 // }
+// document.querySelector(".geolocation-btn").addEventListener("click", findGeolocation);
