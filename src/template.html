@@ -11,13 +11,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     
-    <!-- TODO: meta description, favicon, title, content for PWA -->
+    <!-- TODO: favicon content for PWA -->
     <title>Weather</title>
 </head>
 <body>
     <header>
-        <!-- ? CHECK: No action because we handle with event.preventDefault(); ?? -->
-        <form id="form" action="">
+        <!-- No action because we handle with preventDefault without backend point -->
+        <form id="form" class="valid" novalidate>
             <label for="city-input" class="sr-only">Search a city</label>
             <input id="city-input" class="form__input" type="text" placeholder="Search location...">
                
