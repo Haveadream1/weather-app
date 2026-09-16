@@ -90,6 +90,8 @@ const home = () => {
 		// domHandler.hideLoader();
 	}
 
+	domHandler.displayMetricsIcon();
+	
 	// Initialization, fetch data from localStorage if exist
 	if(localStorage.getItem("weatherCache")) {
 		const savedCity = JSON.parse(localStorage.getItem("weatherCache"));

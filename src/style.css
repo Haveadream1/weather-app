@@ -12,7 +12,7 @@
     /* Colors */
     --light-blue: #E3E8F0;
     --dark-blue: #5B6D86;
-    --light-grey: rgb(148, 163, 184);
+    --light-grey: #94a3b8;
     --white-bck: white;
     --black-text: black;
     --red-dot: red;
@@ -112,7 +112,7 @@ form {
 }
 
 .geolocation-btn {
-    padding: var(--space-4xs);
+    padding: var(--space-3xs);
     border-radius: var(--border-rad-xs);
     border: 1.5px solid var(--light-blue);
     background-color: var(--white-bck);

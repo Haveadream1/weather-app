@@ -90,6 +90,16 @@ export const displayTodaySection = (data, unit) => {
 	imgEl.alt = path.condition.text;
 };
 
+export const displayMetricsIcon = () => {
+	const humidityIcon = document.querySelector("#humidity-icon");
+	const windIcon = document.querySelector("#wind-icon");
+	const uvIcon = document.querySelector("#uv-icon");
+
+	humidityIcon.src = weatherConditions[7000].humidity;
+	windIcon.src = weatherConditions[7000].wind;
+	uvIcon.src = weatherConditions[7000].uv;
+}
+
 export const displayMetricsSection = (data, unit) => {
 	const humidityEl = document.querySelector("#humidity-value");
 	const windEl = document.querySelector("#wind-value");
