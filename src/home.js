@@ -37,6 +37,7 @@ const home = () => {
 			domHandler.displayTodaySection(data, "celsius");
 			domHandler.displayMetricsSection(data, "celsius");
 			domHandler.displayHourlySection(data, timeObject, "celsius");
+			domHandler.displayDailySection(data, "celsius");
 			domHandler.displayTwilightSection(data);
 
 

@@ -14,19 +14,19 @@ const getWeatherIcons = (isDay, code) => {
 	return (isDay === 0) ? weatherConditions[code].day : weatherConditions[code].night;
 }
 
-const displayCurrentDate = (data) => {
+const formatDate = (data, forecastDate) => {
 	// Fetch the local time zone to display the correct local date
 	const localTimeZone = data.location.tz_id;
 
-	const date = new Date();
+	const date = (forecastDate) ? new Date(forecastDate) : new Date();
 	const localTime = new Intl.DateTimeFormat("en-us", {
 		timeZone: localTimeZone,
 		dateStyle: "full"
 	}).format(date);
 
 	// Full name of the day of the week - Day of the month with suffix - Full name of the month
-	// Monday, 7th September
-	return format(localTime, "EEEE, do LLLL");
+	// Monday, 7th September OR // Monday
+	return (!forecastDate) ? format(localTime, "EEEE, do LLLL") : format(localTime, "EEEE");
 };
 
 const determineUvLabel = (uv) => {
@@ -47,10 +47,8 @@ export const displayTodaySection = (data, unit) => {
 	const unitEL = document.querySelector(".today-card__unit");
 	const feelsLikeEl = document.querySelector(".today-card__feels-like");
 
-	const formattedDate = displayCurrentDate(data);
-
 	cityEL.textContent = data.location.name;
-	dateEl.textContent = formattedDate;
+	dateEl.textContent = formatDate(data);
 
 	const path = data.current;
 
@@ -99,6 +97,30 @@ export const displayHourlySection = (data, timeObject, unit) => {
 		// Clean format while slicing the full date instead of formatting hour constante
 		hourlyItem.querySelector(".hourly-forecast__time").textContent = date.slice(11, 16);
 		hourlyItem.querySelector(".hourly-forecast__temp").textContent = (unit === "celsius") ? `${path.temp_c}°C` : `${path.temp_f}°F`;
+	}
+}
+
+export const displayDailySection = (data, unit) => {
+	const dailyForecast = document.querySelectorAll(".daily-forecast");
+	const dailyItem = document.querySelectorAll(".daily-forecast");
+
+	// With the API, limited to 3 day forecast including (today, next, next-next day)
+	for (let i = 0; i < 3; i+=1) {
+		const path = data.forecast.forecastday[i].day;
+
+		// With the timeZone and the date, format it to fetch the day of the week
+		const day = dailyForecast[i].querySelector(".daily-forecast__day");
+		day.textContent = formatDate(data, data.forecast.forecastday[i].date);
+
+		const item = dailyItem[i];
+
+		// For forecast, display the daytime's icon
+		const image = getWeatherIcons(0, path.condition.code);
+
+		item.querySelector(".daily-item__icon").src = image;
+		item.querySelector(".daily-item__icon").alt = path.condition.text;
+		item.querySelector(".daily-item__temp-min").textContent = (unit === "celsius") ? `${path.mintemp_c}°C` : `${path.mintemp_f}°F`;
+		item.querySelector(".daily-item__temp-max").textContent = (unit === "celsius") ? `${path.maxtemp_c}°C` : `${path.maxtemp_f}°F`;
 	}
 }
 
