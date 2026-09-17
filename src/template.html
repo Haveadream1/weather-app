@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- ? Should lang change depending on geolocation language ? -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     
-    <!-- TODO: favicon content for PWA -->
+    <link rel="icon" type="image/svg" href="./assets/favicon.svg" width="20" height="20">
     <title>Weather</title>
 </head>
 <body>
@@ -43,7 +42,6 @@
             
             <img class="today-section__img" src="https://placehold.co/260x240" alt="" width="260" height="240">
 
-            <!-- ? Small dot like green or yellow to mean weather is freshly fetched ? -->
             <div class="today-card">
                 <div>
                     <span class="today-card__city">Seoul</span>
@@ -92,7 +90,6 @@
                 <span class="hourly-text__addtl">Next 6 Hours</span>
             </div>
 
-            <!-- TODO: Don't forget to add class to target bck colour dynamically with temp -->
             <div class="hourly-list">
                 <div class="hourly-forecast">
                     <span class="hourly-forecast__time">10:30 AM</span>
@@ -106,7 +103,6 @@
                     <span class="hourly-forecast__temp">22°</span>
                 </div>
 
-                <!-- ? CHECK: JS should be formatter hh:mm -->
                 <div class="hourly-forecast">
                     <span class="hourly-forecast__time">01:30 PM</span>
                     <img class="hourly-forecast__icon" src="https://placehold.co/20x20" alt="" width="50" height="50">
