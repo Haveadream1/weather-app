@@ -2,10 +2,8 @@ import * as domHandler from "./dom_handler";
 import * as hourlyHandler from "./utils/forecast_time";
 import * as storageHandler from "./utils/storage";
 
+import fetchData from "./utils/api";
 import checkInput from "./utils/form_validation";
-
-const KEY = process.env.API_KEY;
-const url = "https://api.weatherapi.com/v1/forecast.json?";
 
 const home = () => {
 	const form = document.querySelector("#form");
@@ -46,25 +44,15 @@ const home = () => {
 	})
 
 	// Param can be a city or coordinates
-	async function getWeather(queryChoice) {
-		console.log("API Fetch trigger !")
+	const homeHandler = async (queryChoice) => {
 		domHandler.showLoader();
-
 		try {
-			const response = await fetch(
-				`${url}key=${KEY}&q=${queryChoice}&days=8&aqi=no&alerts=no`,
-				{ mode: "cors" },
-			);
-			if (!response.ok) {
-				throw new Error(`HTTP error, status: ${response.status}`);
-			}
-			const data = await response.json();
-			console.log(data);
+			const data = await fetchData(queryChoice);
 
 			// Store the fetched city name instead of the input as it might be more intuitive
 			storageHandler.handleRecentCities(data.location.name);
 			handleFetchSuccess(data);
-	
+
 			// Store data only on fetch, so outside handleFecthSuccess
 			storageHandler.storeWeatherData(queryChoice, data);
 		} catch (error) {
@@ -76,7 +64,7 @@ const home = () => {
 			
 			const cityInput = document.querySelector("#city-input");
 			checkInput(cityInput, queryChoice);
-		} 
+		}
 		domHandler.hideLoader();
 	}
 
@@ -94,7 +82,7 @@ const home = () => {
 
 		handleFetchSuccess(data);
 	} else {
-		getWeather("Seoul");
+		homeHandler("Seoul");
 	}
 
 	const small = document.querySelector(".form__small");
@@ -105,7 +93,7 @@ const home = () => {
 		small.textContent = "";
 		console.log(latitude, longitude);
 
-		getWeather(`${latitude},${longitude}`);
+		homeHandler(`${latitude},${longitude}`);
 	}
 
 	const findGeolocation = () => {
@@ -114,9 +102,8 @@ const home = () => {
 		} else {
 			small.textContent = "Locating position...";
 
-			// Error an also be led by localisation not allowed in browser parameters
-			const error = domHandler.displayErrorMessage("Error during geolocation");
-			navigator.geolocation.getCurrentPosition(success, error);
+			// Error can also be led by localisation not allowed in browser parameters
+			navigator.geolocation.getCurrentPosition(success, domHandler.displayErrorMessage("Error during geolocation"));
 		}
 	}
 	document.querySelector(".geolocation-btn").addEventListener("click", findGeolocation);
@@ -125,10 +112,9 @@ const home = () => {
 		const cityInput = document.querySelector("#city-input");
 		const city = cityInput.value.trim();
 		const isCityChoiceValid = checkInput(cityInput, city);
-		const isFormValid = isCityChoiceValid;
 
-		if (isFormValid) {
-			getWeather(city);
+		if (isCityChoiceValid) {
+			homeHandler(city);
 			cityInput.classList.remove("success");
 
 			console.log("Valid form");
