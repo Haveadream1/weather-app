@@ -169,6 +169,17 @@ export const displayHourlySection = (data, timeObject, unit) => {
 		// Avoid eslint errors assignment to function parameter
 		const hourlyItem = hourlyForecast[i];
 
+		// Remove style that may be still applied from last data
+		hourlyItem.classList.remove("hourly-forecast--warm");
+		hourlyItem.classList.remove("hourly-forecast--cold");
+
+		// Dynamically change the background in function of weather condition
+		if (path.condition.code === 1000) { // Clear-Sunny
+			hourlyItem.classList.add("hourly-forecast--warm");
+		} else {
+			hourlyItem.classList.add("hourly-forecast--cold");
+		}
+
 		hourlyItem.querySelector(".hourly-forecast__icon").src = image;
 		hourlyItem.querySelector(".hourly-forecast__icon").alt = path.condition.text;
 

@@ -18,6 +18,13 @@
     --red-dot: red;
     --success: green;
     --error: red;
+    --humidity-blue: #2159e21a;
+    --wind-red: #de2a2a26;
+    --uv-yellow: #f8af1829;
+
+    /* Gradients */
+    --warm-gradient: linear-gradient(to bottom, #ffdb6666, #FCD34D);
+    --cold-gradient:  linear-gradient(to bottom, #59dbff45, #4dacfc);
 
     /* Spacing */
     --space-5xs: 0.125rem;
@@ -245,6 +252,23 @@ form {
     font-weight: 600;
 }
 
+.metric__icon {
+    border-radius: var(--border-rad-base);
+}
+
+#humidity-icon {
+    background-color: var(--humidity-blue);
+    
+}
+
+#wind-icon {
+    background-color: var(--wind-red);
+}
+
+#uv-icon {
+    background-color: var(--uv-yellow);
+}
+
 /* :hourly-section */
 .hourly-section {
     padding: 0 var(--space-2xs)
@@ -273,8 +297,14 @@ form {
     padding: var(--space-base) 0 0 0;
 }
 
+.hourly-forecast--warm {
+    background: var(--warm-gradient);
+}
+.hourly-forecast--cold {
+    background: var(--cold-gradient);;
+}
+
 .hourly-forecast {
-    background-color: var(--light-grey);
     display: flex;
     flex-direction: column;
     align-items: center;
