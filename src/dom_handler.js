@@ -4,7 +4,6 @@ import weatherConditions from "./utils/weather_icons";
 // TODO: Maybe full date like design 
 // TODO: choose between max_wind or wind
 // TODO: Need to decide between ° or °C/F
-// TODO: Need to do daily bar
 
 const getWeatherIcons = (isDay, code) => {
 	// Return default in case icon cannot be found
@@ -38,6 +37,30 @@ const determineUvLabel = (uv) => {
 	
 	return "Extreme";
 };
+
+const getGlobalRange = (data) => {
+	const path = data.forecast;
+	const minArr = [];
+	const maxArr = [];
+
+	path.forecastday.forEach((el) => {
+		minArr.push(el.day.mintemp_c);
+		maxArr.push(el.day.maxtemp_c);
+	})
+
+	const globalMin = Math.min(...minArr);
+	const globalMax = Math.max(...maxArr);
+	const globalRange = globalMax - globalMin;
+	
+	return { globalMin , globalRange}
+}
+
+// Calculate for each day where the min/max temp are situed on the global range
+const getBarPosition = (dayMin, dayMax, globalMin, globalRange) => {
+	const leftPercent = ((dayMin - globalMin) / globalRange) * 100;
+	const widthPercent = ((dayMax - dayMin) / globalRange) * 100;
+	return { leftPercent, widthPercent};
+}
 
 export const displayErrorMessage = (message) => {
 	const small = document.querySelector(".form__small");
@@ -159,6 +182,8 @@ export const displayDailySection = (data, unit) => {
 	const dailyForecast = document.querySelectorAll(".daily-forecast");
 	const dailyItem = document.querySelectorAll(".daily-forecast");
 
+	const {globalMin, globalRange} = getGlobalRange(data);
+
 	// With the API, limited to 3 day forecast including (today, next, next-next day)
 	for (let i = 0; i < 3; i+=1) {
 		const path = data.forecast.forecastday[i].day;
@@ -176,6 +201,11 @@ export const displayDailySection = (data, unit) => {
 		item.querySelector(".daily-item__icon").alt = path.condition.text;
 		item.querySelector(".daily-item__temp-min").textContent = (unit === "celsius") ? `${path.mintemp_c}°C` : `${path.mintemp_f}°F`;
 		item.querySelector(".daily-item__temp-max").textContent = (unit === "celsius") ? `${path.maxtemp_c}°C` : `${path.maxtemp_f}°F`;
+	
+		// Thermal Range Spectrum represents a range of heat temparatures classified by length
+		const { leftPercent, widthPercent } = getBarPosition(path.mintemp_c, path.maxtemp_c, globalMin, globalRange);
+		item.querySelector(".daily-item__bar").style.marginLeft = `${leftPercent}%`;
+		item.querySelector(".daily-item__bar").style.width = `${widthPercent}%`;
 	}
 }
 

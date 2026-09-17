@@ -28,7 +28,7 @@
     --space-base: 1rem;
     --space-md: 1.5rem;
     --space-xl: 2.1875rem;
-    /* ! Too big I think, check at the end */
+    /* ? Too big I think, check at the end */
     /* --space-xl: 2.25rem; */
 
     /* Border-radius */
@@ -45,8 +45,6 @@
     --font-md: 1.5rem;
     --font-xl: 2.5rem; 
 }
-
-/* TODO: refactor box-shadow */
 
 /* ! For debugging purpose */
 html {
@@ -326,7 +324,7 @@ form {
 
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
     align-items: center;
 }
 
@@ -334,15 +332,25 @@ form {
     display: grid;
     gap: var(--space-2xs);
     grid-auto-flow: column;
-    grid-template-columns: 1fr 1fr 5fr 1fr;
+    grid-template-columns: auto 5ch 1fr 5ch;
     align-items: center;
     text-align: center;
 }
 
-.daily-item__bar {
+.daily-item__bar--wrapper {
+    position: relative;
     background-color: var(--white-bck);
-    /* TODO: change later */
+    width: 100%;
     height: 10px;
+    border-radius: var(--border-rad-base);;
+}
+
+.daily-item__bar {
+    position: absolute;
+    height: 100%;
+    border-radius: var(--border-rad-base);;
+    /* TODO: color choice */
+    background: linear-gradient(to right, rgb(88, 88, 213), orange);
 }
 
 .daily-item__temp-min,
@@ -379,7 +387,6 @@ form {
     font-size: var(--font-xs);
 }
 
-/* TODO: Check name */
 /* UTILS */
 .sr-only {
     position: absolute;
