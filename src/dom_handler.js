@@ -1,10 +1,6 @@
 import { format } from "date-fns";
 import weatherConditions from "./utils/weather_icons";
 
-// TODO: Maybe full date like design 
-// TODO: choose between max_wind or wind
-// TODO: Need to decide between ° or °C/F
-
 const getWeatherIcons = (isDay, code) => {
 	// Return default in case icon cannot be found
 	if (!weatherConditions[code].day || !weatherConditions[code].night) return weatherConditions[code].day;
@@ -62,6 +58,19 @@ const getBarPosition = (dayMin, dayMax, globalMin, globalRange) => {
 	return { leftPercent, widthPercent};
 }
 
+const applyDynamicGradient = (el, coldClassName, warmClassName, code) => {
+	// Remove style that may be still applied from last data
+	el.classList.remove(warmClassName);
+	el.classList.remove(coldClassName);
+
+	// Dynamically change the background in function of weather condition
+	if (code === 1000) { // Clear-Sunny
+		el.classList.add(warmClassName);
+	} else {
+		el.classList.add(coldClassName);
+	}
+}
+
 export const displayErrorMessage = (message) => {
 	const small = document.querySelector(".form__small");
 	if (small.textContent) small.textContent = "";
@@ -88,7 +97,7 @@ export const switchUnitButtonOnReload = (savedUnit) => {
 }
 
 export const handleUnitButton = (element) => {
-	// HTML template should have a default active button
+	// Info: HTML template should have a default active button
 	const previousActiveBtn = document.querySelector(".unit-switch__btn--is-active");
 	previousActiveBtn.setAttribute("aria-pressed", "false");
 	previousActiveBtn.classList.remove("unit-switch__btn--is-active");
@@ -120,7 +129,6 @@ export const displayTodaySection = (data, unit) => {
 
 	const path = data.current;
 
-	// ? Need to refactor: seems a bit long and redundant ?
 	tempEl.textContent = (unit === "celsius") ? path.temp_c : path.temp_f;
 	unitEL.textContent = (unit === "celsius") ? "°C" : "°F";
 	feelsLikeEl.textContent = (unit === "celsius") ? `Feels like ${path.feelslike_c}°` : `Feels like ${path.feelslike_f}°`;
@@ -169,21 +177,12 @@ export const displayHourlySection = (data, timeObject, unit) => {
 		// Avoid eslint errors assignment to function parameter
 		const hourlyItem = hourlyForecast[i];
 
-		// Remove style that may be still applied from last data
-		hourlyItem.classList.remove("hourly-forecast--warm");
-		hourlyItem.classList.remove("hourly-forecast--cold");
-
-		// Dynamically change the background in function of weather condition
-		if (path.condition.code === 1000) { // Clear-Sunny
-			hourlyItem.classList.add("hourly-forecast--warm");
-		} else {
-			hourlyItem.classList.add("hourly-forecast--cold");
-		}
+		applyDynamicGradient(hourlyItem, "hourly-forecast--cold", "hourly-forecast--warm", path.condition.code);
 
 		hourlyItem.querySelector(".hourly-forecast__icon").src = image;
 		hourlyItem.querySelector(".hourly-forecast__icon").alt = path.condition.text;
 
-		// Clean format while slicing the full date instead of formatting hour constante
+		// Clean format while slicing the full date instead of formatting hour constant
 		hourlyItem.querySelector(".hourly-forecast__time").textContent = date.slice(11, 16);
 		hourlyItem.querySelector(".hourly-forecast__temp").textContent = (unit === "celsius") ? `${path.temp_c}°C` : `${path.temp_f}°F`;
 	}
@@ -215,8 +214,12 @@ export const displayDailySection = (data, unit) => {
 	
 		// Thermal Range Spectrum represents a range of heat temparatures classified by length
 		const { leftPercent, widthPercent } = getBarPosition(path.mintemp_c, path.maxtemp_c, globalMin, globalRange);
-		item.querySelector(".daily-item__bar").style.marginLeft = `${leftPercent}%`;
-		item.querySelector(".daily-item__bar").style.width = `${widthPercent}%`;
+		const bar = item.querySelector(".daily-item__bar"); 
+
+		bar.style.marginLeft = `${leftPercent}%`;
+		bar.style.width = `${widthPercent}%`;
+
+		applyDynamicGradient(bar, "daily-item__bar--cold", "daily-item__bar--warm", path.condition.code);
 	}
 }
 

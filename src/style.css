@@ -23,20 +23,23 @@
     --uv-yellow: #f8af1829;
 
     /* Gradients */
-    --warm-gradient: linear-gradient(to bottom, #ffdb6666, #FCD34D);
-    --cold-gradient:  linear-gradient(to bottom, #59dbff45, #4dacfc);
+    --hourly-warm-gradient: linear-gradient(to bottom, #ffdb6666, #FCD34D);
+    --hourly-cold-gradient:  linear-gradient(to bottom, #59dbff45, #4dacfc);
+    --bar-warm-gradient: linear-gradient(to right, var(--light-blue), orange);
+    --bar-cold-gradient: linear-gradient(to right, var(--light-blue), #4dacfc);
+
+    /* Box-shadow */
+    --light-shadow: 0px 0px 20px 0px rgb(232, 236, 242);
 
     /* Spacing */
-    --space-5xs: 0.125rem;
-    --space-4xs: 0.25rem;
-    --space-3xs: 0.375rem;
-    --space-2xs: 0.5rem;
-    --space-xs: 0.75rem;
+    --space-4xs: 0.125rem;
+    --space-3xs: 0.25rem;
+    --space-2xs: 0.375rem;
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
     --space-base: 1rem;
     --space-md: 1.5rem;
     --space-xl: 2.1875rem;
-    /* ? Too big I think, check at the end */
-    /* --space-xl: 2.25rem; */
 
     /* Border-radius */
     --border-rad-2xs: 0.5rem;
@@ -53,7 +56,6 @@
     --font-xl: 2.5rem; 
 }
 
-/* ! For debugging purpose */
 html {
     display: flex;
     justify-content: center;
@@ -69,18 +71,14 @@ body {
     max-width: 430px;
 
     /* Visual aid */
-    border: dashed 2px red;
-
-    /* TODO: 'issue' add safe area */
-    /* padding-bottom: 20px;
-    padding-bottom: env(safe-area-inset-bottom); */
+    border: dashed 2px red; 
 }
 
 /* HEADER */
 header {
     display: flex;
     gap: var(--space-base);
-    padding: var(--space-2xs);
+    padding: var(--space-xs);
     justify-content: space-between;
 }
 
@@ -91,8 +89,7 @@ form {
 
 .form__input {
     min-width: 100%;
-    padding: var(--space-2xs);
-
+    padding: var(--space-xs);
     border-radius: var(--border-rad-xs);
     border: 1.5px solid var(--light-blue);
 }
@@ -108,7 +105,7 @@ form {
 .form__small {
     font-size: var(--font-2xs);
     position: absolute;
-    left: var(--space-2xs);
+    left: var(--space-xs);
     top: var(--space-xl);
 }
 
@@ -117,21 +114,22 @@ form {
 }
 
 .geolocation-btn {
-    padding: var(--space-3xs);
-    border-radius: var(--border-rad-xs);
-    border: 1.5px solid var(--light-blue);
-    background-color: var(--white-bck);
-
     display: flex;
     justify-content: center;
     align-items: center;
+
+    padding: var(--space-2xs);
+    border-radius: var(--border-rad-xs);
+    border: 1.5px solid var(--light-blue);
+    background-color: var(--white-bck);
 }
 
 .unit-switch {
     display: flex;
     align-items: center;
-    gap: var(--space-4xs);
-    padding: var(--space-4xs);
+    gap: var(--space-3xs);
+
+    padding: var(--space-3xs);
     border-radius: var(--border-rad-sm);
     background-color: var(--light-blue);
 }
@@ -139,7 +137,7 @@ form {
 .unit-switch__btn {
     min-height: 100%;
     border: 0 none;
-    padding: var(--space-3xs);
+    padding: var(--space-2xs);
     border-radius: var(--border-rad-2xs);
     font-weight: 500;
     font-size: var(--font-xs);
@@ -176,7 +174,7 @@ form {
     position: absolute;
     bottom: var(--font-sm);
 
-    padding: var(--space-xs) var(--space-md);
+    padding: var(--space-sm) var(--space-md);
     border-radius: var(--border-rad-base);
     width: 90%;
 
@@ -219,7 +217,7 @@ form {
 
 /* :metrics-section */
 .metrics-section {
-    padding: var(--space-base) var(--space-2xs);
+    padding: var(--space-base) var(--space-xs);
 }
 
 .metrics-list {
@@ -237,14 +235,13 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-
-    box-shadow: 0px 0px 20px 0px rgb(232, 236, 242);
+    box-shadow: var(--light-shadow);
 }
 
 .metric__name {
     font-size: var(--font-3xs);
     color: var(--light-grey);
-    padding: var(--space-5xs) 0;
+    padding: var(--space-4xs) 0;
 }
 
 .metric__value {
@@ -258,7 +255,6 @@ form {
 
 #humidity-icon {
     background-color: var(--humidity-blue);
-    
 }
 
 #wind-icon {
@@ -271,7 +267,7 @@ form {
 
 /* :hourly-section */
 .hourly-section {
-    padding: 0 var(--space-2xs)
+    padding: 0 var(--space-xs)
 }
 
 .hourly-text {
@@ -298,10 +294,10 @@ form {
 }
 
 .hourly-forecast--warm {
-    background: var(--warm-gradient);
+    background: var(--hourly-warm-gradient);
 }
 .hourly-forecast--cold {
-    background: var(--cold-gradient);;
+    background: var(--hourly-cold-gradient);
 }
 
 .hourly-forecast {
@@ -318,7 +314,7 @@ form {
 }
 
 .hourly-forecast__icon {
-    padding: var(--space-5xs) 0;
+    padding: var(--space-4xs) 0;
  }
 
 .hourly-forecast__temp {
@@ -329,18 +325,19 @@ form {
 
 /* :daily-section */
 .daily-section {
-    background-color: var(--light-blue);
-    margin: var(--space-base) var(--space-2xs);
+    background-color: var(--white-bck);
+    margin: var(--space-base) var(--space-xs);
     border-radius: var(--border-rad-base);
     padding: var(--font-sm);
     max-width: 100%;
+    box-shadow: var(--light-shadow);
 }
 
 .daily-section__heading {
     color: var(--light-grey);
     font-weight: 600;
     font-size: var(--font-sm);
-    margin-bottom: var(--space-4xs);
+    margin-bottom: var(--space-3xs);
 }
 
 /* Next sibling combinator, so target the one directly after heading should be that container */
@@ -349,7 +346,7 @@ form {
 }
 
 .daily-forecast {
-    padding: var(--space-2xs);
+    padding: var(--space-xs);
     font-size: var(--font-xs);
 
     display: grid;
@@ -360,7 +357,7 @@ form {
 
 .daily-item {
     display: grid;
-    gap: var(--space-2xs);
+    gap: var(--space-xs);
     grid-auto-flow: column;
     grid-template-columns: auto 5ch 1fr 5ch;
     align-items: center;
@@ -369,18 +366,24 @@ form {
 
 .daily-item__bar--wrapper {
     position: relative;
-    background-color: var(--white-bck);
+    background-color: var(--light-blue);
     width: 100%;
     height: 10px;
-    border-radius: var(--border-rad-base);;
+    border-radius: var(--border-rad-base);
+}
+
+.daily-item__bar--warm {
+    background: var(--bar-warm-gradient);
+}
+
+.daily-item__bar--cold {
+    background: var(--bar-cold-gradient);
 }
 
 .daily-item__bar {
     position: absolute;
     height: 100%;
-    border-radius: var(--border-rad-base);;
-    /* TODO: color choice */
-    background: linear-gradient(to right, rgb(88, 88, 213), orange);
+    border-radius: var(--border-rad-base);
 }
 
 .daily-item__temp-min,
@@ -390,12 +393,14 @@ form {
 
  /* :twilight-section */
 .twilight-section {
-    background-color: var(--dark-blue);
+    background-color: var(--white-bck);
+    border-radius: var(--border-rad-base);
+    padding: var(--space-sm) var(--space-xs);
+    margin: 0 var(--space-xs) var(--space-xs);
+
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    padding: var(--space-md) var(--space-2xs);
-    margin: 0 var(--space-2xs) var(--space-2xs);
-    border-radius: var(--border-rad-base);
+    box-shadow: var(--light-shadow);
 }
 
 .twilight {
@@ -413,7 +418,7 @@ form {
 
 .twilight__time {
     text-align: center;
-    padding: var(--space-5xs) 0;
+    padding: var(--space-4xs) 0;
     font-size: var(--font-xs);
 }
 
