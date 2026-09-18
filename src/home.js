@@ -25,13 +25,10 @@ const home = () => {
 	const switchUnit = (unit) => {
 		localStorage.setItem("unitPreference", unit);
 
-		const readValue = localStorage.getItem("unitPreference");
-		console.log(readValue);
-
 		// Improve performance by retrieving the localStorage instead of making an API call (Faster)
 		const savedCity = JSON.parse(localStorage.getItem("weatherCache"));
 		const {data} = savedCity;
-		console.log("LocalStorage fetch trigger !")
+		console.log("LocalStorage fetch trigger !");
 
 		handleFetchSuccess(data);
 	}
