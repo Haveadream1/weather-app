@@ -1,0 +1,5 @@
+# Exclude config file from ESLint
+
+webpack.common.js
+webpack.dev.js
+webpack.prod.js
