@@ -5,10 +5,13 @@
   "start_url": ".",
   "display": "standalone",
   "background_color": "#FFFFFF",
-  "theme_color": "#1F40FA63",
+  "theme_color": "#a1aff9",
   "icons": [
-    { "src": "pwa_icons/icon_192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "pwa_icons/icon_512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "pwa_icons/icon_maskable_512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    { "src": "pwa_assets/icon_192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "pwa_assets/icon_512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "pwa_assets/icon_maskable_512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "screenshots": [
+    { "src": "pwa_assets/screenshot_narrow.png", "sizes": "540x720", "type": "image/png", "form_factor": "narrow", "label": "Weather App Home Screen"}
   ]
 }

@@ -17,7 +17,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: "src/manifest.json", to: "manifest.json" },
-        { from: "src/pwa_icons", to: "pwa_icons" },
+        { from: "src/pwa_assets", to: "pwa_assets" },
       ],
     }),
   ],
