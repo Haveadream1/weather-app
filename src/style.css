@@ -41,6 +41,7 @@
     --space-base: 1rem;
     --space-md: 1.5rem;
     --space-xl: 2.1875rem;
+    --space-xxl: 2.5rem;
 
     /* Border-radius */
     --border-rad-2xs: 0.5rem;
@@ -96,22 +97,25 @@ form {
 
 .form__input:focus {
     outline: 2px solid var(--input-yellow);
-    border: 0 none;
+    border: 1.5px solid var(--white-bck);
 }
 
 .form__input--success {
-  outline: var(--success) 2px solid;
+  outline: 2px solid var(--success);
+  border: 1.5px solid var(--white-bck);
 }
 
-.form__input--error {
-  outline: var(--error) 2px solid;
+.form__input--error,
+.form__input--error:focus {
+  outline: 2px solid var(--error);
+  border: 1.5px solid var(--white-bck);
 }
 
 .form__small {
     font-size: var(--font-2xs);
     position: absolute;
     left: var(--space-xs);
-    top: var(--space-xl);
+    top: var(--space-xxl);
 }
 
 .form__small--red-dot {
