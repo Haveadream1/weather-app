@@ -84,6 +84,19 @@ export const displayErrorMessage = (message, isAnimationRunning) => {
 	small.insertAdjacentText("beforeend", message);
 }
 
+export const displayGeolocationError = (error) => {
+	const input = document.querySelector("#city-input");
+	const small = document.querySelector(".form__small");
+
+	input.classList.add("form__input--error");
+	displayErrorMessage(`Error: ${error.message}`, true);
+
+	setTimeout(() => {
+		small.textContent = "";
+        input.classList.remove("form__input--error");
+	}, 3000)
+}
+
 export const switchUnitButtonOnReload = (savedUnit) => {
 	// On refresh, the saved unit in localStorage can be different than the default in HTML template, so switch
 	const defaultActiveBtn = document.querySelector(".unit-switch__btn--is-active");

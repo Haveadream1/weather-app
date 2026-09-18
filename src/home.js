@@ -106,7 +106,7 @@ const home = () => {
 			// Error can also be led by localisation not allowed in browser parameters
 			navigator.geolocation.getCurrentPosition(
 				success, 
-				(error) => domHandler.displayErrorMessage(`Geolocation error: ${error.message}`, true)
+				(error) => domHandler.displayGeolocationError(error)
 			);
 		}
 	}
