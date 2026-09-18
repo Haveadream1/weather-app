@@ -20,13 +20,7 @@ The purpose of this project is to practice the API call and incorporate linter a
 [Thermal Range spectrum: forum explanation](https://discussions.apple.com/thread/253179820?sortBy=rank)
 
 ## To-dos
-* Disable the submit button while submit
-* Check if loader can be more pretty on display (go on and off too fast)
-* Check hidden icon that pop up on refresh (instead of popup, it can be like show at the top/ same space as the refresh)
-* Check all paddings
-* Check external margins
 * Check is it performant to only pass the data needed or okay to pass all data as params
-* Check if we need env-safe-padding
 
 ## Project hierarchy
 1. dist/: contain the code bundled with webpack (collection of compiled files to make website faster)
@@ -34,8 +28,6 @@ The purpose of this project is to practice the API call and incorporate linter a
 1. dom_handler: manage the manipulation of the Document Object Model
 2. home: contains the application logic
 3. index: entrance point
-
-1. API secrety -> Fix issues -> Refactor Code -> Implement new features -> Re-design for mobile -> Prepare for PWA -> Refactor README
 
 ## Known issues
 
@@ -53,15 +45,13 @@ The purpose of this project is to practice the API call and incorporate linter a
 * Workbox simplifies the building process of Progressive Web Apps by managing service workers and caching logic
 
 ### Notes
-* We will use a class to cache the weather for a recent city 
 * Need to keep in mind the time of the data save
-* Maybe we don't need a success class to display green, only the error
 * Today : city and temp on same line
-* For now small element used for erros, but maybe better to use style of alert
 * Maybe full date like design 
-* Need to decide between ° or °C/F
 * Small dot like green or yellow to mean weather is freshly fetched ?
 * Should lang change depending on geolocation language ?
+* Fixed the PWA errors listed in 'Inspect: application'
+* Fix errors from Wave report (explain why we keep similar alt warnings)
 
 Localcache will have 3 entries:
 1. WeatherClass
