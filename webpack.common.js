@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -11,6 +12,12 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({template: "./src/template.html",}),
     new Dotenv(),
+    new CopyPlugin({
+      patterns: [
+        { from: "src/manifest.json", to: "manifest.json" },
+        { from: "src/pwa_icons", to: "icons" },
+      ],
+    }),
   ],
   module: {
     rules: [
