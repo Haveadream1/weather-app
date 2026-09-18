@@ -9,7 +9,7 @@ The purpose of this project is to practice the API call and incorporate linter a
 
 ## Preview
 
-[Weather online](https://haveadream1.github.io/weather-app/)
+[Weather online](https://weather-pwa2.netlify.app/)
 
 ## Credits
 
