@@ -11,15 +11,13 @@ The purpose of this project is to practice the API call and incorporate linter a
 
 [Weather online](https://weather-pwa2.netlify.app/)
 
-## Credits
-
-[The Odin Project](https://www.theodinproject.com/)  
-[Weather API](https://www.weatherapi.com/)  
-[Images](https://www.figma.com/design/BVKtenvFGEaYqOo2Y6q28I/Weather-Icons---Community-(Community)?node-id=101-2&t=L06xq648i0cax0lN-1)
-Meteoicons
-Lucidicons
-Geolocation API
-[UV Index](https://en.wikipedia.org/wiki/Ultraviolet_index)
+## Credits 
+[Meteoicons](https://meteocons.com/)  
+[Lucidicons](https://lucide.dev/)  
+[Weather API](https://www.weatherapi.com/)    
+[Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)    
+[UV Index infos](https://en.wikipedia.org/wiki/Ultraviolet_index)    
+[Thermal Range spectrum: forum explanation](https://discussions.apple.com/thread/253179820?sortBy=rank)
 
 ## To-dos
 * Disable the submit button while submit
