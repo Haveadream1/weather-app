@@ -11,7 +11,9 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({template: "./src/template.html",}),
-    new Dotenv(),
+    new Dotenv({
+      systemvars: true // For Netlify injected var
+    }),
     new CopyPlugin({
       patterns: [
         { from: "src/manifest.json", to: "manifest.json" },
