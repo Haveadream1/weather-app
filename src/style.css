@@ -11,8 +11,8 @@
 
     /* Colors */
     --light-blue: #E3E8F0;
-    --dark-blue: #5B6D86;
-    --light-grey: #94a3b8;
+    --dark-blue: #576880;
+    --light-grey: #6b7685;
     --white-bck: white;
     --black-text: black;
     --red-dot: red;
@@ -48,7 +48,6 @@
     --border-rad-base: 1rem;
 
     /* Font scale */
-    --font-3xs: 0.625rem;
     --font-2xs: 0.6875rem;
     --font-xs: 0.75rem; 
     --font-sm: 0.875rem; 
@@ -239,7 +238,7 @@ form {
 }
 
 .metric__name {
-    font-size: var(--font-3xs);
+    font-size: var(--font-2xs);
     color: var(--light-grey);
     padding: var(--space-4xs) 0;
 }
