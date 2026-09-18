@@ -82,6 +82,7 @@ const home = () => {
 		homeHandler("Seoul");
 	}
 
+	const geolocationBtn = document.querySelector(".geolocation-btn");
 	const small = document.querySelector(".form__small");
 	const success = (position) => {
 		const {latitude} = position.coords;
@@ -91,19 +92,25 @@ const home = () => {
 		console.log(latitude, longitude);
 
 		homeHandler(`${latitude},${longitude}`);
+		geolocationBtn.classList.remove("geolocation-btn--animation");
 	}
 
 	const findGeolocation = () => {
+		geolocationBtn.classList.add("geolocation-btn--animation");
 		if (!navigator.geolocation) {
 			small.textContent = "Geolocation not supported for this browser";
+			geolocationBtn.classList.remove("geolocation-btn--animation");
 		} else {
 			small.textContent = "Locating position...";
 
 			// Error can also be led by localisation not allowed in browser parameters
-			navigator.geolocation.getCurrentPosition(success, domHandler.displayErrorMessage("Error during geolocation"));
+			navigator.geolocation.getCurrentPosition(
+				success, 
+				(error) => domHandler.displayErrorMessage(`Geolocation error: ${error.message}`, true)
+			);
 		}
 	}
-	document.querySelector(".geolocation-btn").addEventListener("click", findGeolocation);
+	geolocationBtn.addEventListener("click", findGeolocation);
 	
 	const formHandler = () => {
 		const cityInput = document.querySelector("#city-input");

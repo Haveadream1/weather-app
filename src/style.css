@@ -21,6 +21,7 @@
     --humidity-blue: #2159e21a;
     --wind-red: #de2a2a26;
     --uv-yellow: #f8af1829;
+    --input-yellow: #fedf87;
 
     /* Gradients */
     --hourly-warm-gradient: linear-gradient(to bottom, #ffdb6666, #FCD34D);
@@ -93,6 +94,11 @@ form {
     border: 1.5px solid var(--light-blue);
 }
 
+.form__input:focus {
+    outline: 2px solid var(--input-yellow);
+    border: 0 none;
+}
+
 .form__input--success {
   outline: var(--success) 2px solid;
 }
@@ -121,6 +127,25 @@ form {
     border-radius: var(--border-rad-xs);
     border: 1.5px solid var(--light-blue);
     background-color: var(--white-bck);
+}
+
+.geolocation-btn--animation {
+    animation-name: color-pulse;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+}
+
+@keyframes color-pulse {
+    0% {
+        background-color: var(--white-bck);
+    }
+    50% {
+        background-color: var(--input-yellow);
+    }
+    100% {
+        background-color: var(--white-bck);
+    }
 }
 
 .unit-switch {

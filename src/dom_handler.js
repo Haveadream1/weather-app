@@ -71,7 +71,9 @@ const applyDynamicGradient = (el, coldClassName, warmClassName, code) => {
 	}
 }
 
-export const displayErrorMessage = (message) => {
+export const displayErrorMessage = (message, isAnimationRunning) => {
+	if (isAnimationRunning) document.querySelector(".geolocation-btn").classList.remove("geolocation-btn--animation");
+
 	const small = document.querySelector(".form__small");
 	if (small.textContent) small.textContent = "";
 
