@@ -95,18 +95,13 @@ form {
     border: 1.5px solid var(--light-blue);
 }
 
-.form__input:focus {
+.form__input:focus-visible {
     outline: 2px solid var(--input-yellow);
     border: 1.5px solid var(--white-bck);
 }
 
-.form__input--success {
-  outline: 2px solid var(--success);
-  border: 1.5px solid var(--white-bck);
-}
-
 .form__input--error,
-.form__input--error:focus {
+.form__input--error:focus-visible {
   outline: 2px solid var(--error);
   border: 1.5px solid var(--white-bck);
 }
