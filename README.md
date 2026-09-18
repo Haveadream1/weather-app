@@ -19,16 +19,16 @@ The purpose of this project is to practice the API call and incorporate linter a
 Meteoicons
 Lucidicons
 Geolocation API
+[UV Index](https://en.wikipedia.org/wiki/Ultraviolet_index)
 
 ## To-dos
-* Order the repository
-* Replace the compromised key and use env variables
-* Separate the API call and handle key from the logic src/api
-* Separate the form validation and formatting from the logic src/utils
-* Check if we remove .vscode, said t be used for to avoid spell-check
 * Disable the submit button while submit
 * Check if loader can be more pretty on display (go on and off too fast)
 * Check hidden icon that pop up on refresh (instead of popup, it can be like show at the top/ same space as the refresh)
+* Check all paddings
+* Check external margins
+* Check is it performant to only pass the data needed or okay to pass all data as params
+* Check if we need env-safe-padding
 
 ## Project hierarchy
 1. dist/: contain the code bundled with webpack (collection of compiled files to make website faster)
@@ -39,12 +39,33 @@ Geolocation API
 
 1. API secrety -> Fix issues -> Refactor Code -> Implement new features -> Re-design for mobile -> Prepare for PWA -> Refactor README
 
-Better for one fecth, store info and retrieve from local ? Like for switch C/F
-
-http://localhost:8080/
-
-MAKE it works first, clean, improve after
-
 ## Known issues
-* Time to time small el 'Choose a city' pop up
-* Check Tab size differences between files
+
+## Features
+* Local storage of recently visited cities, unit and data (avoid fetch when switching between units)
+* Geolocation
+* Use Weather Icon library, match code with icon path
+* Switch between unit preferences
+* BEM
+* Format date with DateFNS
+* Calculate localtime with fetched Timezone
+* Fetch data on WeatherAPI
+* Thermal Range spectrum
+* Custom form validation
+* Workbox simplifies the building process of Progressive Web Apps by managing service workers and caching logic
+
+### Notes
+* We will use a class to cache the weather for a recent city 
+* Need to keep in mind the time of the data save
+* Maybe we don't need a success class to display green, only the error
+* Today : city and temp on same line
+* For now small element used for erros, but maybe better to use style of alert
+* Maybe full date like design 
+* Need to decide between ° or °C/F
+* Small dot like green or yellow to mean weather is freshly fetched ?
+* Should lang change depending on geolocation language ?
+
+Localcache will have 3 entries:
+1. WeatherClass
+2. Array with the 3 last location searches
+3. Unit preference: C/F
