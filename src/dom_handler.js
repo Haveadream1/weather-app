@@ -1,12 +1,12 @@
 import { format } from "date-fns";
 import weatherConditions from "./utils/weather_icons";
 
-const getWeatherIcons = (isDay, code) => {
+export const getWeatherIcons = (isDay, code) => {
 	// Return default in case icon cannot be found
-	if (!weatherConditions[code].day || !weatherConditions[code].night) return weatherConditions[code].day;
+	if (!weatherConditions[code].day || !weatherConditions[code].night) return weatherConditions[1000].day;
 
 	// Display different icons depending on day/night time
-	return (isDay === 0) ? weatherConditions[code].day : weatherConditions[code].night;
+	return (isDay === 1) ? weatherConditions[code].day : weatherConditions[code].night;
 }
 
 const formatDate = (data, forecastDate) => {
@@ -24,7 +24,7 @@ const formatDate = (data, forecastDate) => {
 	return (!forecastDate) ? format(localTime, "EEEE, do LLLL") : format(localTime, "EEEE");
 };
 
-const determineUvLabel = (uv) => {
+export const determineUvLabel = (uv) => {
 	// Based on the Global Solar UV Index (UVI)
 	if (uv <= 2) return "Low";
 	if (uv <= 5) return "Moderate";
@@ -220,7 +220,7 @@ export const displayDailySection = (data, unit) => {
 		const item = dailyItem[i];
 
 		// For forecast, display the daytime's icon
-		const image = getWeatherIcons(0, path.condition.code);
+		const image = getWeatherIcons(1, path.condition.code);
 
 		item.querySelector(".daily-item__icon").src = image;
 		item.querySelector(".daily-item__icon").alt = path.condition.text;
