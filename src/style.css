@@ -203,7 +203,7 @@ form {
 
     display: flex;
     align-items: flex-end;
-    justify-content: center;
+    justify-content: space-between;
     gap: var(--space-md);
 
     background-color: var(--white-bck);
@@ -236,6 +236,12 @@ form {
     font-size: var(--font-md);
     color: var(--light-grey);
     font-weight: 500;
+}
+
+.today-card__city,
+.today-card__temp,
+.today-card__unit {
+    line-height: 1;
 }
 
 /* :metrics-section */
