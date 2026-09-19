@@ -20,7 +20,6 @@ The purpose of this project is to practice the API call and incorporate linter a
 [Thermal Range spectrum: forum explanation](https://discussions.apple.com/thread/253179820?sortBy=rank)
 
 ## To-dos
-* Check is it performant to only pass the data needed or okay to pass all data as params
 
 ## Project hierarchy
 1. dist/: contain the code bundled with webpack (collection of compiled files to make website faster)
@@ -46,9 +45,6 @@ The purpose of this project is to practice the API call and incorporate linter a
 
 ### Notes
 * Need to keep in mind the time of the data save
-* Today : city and temp on same line
-* Maybe full date like design 
-* Small dot like green or yellow to mean weather is freshly fetched ?
 * Should lang change depending on geolocation language ?
 * Fixed the PWA errors listed in 'Inspect: application'
 * Fix errors from Wave report (explain why we keep similar alt warnings)
