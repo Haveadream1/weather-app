@@ -1,4 +1,4 @@
-import StoredWeather from "../weather_class";
+import StoredWeather from "./weather_class";
 
 export const handleRecentCities = (queryChoice) => {
     // Fetch array if already exists otherwise create it; limited to 3 elements
