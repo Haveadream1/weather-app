@@ -16,7 +16,6 @@
     --white-bck: white;
     --black-text: black;
     --red-dot: red;
-    --success: green;
     --error: red;
     --humidity-blue: #2159e21a;
     --wind-red: #de2a2a26;
@@ -40,8 +39,7 @@
     --space-sm: 0.75rem;
     --space-base: 1rem;
     --space-md: 1.5rem;
-    --space-xl: 2.1875rem;
-    --space-xxl: 2.5rem;
+    --space-xl: 2.5rem;
 
     /* Border-radius */
     --border-rad-2xs: 0.5rem;
@@ -70,9 +68,6 @@ button {
 body {
     min-height: 100vh;
     max-width: 430px;
-
-    /* Visual aid */
-    /* border: dashed 2px red;  */
 }
 
 /* HEADER */
@@ -110,7 +105,7 @@ form {
     font-size: var(--font-2xs);
     position: absolute;
     left: var(--space-xs);
-    top: var(--space-xxl);
+    top: var(--space-xl);
 }
 
 .form__small--red-dot {
@@ -210,10 +205,8 @@ form {
     box-shadow: 0px 8px 20px 1px rgb(232, 236, 242);
 }
 
-/* Avoid the unit from being separated from temp value */
-/* ? First div too  or exclude ? */
 .today-card > * {
-    white-space: nowrap;
+    white-space: nowrap; /* Avoid the unit from being separated from temp value */
 }
 
 .today-card__city{
