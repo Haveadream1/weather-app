@@ -4,7 +4,7 @@
 // Frontend call the Netlify function
 // Netlify function calls API (secure access) and return the data
 
-exports.handler = async (event, context) => {
+exports.handler = async (event) => {
     // only allow GET requets
     if (event.httpMethod !== "GET") return { statusCode: 405, body: "Method Not Allowed" };
 
