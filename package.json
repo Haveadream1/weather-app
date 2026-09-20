@@ -7,7 +7,9 @@
     "build": "webpack --config webpack.prod.js",
     "start": "webpack serve --config webpack.dev.js",
     "lint": "eslint .",
-    "test": "jest"
+    "test": "jest",
+    "test:e2e": "playwright test",
+    "test:all": "npm run test && npm run test:e2e"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,8 @@
   "devDependencies": {
     "@babel/core": "^8.0.6",
     "@babel/preset-env": "^8.0.6",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.6.2",
     "babel-jest": "^30.5.2",
     "copy-webpack-plugin": "^14.0.0",
     "css-loader": "^7.1.2",
